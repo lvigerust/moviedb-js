@@ -70,9 +70,9 @@
 					tabindex="0"
 					class="menu menu-compact dropdown-content mt-3.5 p-2 shadow bg-base-300 font-[Poppins] rounded-box w-52"
 				>
-					<li><a href="/">Home</a></li>
-					<li><a href="#projects">Projects</a></li>
-					<li><a href="#contact">Contact</a></li>
+					<li><a href="/movies">Movies</a></li>
+					<li><a href="/tv">TV Shows</a></li>
+					<li><a href="/login">Login</a></li>
 				</ul>
 			</div>
 			<a
