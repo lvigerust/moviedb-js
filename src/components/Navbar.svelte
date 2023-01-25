@@ -1,6 +1,7 @@
 <script>
-	import { enhance } from '$app/forms';
-	import { page } from '$app/stores';
+	import { onMount } from 'svelte';
+	import Moon from '../lib/icons/moon.svelte';
+	import Sun from '../lib/icons/sun.svelte';
 
 	function clickOutside(node) {
 		const handleClick = (event) => {
@@ -29,11 +30,23 @@
 	$: scrollDirection = deriveDirection(currentY);
 	$: offscreen = scrollDirection === 'down' && currentY > clientHeight * 2;
 
-	const submitUpdateTheme = ({ action }) => {
-		const theme = action.searchParams.get('theme');
-		if (theme) {
-			document.documentElement.setAttribute('data-theme', theme);
-		}
+	let currentTheme = '';
+
+	onMount(() => {
+		currentTheme = document.documentElement.dataset.theme;
+		// const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+		// const hasUserSetDarkModeManually = document.documentElement.dataset.theme == 'dark';
+
+		// if (!hasUserSetDarkModeManually) {
+		// 	setTheme(userPrefersDarkMode ? 'dark' : 'light');
+		// }
+	});
+
+	const setTheme = (theme) => {
+		document.documentElement.dataset.theme = theme;
+		document.cookie = `siteTheme=${theme};max-age=31536000;path="/"`;
+		currentTheme = theme;
 	};
 </script>
 
@@ -70,25 +83,27 @@
 					tabindex="0"
 					class="menu menu-compact dropdown-content mt-3.5 p-2 shadow bg-base-300 font-[Poppins] rounded-box w-52"
 				>
-					<li><a href="/movies">Movies</a></li>
-					<li><a href="/tv">TV Shows</a></li>
-					<li><a href="/login">Login</a></li>
+					<div class="opacity-80">
+						<li><a href="/movies">Movies</a></li>
+						<li><a href="/tv">TV Shows</a></li>
+						<li><a href="/login">Login</a></li>
+					</div>
 				</ul>
 			</div>
 			<a
 				href="/"
 				class="btn btn-ghost rounded-full hidden md:flex flex-col gap-4 normal-case lg:text-lg opacity-75"
 			>
-				<p class="pt-1">VIGERUST</p>
+				<p>VIGERUST</p>
 			</a>
 		</div>
 		<div class="navbar-center w-1/3 flex justify-center md:hidden">
 			<a href="/" class="btn btn-ghost rounded-full normal-case opacity-75 flex flex-col gap-3">
-				<p class="pt-1">VIGERUST</p>
+				<p>VIGERUST</p>
 			</a>
 		</div>
-		<div class="navbar-end">
-			<ul class="menu menu-horizontal p-0 hidden md:flex font-[Poppins] normal-case opacity-80">
+		<div class="navbar-end opacity-80">
+			<ul class="menu menu-horizontal p-0 hidden md:flex font-[Poppins] normal-case">
 				<li>
 					<a class="btn btn-ghost rounded-md  font-normal normal-case" href="/movies">Movies</a>
 				</li>
@@ -100,20 +115,15 @@
 				</li>
 			</ul>
 
-			<ul class="px-4">
-				<form method="POST" use:enhance={submitUpdateTheme}>
-					<li>
-						<button formaction="/?/setTheme&theme=light&redirectTo={$page.url.pathname}"
-							>Light
-						</button>
-					</li>
-					<li>
-						<button formaction="/?/setTheme&theme=dark&redirectTo={$page.url.pathname}"
-							>Dark
-						</button>
-					</li>
-				</form>
-			</ul>
+			{#if currentTheme == 'light'}
+				<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('dark')}>
+					<Moon />
+				</a>
+			{:else}
+				<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('light')}>
+					<Sun />
+				</a>
+			{/if}
 		</div>
 	</div>
 </div>
