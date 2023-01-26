@@ -80,7 +80,7 @@
 				<ul
 					use:clickOutside
 					tabindex="0"
-					class="menu menu-compact dropdown-content mt-3.5 p-2 shadow bg-base-300 font-[Poppins] rounded-box w-52"
+					class="menu menu-compact dropdown-content mt-3.5 p-2 shadow bg-base-300/75 backdrop-blur-md font-[Poppins] rounded-box w-52"
 				>
 					<div class="opacity-80">
 						<li><a href="/movies">Movies</a></li>
@@ -116,11 +116,21 @@
 
 			<div class="ml-4">
 				{#if currentTheme == 'light'}
-					<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('dark')}>
+					<a
+						data-sveltekit-noscroll
+						class="btn btn-ghost btn-circle"
+						href={''}
+						on:click={() => setTheme('dark')}
+					>
 						<DarkmodeToggle symbol={'moon'} />
 					</a>
 				{:else}
-					<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('light')}>
+					<a
+						data-sveltekit-noscroll
+						class="btn btn-ghost btn-circle"
+						href={''}
+						on:click={() => setTheme('light')}
+					>
 						<DarkmodeToggle symbol={'sun'} />
 					</a>
 				{/if}

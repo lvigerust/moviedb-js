@@ -24,7 +24,7 @@
 		{/each}
 	</div>
 
-	<nav class="flex justify-center w-full py-4 gap-2">
+	<nav class="flex justify-center w-full py-6 gap-2">
 		{#each request as { }, index}
 			<a
 				href={`#${getItemId(index)}`}
