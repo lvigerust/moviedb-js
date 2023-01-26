@@ -12,14 +12,16 @@
 	<div class="carousel w-full rounded-box shadow-xl max-h-96 ">
 		{#each request as media, index}
 			<div id={getItemId(index)} class="carousel-item relative w-full">
-				<img
-					src={'https://image.tmdb.org/t/p/original/' + media.backdrop_path}
-					alt={media.title || media.name}
-					class="w-full object-cover"
-				/>
-				<h1 class="text-white text-xl drop-shadow-md  absolute bottom-4 right-5">
-					{media.title || media.name}
-				</h1>
+				<a href={'/movies/' + media.id}>
+					<img
+						src={'https://image.tmdb.org/t/p/original/' + media.backdrop_path}
+						alt={media.title || media.name}
+						class="w-full object-cover"
+					/>
+					<h1 class="text-white text-xl drop-shadow-md  absolute bottom-4 right-5">
+						{media.title || media.name}
+					</h1>
+				</a>
 			</div>
 		{/each}
 	</div>

@@ -5,7 +5,7 @@
 </script>
 
 <div class="movie-card mt-7 ">
-	<a href={'/movie/' + show.id}>
+	<a href={'/movies/' + show.id}>
 		<div class="image hover:scale-105 transition-transform shadow-lg">
 			<div class="wrapper">
 				<img
@@ -15,8 +15,8 @@
 				/>
 			</div>
 		</div>
-		<div class="content flex flex-col pt-2 mb-4 gap-1">
-			<h2 class="font-bold text-md">{show.name}</h2>
+		<div class="content flex flex-col pt-2 px-2 mb-4 gap-1">
+			<h2 class="font-bold text-md leading-snug">{show.name}</h2>
 			<p class="text-sm">
 				{date.getFullYear()}
 			</p>
