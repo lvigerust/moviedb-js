@@ -1,7 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
-	import Moon from '../lib/icons/moon.svelte';
-	import Sun from '../lib/icons/sun.svelte';
+	import DarkmodeToggle from '../lib/icons/DarkmodeToggle.svelte';
 
 	function clickOutside(node) {
 		const handleClick = (event) => {
@@ -86,7 +85,7 @@
 					<div class="opacity-80">
 						<li><a href="/movies">Movies</a></li>
 						<li><a href="/tv">TV Shows</a></li>
-						<li><a href="/login">Login</a></li>
+						<!-- <li><a href="/login">Login</a></li> -->
 					</div>
 				</ul>
 			</div>
@@ -110,20 +109,22 @@
 				<li>
 					<a class="btn btn-ghost rounded-md font-normal normal-case" href="/tv">TV Shows</a>
 				</li>
-				<li>
+				<!-- <li>
 					<a class="btn btn-ghost rounded-md font-normal normal-case" href="/login">Login</a>
-				</li>
+				</li> -->
 			</ul>
 
-			{#if currentTheme == 'light'}
-				<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('dark')}>
-					<Moon />
-				</a>
-			{:else}
-				<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('light')}>
-					<Sun />
-				</a>
-			{/if}
+			<div class="ml-4">
+				{#if currentTheme == 'light'}
+					<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('dark')}>
+						<DarkmodeToggle symbol={'moon'} />
+					</a>
+				{:else}
+					<a class="btn btn-ghost btn-circle" href={''} on:click={() => setTheme('light')}>
+						<DarkmodeToggle symbol={'sun'} />
+					</a>
+				{/if}
+			</div>
 		</div>
 	</div>
 </div>

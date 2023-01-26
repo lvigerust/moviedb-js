@@ -1,13 +1,22 @@
-export const load = async () => {
-	const fetchPopularTV = async () => {
-		const res = await fetch(
+export const load = async ({ fetch }) => {
+	const fetchTrending = async () => {
+		const trendingRes = await fetch(
+			`https://api.themoviedb.org/3/trending/tv/week?api_key=423da18d89f008cf830844259883b4c6`
+		);
+		const trendingData = await trendingRes.json();
+		return trendingData.results.slice(0, 5);
+	};
+
+	const fetchPopular = async () => {
+		const popularRes = await fetch(
 			`https://api.themoviedb.org/3/tv/popular?api_key=423da18d89f008cf830844259883b4c6&language=en-US&page=1`
 		);
-		const data = await res.json();
-		return data.results.slice(0, 5);
+		const popularData = await popularRes.json();
+		return popularData.results;
 	};
 
 	return {
-		popularTV: fetchPopularTV()
+		trendingTV: fetchTrending(),
+		popularTV: fetchPopular()
 	};
 };

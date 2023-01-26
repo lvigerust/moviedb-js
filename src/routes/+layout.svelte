@@ -4,6 +4,6 @@
 </script>
 
 <Navbar />
-<div class="container">
+<main class="py-20">
 	<slot />
-</div>
+</main>
