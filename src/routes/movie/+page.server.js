@@ -1,7 +1,9 @@
+import { TMDB_API_KEY } from '$env/static/private';
+
 export const load = async ({ fetch }) => {
 	const fetchTrending = async () => {
 		const trendingRes = await fetch(
-			`https://api.themoviedb.org/3/trending/movie/week?api_key=423da18d89f008cf830844259883b4c6`
+			`https://api.themoviedb.org/3/trending/movie/week?api_key=${TMDB_API_KEY}`
 		);
 		const trendingData = await trendingRes.json();
 		return trendingData.results.slice(0, 5);
@@ -9,7 +11,7 @@ export const load = async ({ fetch }) => {
 
 	const fetchPopular = async () => {
 		const popularRes = await fetch(
-			`https://api.themoviedb.org/3/movie/popular?api_key=423da18d89f008cf830844259883b4c6&language=en-US&page=1`
+			`https://api.themoviedb.org/3/movie/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`
 		);
 		const popularData = await popularRes.json();
 		return popularData.results;

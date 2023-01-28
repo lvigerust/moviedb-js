@@ -2,7 +2,7 @@
 	export let form;
 </script>
 
-<div class="lg:container mx-auto h-full w-full p-8">
+<div class="container min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
 	<form method="POST" class="flex flex-col items-center w-full justify-center">
 		<h1 class="text-3xl font-medium text-center my-2">Create Account</h1>
 		<div class="form-control w-full max-w-xs">

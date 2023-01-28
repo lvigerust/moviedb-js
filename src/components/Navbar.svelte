@@ -30,6 +30,8 @@
 	$: offscreen = scrollDirection === 'down' && currentY > clientHeight * 2;
 
 	let currentTheme = '';
+	let darkTheme = 'dark';
+	let lightTheme = 'garden';
 
 	onMount(() => {
 		currentTheme = document.documentElement.dataset.theme;
@@ -38,7 +40,7 @@
 		// const hasUserSetDarkModeManually = document.documentElement.dataset.theme == 'dark';
 
 		// if (!hasUserSetDarkModeManually) {
-		// 	setTheme(userPrefersDarkMode ? 'dark' : 'light');
+		// 	setTheme(userPrefersDarkMode ? darkTheme : lightTheme);
 		// }
 	});
 
@@ -83,7 +85,7 @@
 					class="menu menu-compact dropdown-content mt-3.5 p-2 shadow bg-base-300/75 backdrop-blur-md font-[Poppins] rounded-box w-52"
 				>
 					<div class="opacity-80">
-						<li><a href="/movies">Movies</a></li>
+						<li><a href="/movie">Movies</a></li>
 						<li><a href="/tv">TV Shows</a></li>
 						<!-- <li><a href="/login">Login</a></li> -->
 					</div>
@@ -104,7 +106,7 @@
 		<div class="navbar-end opacity-80">
 			<ul class="menu menu-horizontal p-0 hidden md:flex font-[Poppins] normal-case">
 				<li>
-					<a class="btn btn-ghost rounded-md  font-normal normal-case" href="/movies">Movies</a>
+					<a class="btn btn-ghost rounded-md  font-normal normal-case" href="/movie">Movies</a>
 				</li>
 				<li>
 					<a class="btn btn-ghost rounded-md font-normal normal-case" href="/tv">TV Shows</a>
@@ -115,12 +117,12 @@
 			</ul>
 
 			<div class="ml-4">
-				{#if currentTheme == 'light'}
+				{#if currentTheme == lightTheme}
 					<a
 						data-sveltekit-noscroll
 						class="btn btn-ghost btn-circle"
 						href={''}
-						on:click={() => setTheme('dark')}
+						on:click={() => setTheme(darkTheme)}
 					>
 						<DarkmodeToggle symbol={'moon'} />
 					</a>
@@ -129,7 +131,7 @@
 						data-sveltekit-noscroll
 						class="btn btn-ghost btn-circle"
 						href={''}
-						on:click={() => setTheme('light')}
+						on:click={() => setTheme(lightTheme)}
 					>
 						<DarkmodeToggle symbol={'sun'} />
 					</a>
