@@ -1,12 +1,16 @@
-import { TMDB_API_KEY } from '$env/static/private';
+import { redirect } from '@sveltejs/kit';
 
-export const load = async () => {
-	const fetchProducts = async () => {
-		const productsRes = await fetch('https://dummyjson.com/products');
-		const productData = await productsRes.json();
-		return productData.products;
-	};
-	return {
-		products: fetchProducts()
-	};
+/** @type {import('./$types').Actions} */
+export const actions = {
+	setTheme: async ({ url, cookies }) => {
+		const theme = url.searchParams.get('theme');
+		const redirectTo = url.searchParams.get('redirectTo');
+		if (theme) {
+			cookies.set('colortheme', theme, {
+				path: '/',
+				maxAge: 60 * 60 * 24 * 365
+			});
+		}
+		throw redirect(303, redirectTo !== null && redirectTo !== void 0 ? redirectTo : '/');
+	}
 };
