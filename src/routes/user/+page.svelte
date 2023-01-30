@@ -85,7 +85,9 @@
 			</label>
 		</div>
 		<div class="w-full max-w-xs pt-4">
-			<button class="btn btn-primary w-full" type="submit">Register</button>
+			<button class="btn btn-primary w-full" aria-label="Submit the form" type="submit"
+				>Register</button
+			>
 		</div>
 	</form>
 </div>

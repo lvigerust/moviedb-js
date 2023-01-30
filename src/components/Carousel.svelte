@@ -33,7 +33,7 @@
 			<a
 				href={`#${getItemId(index)}`}
 				on:click|preventDefault={scrollIntoView}
-				class="btn btn-xs drop-shadow-sm ">{index + 1}</a
+				class="btn btn-xs drop-shadow-sm">{index + 1}</a
 			>
 		{/each}
 	</nav>

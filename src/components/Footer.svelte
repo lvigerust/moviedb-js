@@ -45,7 +45,7 @@
 	</div>
 	<div>
 		<div class="grid grid-flow-col gap-4">
-			<a href={'#'}
+			<a href={'#'} aria-label="Link to Twitter"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -57,7 +57,7 @@
 					/></svg
 				></a
 			>
-			<a href={'#'}
+			<a href={'#'} aria-label="Link to YouTube"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"
@@ -69,7 +69,7 @@
 					/></svg
 				></a
 			>
-			<a href={'#'}
+			<a href={'#'} aria-label="Link to FaceBook"
 				><svg
 					xmlns="http://www.w3.org/2000/svg"
 					width="24"

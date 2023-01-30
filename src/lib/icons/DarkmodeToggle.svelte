@@ -2,7 +2,7 @@
 	export let symbol;
 </script>
 
-<label class="swap swap-rotate">
+<label class="swap swap-rotate" for="checkbox">
 	<input type="checkbox" />
 	{#if symbol == 'moon'}
 		<!-- moon icon -->

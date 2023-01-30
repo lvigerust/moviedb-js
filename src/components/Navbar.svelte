@@ -111,6 +111,7 @@
 					{#if currentTheme == lightTheme}
 						<button
 							data-sveltekit-noscroll
+							aria-label="Toggle dark theme"
 							class="btn btn-ghost btn-circle"
 							formaction="/?/setTheme&theme={darkTheme}&redirectTo={$page.url.pathname}"
 						>
@@ -119,6 +120,7 @@
 					{:else if currentTheme == darkTheme}
 						<button
 							data-sveltekit-noscroll
+							aria-label="Toggle light theme"
 							class="btn btn-ghost btn-circle"
 							formaction="/?/setTheme&theme={lightTheme}&redirectTo={$page.url.pathname}"
 						>
