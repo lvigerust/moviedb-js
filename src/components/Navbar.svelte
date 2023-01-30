@@ -1,6 +1,9 @@
 <script>
-	import { onMount } from 'svelte';
 	import { clickOutside } from '$lib/functions/clickOutside.js';
+	import { page } from '$app/stores';
+	import { enhance } from '$app/forms';
+	import { onMount } from 'svelte';
+
 	import DarkmodeToggle from '../lib/icons/DarkmodeToggle.svelte';
 
 	let previousY = 0;
@@ -17,25 +20,27 @@
 	$: offscreen = scrollDirection === 'down' && currentY > clientHeight * 2;
 
 	let currentTheme = '';
-	let darkTheme = 'dark';
 	let lightTheme = 'garden';
+	let darkTheme = 'dark';
 
 	onMount(() => {
-		currentTheme = document.documentElement.dataset.theme;
-		// const userPrefersDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-		// const hasUserSetDarkModeManually = document.documentElement.dataset.theme == 'dark';
-
-		// if (!hasUserSetDarkModeManually) {
-		// 	setTheme(userPrefersDarkMode ? darkTheme : lightTheme);
-		// }
+		if (document.documentElement.dataset.theme) {
+			currentTheme = document.documentElement.dataset.theme;
+		} else {
+			currentTheme = darkTheme;
+		}
 	});
 
-	const setTheme = (theme) => {
-		document.documentElement.dataset.theme = theme;
-		document.cookie = `siteTheme=${theme};max-age=31536000;path="/"`;
+	console.log(currentTheme);
+
+	const submitUpdateTheme = ({ action }) => {
+		const theme = action.searchParams.get('theme');
+		if (theme) {
+			document.documentElement.setAttribute('data-theme', theme);
+		}
 		currentTheme = theme;
 	};
+	export {};
 </script>
 
 <svelte:window bind:scrollY={currentY} />
@@ -103,26 +108,26 @@
 				</li> -->
 			</ul>
 
-			<div class="ml-4">
-				{#if currentTheme == lightTheme}
-					<a
-						data-sveltekit-noscroll
-						class="btn btn-ghost btn-circle"
-						href={''}
-						on:click={() => setTheme(darkTheme)}
-					>
-						<DarkmodeToggle symbol={'moon'} />
-					</a>
-				{:else}
-					<a
-						data-sveltekit-noscroll
-						class="btn btn-ghost btn-circle"
-						href={''}
-						on:click={() => setTheme(lightTheme)}
-					>
-						<DarkmodeToggle symbol={'sun'} />
-					</a>
-				{/if}
+			<div class="ml-4 w-12">
+				<form method="post" use:enhance={submitUpdateTheme}>
+					{#if currentTheme == lightTheme}
+						<button
+							class="btn btn-ghost btn-circle"
+							data-sveltekit-reload
+							formaction="/?/setTheme&theme={darkTheme}&redirectTo={$page.url.pathname}"
+						>
+							<DarkmodeToggle symbol={'sun'} />
+						</button>
+					{:else if currentTheme == darkTheme}
+						<button
+							class="btn btn-ghost btn-circle"
+							data-sveltekit-reload
+							formaction="/?/setTheme&theme={lightTheme}&redirectTo={$page.url.pathname}"
+						>
+							<DarkmodeToggle symbol={'moon'} />
+						</button>
+					{/if}
+				</form>
 			</div>
 		</div>
 	</div>
