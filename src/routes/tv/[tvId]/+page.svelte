@@ -69,7 +69,7 @@
 			<div in:fly={{ y: -500, delay: 400 }} class="img-container">
 				<img
 					class="rounded-lg shadow-xl xl:rounded-xl"
-					src={'https://image.tmdb.org/t/p/original/' + details.backdrop_path}
+					src={'https://image.tmdb.org/t/p/w1280/' + details.backdrop_path}
 					alt={details.name}
 				/>
 			</div>

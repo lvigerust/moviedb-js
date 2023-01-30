@@ -17,7 +17,7 @@
 			<div id={getItemId(index)} class="carousel-item relative w-full">
 				<a href={`/${type}/` + media.id} class="overflow-y-hidden">
 					<img
-						src={'https://image.tmdb.org/t/p/original/' + media.backdrop_path}
+						src={'https://image.tmdb.org/t/p/w1280/' + media.backdrop_path}
 						alt={media.title || media.name}
 					/>
 					<h1 class="text-white text-xl drop-shadow-md  absolute bottom-4 right-5">

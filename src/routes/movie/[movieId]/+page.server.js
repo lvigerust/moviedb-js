@@ -25,9 +25,18 @@ export const load = ({ fetch, params }) => {
 		return providerData;
 	};
 
+	const fetchImages = async (id) => {
+		const imagesRes = await fetch(
+			`https://api.themoviedb.org/3/movie/${id}/images?api_key=${TMDB_API_KEY}&language=en-US&include_image_language=en`
+		);
+		const imagesData = await imagesRes.json();
+		return imagesData.backdrops;
+	};
+
 	return {
 		details: fetchDetails(params.movieId),
 		credits: fetchCredits(params.movieId),
-		providers: fetchProviders(params.movieId)
+		providers: fetchProviders(params.movieId),
+		images: fetchImages(params.movieId)
 	};
 };

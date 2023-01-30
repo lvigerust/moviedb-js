@@ -4,7 +4,8 @@
 	import WatchProviders from '../../../components/WatchProviders.svelte';
 
 	export let data;
-	const { details, credits, providers } = data;
+	const { details, credits, providers, images } = data;
+
 	const providersNO = providers.results.NO;
 
 	let streamProvidersNO = '',
@@ -50,11 +51,11 @@
 		return (h + 'h ' + m + 'm').toString();
 	}
 
-	const crew = credits.crew;
-	function FindCredit(role) {
-		const result = crew.find(({ job }) => job === role);
-		return result.name;
-	}
+	// const crew = credits.crew;
+	// function FindCredit(role) {
+	// 	const result = crew.find(({ job }) => job === role);
+	// 	return result.name;
+	// }
 </script>
 
 <svelte:head>
@@ -67,11 +68,19 @@
 >
 	<div class="movie px-8 xl:mx-[10vw]">
 		<div in:fly={{ y: -500, delay: 400 }} class="img-container">
-			<img
-				class="rounded-lg shadow-xl xl:rounded-xl"
-				src={'https://image.tmdb.org/t/p/original/' + details.backdrop_path}
-				alt={details.title}
-			/>
+			{#if images.length > 0}
+				<img
+					class="rounded-lg shadow-xl xl:rounded-xl"
+					src={'https://image.tmdb.org/t/p/w1280/' + images[0].file_path}
+					alt={details.title}
+				/>
+			{:else}
+				<img
+					class="rounded-lg shadow-xl xl:rounded-xl"
+					src={'https://image.tmdb.org/t/p/w1280/' + details.backdrop_path}
+					alt={details.title}
+				/>
+			{/if}
 		</div>
 
 		<div class="header flex flex-col lg:flex-row lg:justify-between">
@@ -125,7 +134,7 @@
 			</div>
 			<div in:fade={{ delay: 2000, duration: 750 }}>
 				{#if providersNO != null}
-					<WatchProviders {providersNO} {streamProvidersNO} {buyProvidersNO} {rentProvidersNO} />
+					<WatchProviders {providersNO} {streamProvidersNO} {buyProvidersNO} />
 				{/if}
 			</div>
 		</div>
@@ -141,7 +150,7 @@
 				{#if details.belongs_to_collection.backdrop_path != null}
 					<a href={'/collection/' + details.belongs_to_collection.id}>
 						<img
-							class="rounded-lg h-[15vh] w-full object-cover mt-4  shadow-lg sm:hover:scale-[102.5%] transition-transform mb-8"
+							class="rounded-lg h-[15vh] w-full object-cover mt-4  shadow-lg sm:hover:scale-[102.5%] transition-transform mb-4 sm:mb-8"
 							src={'https://image.tmdb.org/t/p/w1280/' +
 								details.belongs_to_collection.backdrop_path}
 							alt={details.belongs_to_collection.name}
