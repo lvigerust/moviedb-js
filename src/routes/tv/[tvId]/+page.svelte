@@ -1,17 +1,12 @@
 <script>
 	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
-	import ImageCarousel from '../../../components/ImageCarousel.svelte';
 	import WatchProviders from '../../../components/WatchProviders.svelte';
 
 	import { fly, fade } from 'svelte/transition';
+	import Season from '../../../components/Season.svelte';
 
 	export let data;
-	const { details, providers, images } = data;
-
-	let episodeCount = details.last_episode_to_air.episode_number;
-	for (let i = 1; i <= episodeCount; i++) {
-		// console.log(i);
-	}
+	const { details, providers } = data;
 
 	const providersNO = providers.results.NO;
 	let streamProvidersNO = '',
@@ -30,17 +25,18 @@
 	}
 
 	let nextEpisode;
+	let diff;
 
 	if (details.next_episode_to_air) {
 		let today = new Date();
 		let airDate = new Date(details.next_episode_to_air.air_date);
-		const diff = airDate.getTime() - today.getTime();
+		diff = airDate.getTime() - today.getTime();
 
 		const formatDuration = (ms) => {
 			if (ms < 0) ms = -ms;
 			const time = {
-				day: Math.floor(ms / 86400000),
-				hour: Math.floor(ms / 3600000) % 24
+				day: Math.floor(ms / 86400000)
+				// hour: Math.floor(ms / 3600000) % 24
 				// minute: Math.floor(ms / 60000) % 60
 				// second: Math.floor(ms / 1000) % 60
 				// millisecond: Math.floor(ms) % 1000
@@ -50,14 +46,14 @@
 				.map((val) => val[1] + ' ' + (val[1] !== 1 ? val[0] + 's' : val[0]))
 				.join(' and ');
 		};
-
 		nextEpisode = formatDuration(diff);
 	}
 
-	console.log(nextEpisode);
-
 	const releaseDate = new Date(details.first_air_date);
 	const releaseYear = releaseDate.getFullYear();
+
+	let seasonsArray = details.seasons;
+	let currentSeason = seasonsArray.pop();
 </script>
 
 <svelte:head>
@@ -130,7 +126,7 @@
 							{#if details.next_episode_to_air}
 								Next episode:
 								<span class="font-semibold">
-									{#if nextEpisode > 0}
+									{#if diff > 0}
 										{nextEpisode}
 									{:else}
 										Today
@@ -146,13 +142,18 @@
 					{/if}
 				</div>
 			</div>
+			<div in:fly={{ y: 500, delay: 1000, duration: 650 }}>
+				<div class="divider" />
+				<div class="seasons prose max-w-full">
+					<h2>Current season</h2>
+					{#if currentSeason.poster_path}
+						<Season season={currentSeason} tvId={details.id} showName={details.name} />
+					{:else}
+						<Season season={details.seasons[0]} tvId={details.id} showName={details.name} />
+					{/if}
+				</div>
+			</div>
 		</div>
-	</div>
-
-	<div in:fly={{ y: 500, delay: 1000, duration: 650 }}>
-		{#if images.length > 4}
-			<ImageCarousel request={images} />
-		{/if}
 	</div>
 </div>
 

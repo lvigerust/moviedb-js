@@ -31,8 +31,6 @@
 		}
 	});
 
-	console.log(currentTheme);
-
 	const submitUpdateTheme = ({ action }) => {
 		const theme = action.searchParams.get('theme');
 		if (theme) {
@@ -112,16 +110,16 @@
 				<form method="post" use:enhance={submitUpdateTheme}>
 					{#if currentTheme == lightTheme}
 						<button
+							data-sveltekit-noscroll
 							class="btn btn-ghost btn-circle"
-							data-sveltekit-reload
 							formaction="/?/setTheme&theme={darkTheme}&redirectTo={$page.url.pathname}"
 						>
 							<DarkmodeToggle symbol={'sun'} />
 						</button>
 					{:else if currentTheme == darkTheme}
 						<button
+							data-sveltekit-noscroll
 							class="btn btn-ghost btn-circle"
-							data-sveltekit-reload
 							formaction="/?/setTheme&theme={lightTheme}&redirectTo={$page.url.pathname}"
 						>
 							<DarkmodeToggle symbol={'moon'} />

@@ -16,7 +16,7 @@
 <div class="hero min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
 	<div class="container px-8 sm:px-16 overflow-hidden">
 		<div class="mb-2 max-w-5xl mx-auto" in:fly={{ x: 500, delay: 450 }} out:fly={{ x: 500 }}>
-			<h1 class="mb-4 text-4xl sm:ml-3 font-bold">Trending this week</h1>
+			<h1 class="mb-4 text-4xl sm:ml-3 font-bold">Trending</h1>
 			<Carousel name={'trending'} type={'tv'} request={trendingTV} />
 		</div>
 		<div in:fly={{ y: 500, delay: 550 }} out:fly={{ y: 500 }}>

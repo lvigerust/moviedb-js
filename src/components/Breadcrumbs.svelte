@@ -10,7 +10,7 @@
 	}
 </script>
 
-<div class="text-sm breadcrumbs flex justify-center pt-14 pb-6">
+<div class="text-sm breadcrumbs flex justify-center my-8">
 	<ul class="flex flex-wrap justify-center">
 		<li><a href="/">Home</a></li>
 		<li><a href="/{type}">{typeFormatted}</a></li>

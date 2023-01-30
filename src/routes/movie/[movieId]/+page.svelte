@@ -132,6 +132,7 @@
 
 		{#if details.belongs_to_collection != null}
 			<div in:fly={{ y: 500, delay: 1000, duration: 650 }} class="collection-container mt-6">
+				<div class="divider" />
 				<h1 class="text-center text-lg">
 					Part of the <a href={'/collection/' + details.belongs_to_collection.id} class="font-bold"
 						>{details.belongs_to_collection.name}</a
@@ -140,7 +141,7 @@
 				{#if details.belongs_to_collection.backdrop_path != null}
 					<a href={'/collection/' + details.belongs_to_collection.id}>
 						<img
-							class="rounded-lg h-[15vh] w-full object-cover mt-4 shadow-lg sm:hover:scale-[102.5%] transition-transform"
+							class="rounded-lg h-[15vh] w-full object-cover mt-4  shadow-lg sm:hover:scale-[102.5%] transition-transform mb-8"
 							src={'https://image.tmdb.org/t/p/w1280/' +
 								details.belongs_to_collection.backdrop_path}
 							alt={details.belongs_to_collection.name}

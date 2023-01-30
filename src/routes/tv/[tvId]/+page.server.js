@@ -17,26 +17,8 @@ export const load = ({ fetch, params }) => {
 		return providerData;
 	};
 
-	const fetchPopular = async () => {
-		const popularRes = await fetch(
-			`https://api.themoviedb.org/3/tv/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`
-		);
-		const popularData = await popularRes.json();
-		return popularData.results;
-	};
-
-	const fetchImages = async (id) => {
-		const detailsRes = await fetch(
-			`https://api.themoviedb.org/3/tv/${id}/season/1/episode/2/images?api_key=${TMDB_API_KEY}`
-		);
-		const detailsData = await detailsRes.json();
-		return detailsData.stills;
-	};
-
 	return {
 		details: fetchDetails(params.tvId),
-		providers: fetchProviders(params.tvId),
-		popular: fetchPopular(),
-		images: fetchImages(params.tvId)
+		providers: fetchProviders(params.tvId)
 	};
 };
