@@ -2,7 +2,7 @@
 	export let request;
 </script>
 
-<div class="bg-base-200 w-screen mt-4 py-6 sm:pl-52">
+<div class="bg-base-200 w-screen mt-4 py-6 sm:px-52">
 	<ul
 		class="carousel flex overflow-x-auto gap-6 snap-x snap-mandatory 
 		before:shrink-0 before:w-[30vw] sm:before:w-0 

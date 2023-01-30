@@ -1,20 +1,7 @@
 <script>
 	import { onMount } from 'svelte';
+	import { clickOutside } from '$lib/functions/clickOutside.js';
 	import DarkmodeToggle from '../lib/icons/DarkmodeToggle.svelte';
-
-	function clickOutside(node) {
-		const handleClick = (event) => {
-			if (!node.contains(event.target)) {
-				node.dispatchEvent(new CustomEvent('outclick'));
-			}
-		};
-		document.addEventListener('click', handleClick, true);
-		return {
-			destroy() {
-				document.removeEventListener('click', handleClick, true);
-			}
-		};
-	}
 
 	let previousY = 0;
 	let currentY = 0;
