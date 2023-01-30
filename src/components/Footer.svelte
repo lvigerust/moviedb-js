@@ -13,7 +13,7 @@
 			/></svg
 		>
 		<p class="font-bold">
-			Den Norske Film og TV Databasen <br />Pålitelig data siden 2022
+			stinkmeaner.wtf <br />
 		</p>
 		<p>Copyright © 2023 Vigerust Webutvikling - All right reserved</p>
 	</div>

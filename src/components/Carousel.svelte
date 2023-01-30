@@ -1,5 +1,5 @@
 <script>
-	import { scrollIntoView } from '$lib/scrollIntoView.js';
+	import { scrollIntoView } from '$lib/functions/scrollIntoView.js';
 
 	export let request;
 

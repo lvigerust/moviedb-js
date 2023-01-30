@@ -1,6 +1,7 @@
 <script>
-	import { bind } from 'svelte/internal';
 	import { fly, fade } from 'svelte/transition';
+	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
+	import WatchProviders from '../../../components/WatchProviders.svelte';
 
 	export let data;
 	const { details, credits, providers } = data;
@@ -61,6 +62,7 @@
 </svelte:head>
 
 <div
+	out:fade
 	class="container overflow-hidden min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]"
 >
 	<div class="movie px-8 xl:mx-[10vw]">
@@ -123,50 +125,7 @@
 			</div>
 			<div in:fade={{ delay: 2000, duration: 750 }}>
 				{#if providersNO != null}
-					<a href={providersNO.link} target="_blank" rel="noreferrer">
-						<div class="providers">
-							<div class="p-2 shadow-md pb-1 rounded-md my-3 bg-base-200 lg:mt-7 lg:mr-4 w-fit">
-								<div class="flex flex-col-reverse justify-center gap-[0.25rem]">
-									<p class="text-[8px] font-light text-center border-t border-base-300 ">
-										Provided by JustWatch
-									</p>
-									{#if streamProvidersNO != ''}
-										{#each streamProvidersNO.slice(0, 1) as streamProvidersNO}
-											<div class="flex items-center justify-between gap-2">
-												<div class="logo">
-													<img
-														class="w-10 h-10 rounded-md"
-														src={'http://image.tmdb.org/t/p/w500/' + streamProvidersNO.logo_path}
-														alt={streamProvidersNO.provider_name}
-													/>
-												</div>
-												<div class="text text-start leading-5 text-sm">
-													<p class="font-light">Stream on</p>
-													<p class="font-bold">{streamProvidersNO.provider_name}</p>
-												</div>
-											</div>
-										{/each}
-									{:else if buyProvidersNO != ''}
-										{#each buyProvidersNO.slice(0, 1) as buyProvidersNO}
-											<div class="flex items-center justify-between gap-2">
-												<div class="logo">
-													<img
-														class="w-10 h-10 rounded-md"
-														src={'http://image.tmdb.org/t/p/w500/' + buyProvidersNO.logo_path}
-														alt={buyProvidersNO.provider_name}
-													/>
-												</div>
-												<div class="text text-start leading-5 text-sm">
-													<p class="font-light">Available on</p>
-													<p class="font-bold">{buyProvidersNO.provider_name}</p>
-												</div>
-											</div>
-										{/each}
-									{/if}
-								</div>
-							</div>
-						</div>
-					</a>
+					<WatchProviders {providersNO} {streamProvidersNO} {buyProvidersNO} {rentProvidersNO} />
 				{/if}
 			</div>
 		</div>
@@ -192,16 +151,4 @@
 		{/if}
 	</div>
 </div>
-<div class="text-sm breadcrumbs flex justify-center pt-14 pb-6">
-	<ul class="flex flex-wrap justify-center">
-		<li><a href="/">Home</a></li>
-		{#if details.belongs_to_collection != null}
-			<li>
-				<a href={'/collection/' + details.belongs_to_collection.id}
-					>{details.belongs_to_collection.name}</a
-				>
-			</li>
-		{/if}
-		<li>{details.title}</li>
-	</ul>
-</div>
+<Breadcrumbs type={'movie'} {details} />

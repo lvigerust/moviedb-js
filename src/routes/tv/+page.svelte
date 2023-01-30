@@ -1,9 +1,9 @@
 <script>
 	import { fly } from 'svelte/transition';
+	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
 	import Card from '../../components/Card.svelte';
 	import Carousel from '../../components/Carousel.svelte';
 
-	/** @type {import('./$types').PageData} */
 	export let data;
 
 	const { trendingTV, popularTV } = data;
@@ -15,7 +15,7 @@
 
 <div class="hero min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
 	<div class="container px-8 sm:px-16 overflow-hidden">
-		<div class="mb-2 max-w-5xl mx-auto" in:fly={{ x: -500, delay: 400 }} out:fly={{ x: 500 }}>
+		<div class="mb-2 max-w-5xl mx-auto" in:fly={{ x: 500, delay: 450 }} out:fly={{ x: 500 }}>
 			<h1 class="mb-4 text-4xl sm:ml-3 font-bold">Trending this week</h1>
 			<Carousel name={'trending'} type={'tv'} request={trendingTV} />
 		</div>
@@ -31,12 +31,6 @@
 				{/each}
 			</div>
 		</div>
-		<div class="text-sm breadcrumbs flex justify-center pt-14 pb-6">
-			<ul class="flex flex-wrap justify-center">
-				<li><a href="/">Home</a></li>
-
-				<li>Popular TV</li>
-			</ul>
-		</div>
+		<Breadcrumbs type={'tv'} details={''} />
 	</div>
 </div>
