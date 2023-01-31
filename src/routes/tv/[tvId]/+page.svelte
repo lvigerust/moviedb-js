@@ -154,7 +154,6 @@
 				</div>
 			</div>
 		</div>
+		<Breadcrumbs type={'tv'} {details} />
 	</div>
 </div>
-
-<Breadcrumbs type={'tv'} {details} />

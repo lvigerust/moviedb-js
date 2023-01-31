@@ -137,6 +137,6 @@
 				{/if}
 			</div>
 		{/if}
+		<Breadcrumbs type={'movie'} {details} />
 	</div>
 </div>
-<Breadcrumbs type={'movie'} {details} />
