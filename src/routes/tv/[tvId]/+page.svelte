@@ -12,6 +12,7 @@
 	let streamProvidersNO = '',
 		buyProvidersNO = '',
 		rentProvidersNO = '';
+
 	if (providersNO != null) {
 		if (providersNO.flatrate != null) {
 			streamProvidersNO = providersNO.flatrate;
@@ -51,9 +52,6 @@
 
 	const releaseDate = new Date(details.first_air_date);
 	const releaseYear = releaseDate.getFullYear();
-
-	let seasonsArray = details.seasons;
-	let currentSeason = seasonsArray.pop();
 </script>
 
 <svelte:head>
@@ -146,11 +144,7 @@
 				<div class="divider" />
 				<div class="seasons prose max-w-full">
 					<h2>Current season</h2>
-					{#if currentSeason.poster_path}
-						<Season season={currentSeason} tvId={details.id} showName={details.name} />
-					{:else}
-						<Season season={details.seasons[0]} tvId={details.id} showName={details.name} />
-					{/if}
+					<!-- <Season />  -->
 				</div>
 			</div>
 		</div>

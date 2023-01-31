@@ -10,6 +10,7 @@ export const handle = async ({ event, resolve }) => {
 	} else if (cookieTheme) {
 		theme = cookieTheme;
 	}
+
 	if (theme) {
 		return await resolve(event, {
 			transformPageChunk: ({ html }) => html.replace('data-theme=""', `data-theme="${theme}"`)

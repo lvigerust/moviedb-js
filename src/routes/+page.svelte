@@ -1,6 +1,5 @@
 <script>
-	export let data;
-	const { products } = data;
+	// export let data;
 </script>
 
 <svelte:head>
