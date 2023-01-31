@@ -29,8 +29,6 @@
 	const releaseDate = new Date(details.release_date);
 	const releaseYear = releaseDate.getFullYear();
 
-	console.log(details);
-
 	// const crew = credits.crew;
 	// function FindCredit(role) {
 	// 	const result = crew.find(({ job }) => job === role);

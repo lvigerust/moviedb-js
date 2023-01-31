@@ -1,9 +1,6 @@
 <script>
 	export let data;
-
 	export let { search } = data;
-
-	console.log(data);
 </script>
 
 <svelte:head>
