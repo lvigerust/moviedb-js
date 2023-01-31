@@ -2,6 +2,8 @@
 	import { fly, fade } from 'svelte/transition';
 	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
 	import WatchProviders from '../../../components/WatchProviders.svelte';
+	import { getPremiereDate } from '$lib/functions/getPremiereDate.js';
+	import { getRuntime } from '$lib/functions/getRuntime.js';
 
 	export let data;
 	const { details, credits, providers, images } = data;
@@ -26,30 +28,8 @@
 
 	const releaseDate = new Date(details.release_date);
 	const releaseYear = releaseDate.getFullYear();
-	const months = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-	];
-	let day = releaseDate.getDate();
-	let month = months[releaseDate.getMonth()];
-	let year = releaseDate.getFullYear();
-	$: formattedDate = `${month} ${day}, ${year}`;
 
-	function Runtime(minutes) {
-		let h = Math.floor(minutes / 60);
-		let m = minutes % 60;
-		return (h + 'h ' + m + 'm').toString();
-	}
+	console.log(details);
 
 	// const crew = credits.crew;
 	// function FindCredit(role) {
@@ -93,11 +73,11 @@
 					class="facts sm:bg-base-100 sm:border-0 bg-base-200 w-screen sm:w-full relative -ml-[50vw] sm:ml-0 sm:left-0 left-[50%] py-2 border-y border-solid border-base-300 flex flex-wrap gap-x-2 justify-center items-center sm:justify-start "
 				>
 					<div class="release">
-						<p class="m-0">{formattedDate}</p>
+						<p class="m-0">{getPremiereDate(details.release_date)}</p>
 					</div>
 					<div class="font-bold text-lg select-none">&bullet;</div>
 					<div class="runtime md:order-last">
-						<p class="m-0">{Runtime(details.runtime)}</p>
+						<p class="m-0">{getRuntime(details.runtime)}</p>
 					</div>
 					<div class="genres basis-full sm:basis-[auto] flex justify-center flex-wrap gap-1">
 						<div class="font-bold hidden sm:inline md:hidden text-lg select-none mr-[0.15rem]">
