@@ -7,7 +7,7 @@
 	export let type = '';
 </script>
 
-<div class="movie-card mt-7 ">
+<div class="card mt-7">
 	<a href={`/${type}/` + request.id}>
 		<div class="image sm:hover:scale-105 transition-transform shadow-lg">
 			<div class="wrapper">

@@ -1,4 +1,6 @@
 <script>
+	import { getPremiereDate } from '$lib/functions/getPremiereDate.js';
+
 	export let season;
 
 	export let tvId;
@@ -6,26 +8,6 @@
 
 	const releaseDate = new Date(season.air_date);
 	const releaseYear = releaseDate.getFullYear();
-
-	const months = [
-		'January',
-		'February',
-		'March',
-		'April',
-		'May',
-		'June',
-		'July',
-		'August',
-		'September',
-		'October',
-		'November',
-		'December'
-	];
-
-	let day = releaseDate.getDate();
-	let month = months[releaseDate.getMonth()];
-	let year = releaseDate.getFullYear();
-	$: premiereDate = `${month} ${day}, ${year}`;
 </script>
 
 <a href={`/tv/${tvId}` + `/` + season.season_number} class="no-underline ">
@@ -51,7 +33,7 @@
 				<p>{season.episode_count} episodes</p>
 			</div>
 			<p class="m-0 text-sm sm:text-base">
-				Season {season.season_number} of {showName} premiered on {premiereDate}.
+				Season {season.season_number} of {showName} premiered on {getPremiereDate(season.air_date)}.
 			</p>
 		</div>
 	</div>

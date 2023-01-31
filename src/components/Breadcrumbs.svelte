@@ -16,12 +16,15 @@
 		<li><a href="/{type}">{typeFormatted}</a></li>
 
 		{#if details}
-			{#if details.belongs_to_collection != null}
+			{#if details.belongs_to_collection}
 				<li>
 					<a href={'/collection/' + details.belongs_to_collection.id}
 						>{details.belongs_to_collection.name}</a
 					>
 				</li>
+			{/if}
+			{#if details.episodes}
+				<li>{details.episodes[0].show_id}</li>
 			{/if}
 			<li>{details.name || details.title}</li>
 		{/if}
