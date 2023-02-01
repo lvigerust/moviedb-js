@@ -33,6 +33,7 @@
 		{/if}
 
 		{#if collectionDetails.name}
+			<li><a href="/movie">Movie</a></li>
 			<li>{collectionDetails.name}</li>
 		{/if}
 
