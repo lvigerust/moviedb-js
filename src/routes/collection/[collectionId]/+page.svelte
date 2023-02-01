@@ -1,10 +1,13 @@
 <script>
 	import { fly, fade } from 'svelte/transition';
+	import { dynamicSort } from '$lib/functions/formatFunctions.js';
 	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
 	import Card from '../../../components/Card.svelte';
 
 	export let data;
 	const { collectionDetails } = data;
+
+	collectionDetails.parts.sort(dynamicSort('release_date'));
 </script>
 
 <svelte:head>
@@ -25,7 +28,8 @@
 
 		<div
 			in:fly={{ x: -500, delay: 450 }}
-			class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-8 mt-4 sm:mt-8"
+			class="collection grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] gap-x-5 sm:gap-x-8 mt-4
+			sm:flex flex-wrap justify-center"
 		>
 			{#each collectionDetails.parts as movie}
 				<Card type={'movie'} request={movie} />

@@ -9,7 +9,7 @@
 	export const getItemId = (index) => `${name}-item-${index}`;
 </script>
 
-<div class="flex flex-col items-center">
+<div class="mt-5 flex flex-col items-center">
 	<div
 		class="carousel w-full rounded-box shadow-xl max-h-96 hover:scale-[100.5%] transition-transform "
 	>
