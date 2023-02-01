@@ -7,13 +7,6 @@
 
 	export let data;
 	const { movieDetails, movieProviders, movieImages } = data;
-
-	const breadcrumbs = {
-		type: 'movie',
-		list: '',
-		parent: movieDetails.belongs_to_collection.name,
-		children: movieDetails.title
-	};
 </script>
 
 <svelte:head>
@@ -111,6 +104,6 @@
 				{/if}
 			</div>
 		{/if}
-		<Breadcrumbs {...breadcrumbs} />
+		<Breadcrumbs {movieDetails} />
 	</div>
 </div>

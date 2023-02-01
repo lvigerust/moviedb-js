@@ -29,13 +29,6 @@
 			getCurrentSeason(tvDetails.last_episode_to_air.season_number).air_date
 		)
 	};
-
-	const breadcrumbs = {
-		type: 'tv',
-		list: '',
-		parent: tvDetails.name,
-		children: ''
-	};
 </script>
 
 <svelte:head>
@@ -134,6 +127,6 @@
 				</div>
 			</div>
 		</div>
-		<Breadcrumbs {...breadcrumbs} />
+		<Breadcrumbs {tvDetails} />
 	</div>
 </div>

@@ -5,13 +5,6 @@
 
 	export let data;
 	const { tvDetails, seasonDetails } = data;
-
-	const breadcrumbs = {
-		type: 'tv',
-		list: '',
-		parent: tvDetails.name,
-		children: seasonDetails.name
-	};
 </script>
 
 <div class="hero min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
@@ -86,6 +79,6 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs {...breadcrumbs} />
+		<Breadcrumbs {tvDetails} {seasonDetails} />
 	</div>
 </div>

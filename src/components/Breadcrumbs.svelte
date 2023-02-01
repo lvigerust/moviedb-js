@@ -1,30 +1,53 @@
 <script>
-	export let type = '';
-	export let list = 'Popular';
-	export let parent = '';
-	export let children = '';
-
-	let typeFormatted = type;
-	if (typeFormatted == 'tv') {
-		typeFormatted = type.toUpperCase();
-	} else {
-		typeFormatted = type.charAt(0).toUpperCase() + type.slice(1);
-	}
+	export let collectionDetails = {};
+	export let movieDetails = {};
+	export let tvDetails = {};
+	export let seasonDetails = {};
+	export let popularMovies = {};
+	export let popularTv = {};
 </script>
 
 <div class="text-sm breadcrumbs flex justify-center my-8">
 	<ul class="flex flex-wrap justify-center">
 		<li><a href="/">Home</a></li>
-		<li><a href="/{type}">{typeFormatted}</a></li>
 
-		{#if list}
-			<li><a href={'#'}>{list}</a></li>
+		{#if popularMovies.length > 0}
+			<li><a href="/movie">Movie</a></li>
+			<li>Popular</li>
 		{/if}
-		{#if parent}
-			<li><a href={'#'}>{parent}</a></li>
+		{#if popularTv.length > 0}
+			<li><a href="/tv">TV</a></li>
+			<li>Popular</li>
 		{/if}
-		{#if children}
-			<li><a href={'#'}>{children}</a></li>
+
+		{#if movieDetails.title}
+			<li><a href="/movie">Movie</a></li>
+			{#if movieDetails.belongs_to_collection}
+				<li>
+					<a href={`/collection/` + movieDetails.belongs_to_collection.id}
+						>{movieDetails.belongs_to_collection.name}</a
+					>
+				</li>
+			{/if}
+			<li>{movieDetails.title}</li>
+		{/if}
+
+		{#if collectionDetails.name}
+			<li>{collectionDetails.name}</li>
+		{/if}
+
+		{#if tvDetails.name}
+			<li><a href="/tv">TV</a></li>
+			{#if seasonDetails.name}
+				<li>
+					<a href={`/tv/` + tvDetails.id}>{tvDetails.name}</a>
+				</li>
+				<li>{seasonDetails.name}</li>
+			{:else}
+				<li>
+					{tvDetails.name}
+				</li>
+			{/if}
 		{/if}
 	</ul>
 </div>

@@ -29,6 +29,6 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs type="tv" />
+		<Breadcrumbs {popularTv} />
 	</div>
 </div>

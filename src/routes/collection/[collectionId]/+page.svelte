@@ -5,13 +5,6 @@
 
 	export let data;
 	const { collectionDetails } = data;
-
-	const breadcrumbs = {
-		type: 'movie',
-		list: '',
-		parent: collectionDetails.name,
-		children: ''
-	};
 </script>
 
 <svelte:head>
@@ -40,6 +33,6 @@
 		{/each}
 	</div>
 	<div in:fade={{ delay: 1200 }}>
-		<Breadcrumbs {...breadcrumbs} />
+		<Breadcrumbs {collectionDetails} />
 	</div>
 </div>
