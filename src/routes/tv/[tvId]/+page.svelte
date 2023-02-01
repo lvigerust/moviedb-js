@@ -67,14 +67,19 @@
 						class="facts sm:bg-base-100 sm:border-0 bg-base-200 w-screen sm:w-full relative -ml-[50vw] sm:ml-0 sm:left-0 left-[50%] py-2 border-y border-solid border-base-300 flex flex-wrap gap-x-2 justify-center items-center sm:justify-start "
 					>
 						<div class="seasons">
-							<p class="m-0 ">
-								{tvDetails.number_of_seasons}
-								{#if tvDetails.number_of_seasons > 1}
-									seasons
-								{:else}
-									season
-								{/if}
-							</p>
+							<a
+								href={`/tv/${tvDetails.id}` + `/` + tvDetails.last_episode_to_air.season_number}
+								class="no-underline font-normal text-current"
+							>
+								<p class="m-0 ">
+									{tvDetails.last_episode_to_air.season_number}
+									{#if tvDetails.last_episode_to_air.season_number > 1}
+										seasons
+									{:else}
+										season
+									{/if}
+								</p>
+							</a>
 						</div>
 						<div class="font-bold text-lg select-none">&bullet;</div>
 						<div class="episodes">
@@ -115,14 +120,14 @@
 						</p>
 					</div>
 				</div>
-				<div in:fade={{ delay: 2000, duration: 750 }}>
+				<div class="w-fit" in:fade={{ delay: 1500 }}>
 					{#if tvProviders.results.NO}
 						<WatchProviders providers={tvProviders} />
 					{/if}
 				</div>
 			</div>
+			<div in:fade={{ delay: 1250 }} class="divider" />
 			<div in:fly={{ y: 500, delay: 1000, duration: 650 }}>
-				<div class="divider" />
 				<div class="seasons prose max-w-full">
 					<h2>Current season</h2>
 					<Season {...currentSeasonInfo} />
