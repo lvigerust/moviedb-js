@@ -1,13 +1,16 @@
 <script>
-	import { getPremiereDate } from '$lib/functions/getPremiereDate.js';
-	import { getRuntime } from '$lib/functions/getRuntime.js';
+	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
 	import Breadcrumbs from '../../../../components/Breadcrumbs.svelte';
 
 	export let data;
-	const { details } = data;
+	const { tvDetails, seasonDetails } = data;
 
-	const premiereDate = new Date(details.air_date);
-	const premiereYear = premiereDate.getFullYear();
+	const breadcrumbs = {
+		type: 'tv',
+		list: '',
+		parent: tvDetails.name,
+		children: seasonDetails.name
+	};
 </script>
 
 <div class="hero min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
@@ -16,24 +19,27 @@
 			<div class="image-wrapper w-20 h-full shrink-0">
 				<img
 					class="rounded-l-lg"
-					src={'https://image.tmdb.org/t/p/w780/' + details.poster_path}
-					alt={details.name}
+					src={'https://image.tmdb.org/t/p/w780/' + seasonDetails.poster_path}
+					alt={seasonDetails.name}
 				/>
 			</div>
 			<div class="content-wrapper flex flex-col w-full justify-center ml-4">
 				<h2 class="font-bold text-lg">
-					{details.name} <span class="font-normal">({premiereYear})</span>
+					{seasonDetails.name}
+					<span class="font-normal">({new Date(seasonDetails.air_date).getFullYear()})</span>
 				</h2>
-				<p>Back to season list</p>
+				<a href={`/tv/` + seasonDetails.id}>
+					<p>Back to overview</p>
+				</a>
 			</div>
 		</div>
 		<div class="divider mt-6" />
 		<div class="episodes">
 			<h3 class="text-xl font-semibold">
-				Episodes <span class="font-light">{details.episodes.length}</span>
+				Episodes <span class="font-light">{seasonDetails.episodes.length}</span>
 			</h3>
 			<div class="episodes-wrapper flex flex-col gap-8 my-4">
-				{#each details.episodes as episode}
+				{#each seasonDetails.episodes as episode}
 					<div
 						class="episode flex flex-col bg-base-300 rounded-lg shadow-lg
 					sm:flex-row"
@@ -56,7 +62,9 @@
 								<div class="facts text-sm sm:text-right">
 									<p>{getPremiereDate(episode.air_date)}</p>
 
-									<p>{getRuntime(episode.runtime)}</p>
+									{#if episode.runtime}
+										<p>{getRuntime(episode.runtime)}</p>
+									{/if}
 								</div>
 							</div>
 							<div class="overview text-sm sm:basis-1/2">
@@ -67,6 +75,6 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs type={'tv'} {details} />
+		<Breadcrumbs {...breadcrumbs} />
 	</div>
 </div>

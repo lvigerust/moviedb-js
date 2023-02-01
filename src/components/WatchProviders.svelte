@@ -1,50 +1,46 @@
 <script>
-	export let providersNO;
-	export let streamProvidersNO;
-	export let buyProvidersNO;
-	// export let rentProvidersNO;
+	export let providers;
+
+	function getProviders(providers) {
+		let norwegianProviders = providers.results.NO;
+		let provider;
+
+		if (norwegianProviders) {
+			if (norwegianProviders.flatrate) {
+				provider = norwegianProviders.flatrate;
+			} else if (norwegianProviders.rent) {
+				provider = norwegianProviders.rent;
+			} else {
+				provider = norwegianProviders.buy;
+			}
+		}
+		return provider[0];
+	}
+
+	const link = providers.results.NO.link;
+	const provider = getProviders(providers);
 </script>
 
-<a href={providersNO.link} target="_blank" rel="noreferrer">
+<a href={link} target="_blank" rel="noreferrer">
 	<div class="providers">
 		<div class="p-2 shadow-md pb-1 rounded-md my-3 bg-base-200 lg:mt-7 lg:mr-4 w-fit">
 			<div class="flex flex-col-reverse justify-center gap-[0.25rem]">
 				<p class="text-[8px] font-light text-center border-t border-base-300 ">
 					Provided by JustWatch
 				</p>
-				{#if streamProvidersNO != ''}
-					{#each streamProvidersNO.slice(0, 1) as streamProvidersNO}
-						<div class="flex items-center justify-between gap-2">
-							<div class="logo">
-								<img
-									class="w-10 h-10 rounded-md"
-									src={'http://image.tmdb.org/t/p/w500/' + streamProvidersNO.logo_path}
-									alt={streamProvidersNO.provider_name}
-								/>
-							</div>
-							<div class="text text-start leading-5 text-sm">
-								<p class="font-light">Stream on</p>
-								<p class="font-bold">{streamProvidersNO.provider_name}</p>
-							</div>
-						</div>
-					{/each}
-				{:else if buyProvidersNO != ''}
-					{#each buyProvidersNO.slice(0, 1) as buyProvidersNO}
-						<div class="flex items-center justify-between gap-2">
-							<div class="logo">
-								<img
-									class="w-10 h-10 rounded-md"
-									src={'http://image.tmdb.org/t/p/w500/' + buyProvidersNO.logo_path}
-									alt={buyProvidersNO.provider_name}
-								/>
-							</div>
-							<div class="text text-start leading-5 text-sm">
-								<p class="font-light">Available on</p>
-								<p class="font-bold">{buyProvidersNO.provider_name}</p>
-							</div>
-						</div>
-					{/each}
-				{/if}
+				<div class="flex items-center justify-between gap-2">
+					<div class="logo">
+						<img
+							class="w-10 h-10 rounded-md"
+							src={'http://image.tmdb.org/t/p/w500/' + provider.logo_path}
+							alt={provider.provider_name}
+						/>
+					</div>
+					<div class="text text-start leading-5 text-sm">
+						<p class="font-light">Watch on</p>
+						<p class="font-bold">{provider.provider_name}</p>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

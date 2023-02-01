@@ -29,6 +29,6 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs type={'movie'} details={''} />
+		<Breadcrumbs type={'movie'} />
 	</div>
 </div>
