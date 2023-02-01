@@ -1,6 +1,8 @@
 <script>
-	export let details;
-	export let type;
+	export let type = '';
+	export let list = 'Popular';
+	export let parent = '';
+	export let children = '';
 
 	let typeFormatted = type;
 	if (typeFormatted == 'tv') {
@@ -15,18 +17,14 @@
 		<li><a href="/">Home</a></li>
 		<li><a href="/{type}">{typeFormatted}</a></li>
 
-		{#if details}
-			{#if details.belongs_to_collection}
-				<li>
-					<a href={'/collection/' + details.belongs_to_collection.id}
-						>{details.belongs_to_collection.name}</a
-					>
-				</li>
-			{/if}
-			{#if details.episodes}
-				<li>{details.episodes[0].show_id}</li>
-			{/if}
-			<li>{details.name || details.title}</li>
+		{#if list}
+			<li><a href={'#'}>{list}</a></li>
+		{/if}
+		{#if parent}
+			<li><a href={'#'}>{parent}</a></li>
+		{/if}
+		{#if children}
+			<li><a href={'#'}>{children}</a></li>
 		{/if}
 	</ul>
 </div>
