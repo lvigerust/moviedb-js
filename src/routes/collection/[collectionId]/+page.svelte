@@ -11,28 +11,28 @@
 	<title>{collectionDetails.name}</title>
 </svelte:head>
 
-<div
-	out:fly={{ y: 500 }}
-	class="container min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]"
->
-	<div in:fade={{ delay: 650 }} class="collection-collectionDetails text-center my-8 mx-[15%]">
-		<h2 class="text-3xl font-bold mb-8 ">{collectionDetails.name}</h2>
-		<p>
-			{collectionDetails.overview}
-		</p>
-	</div>
+<div class="hero min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
+	<div class="container px-8 sm:px-16 overflow-hidden">
+		<div
+			in:fade={{ delay: 650 }}
+			class="collection-collectionDetails text-center prose max-w-3xl mx-auto"
+		>
+			<h2>{collectionDetails.name}</h2>
+			<p>
+				{collectionDetails.overview}
+			</p>
+		</div>
 
-	<div
-		in:fly={{ x: -500, delay: 450 }}
-		class="collection-movies flex flex-row justify-center flex-wrap gap-x-4"
-	>
-		{#each collectionDetails.parts as movie}
-			<div class="w-[350px]">
+		<div
+			in:fly={{ x: -500, delay: 450 }}
+			class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-8 mt-4 sm:mt-8"
+		>
+			{#each collectionDetails.parts as movie}
 				<Card type={'movie'} request={movie} />
-			</div>
-		{/each}
-	</div>
-	<div in:fade={{ delay: 1200 }}>
-		<Breadcrumbs {collectionDetails} />
+			{/each}
+		</div>
+		<div in:fade={{ delay: 1200 }}>
+			<Breadcrumbs {collectionDetails} />
+		</div>
 	</div>
 </div>
