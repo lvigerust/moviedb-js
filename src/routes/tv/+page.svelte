@@ -31,7 +31,7 @@
 		>
 			<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">Popular TV</h1>
 			<div
-				class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-8"
+				class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-5 sm:gap-x-8"
 			>
 				{#each popularTv as show}
 					<Card type={'tv'} request={show} />

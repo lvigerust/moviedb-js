@@ -16,7 +16,7 @@
 
 <div class="hero full-hero">
 	<div
-		class="container flex flex-col items-center"
+		class="container"
 		in:fly={{ x: 500, delay: 650, duration: 1000, easing: backOut }}
 		out:fly={{ x: 500, duration: 650, easing: backIn }}
 	>
@@ -89,7 +89,7 @@
 					<div class="divider" in:fade={{ delay: 2250 }} />
 					<div
 						in:fly={{ y: 500, delay: 1250, duration: 1000, easing: backOut }}
-						class="collection-container mt-6 mx-auto max-w-4xl"
+						class="mt-6 mx-auto max-w-4xl"
 					>
 						<h1 class="text-center text-lg">
 							Part of the <a

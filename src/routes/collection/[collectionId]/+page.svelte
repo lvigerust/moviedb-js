@@ -18,11 +18,11 @@
 
 <div class="hero full-hero">
 	<div
-		class="container flex flex-col justify-between"
+		class="container"
 		in:fly={{ x: -500, delay: 650, duration: 1000, easing: backOut }}
 		out:fly={{ x: -500, duration: 650, easing: backIn }}
 	>
-		<div class="collection h-full flex flex-col justify-center">
+		<div class="collection">
 			<div class="collection-info text-center prose max-w-3xl mx-auto">
 				<h2>{collectionDetails.name}</h2>
 				<p>
