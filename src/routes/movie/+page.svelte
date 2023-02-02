@@ -1,12 +1,12 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { backIn, backOut } from 'svelte/easing';
-	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
+
 	import Card from '../../components/Card.svelte';
 	import Carousel from '../../components/Carousel.svelte';
+	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
 
 	export let data;
-
 	const { trendingMovies, popularMovies } = data;
 </script>
 
@@ -14,10 +14,10 @@
 	<title>Popular Movies</title>
 </svelte:head>
 
-<div class="hero min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
-	<div class="container px-8 sm:px-16 overflow-hidden">
+<div class="hero full-hero">
+	<div class="container">
 		<div
-			class="max-w-5xl mx-auto"
+			class="trending-carousel max-w-5xl mx-auto"
 			in:fly={{ x: -500, delay: 650, duration: 1000, easing: backOut }}
 			out:fly={{ x: -500, duration: 650, easing: backIn }}
 		>
@@ -25,6 +25,7 @@
 			<Carousel name={'trending'} type="movie" request={trendingMovies} />
 		</div>
 		<div
+			class="popular-grid"
 			in:fly={{ x: -500, delay: 850, duration: 1000, easing: backOut }}
 			out:fly={{ x: -500, delay: 100, duration: 650, easing: backIn }}
 		>

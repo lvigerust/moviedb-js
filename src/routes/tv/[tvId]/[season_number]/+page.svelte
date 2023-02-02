@@ -1,18 +1,21 @@
 <script>
+	import { fly } from 'svelte/transition';
+	import { backIn, backOut } from 'svelte/easing';
 	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
+
 	import Breadcrumbs from '../../../../components/Breadcrumbs.svelte';
-	import { fly, fade } from 'svelte/transition';
 
 	export let data;
 	const { tvDetails, seasonDetails } = data;
 </script>
 
-<div class="hero min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]">
-	<div out:fly={{ y: 500 }} class="container min-h-full px-5 max-w-5xl">
-		<div
-			in:fly={{ y: -500, delay: 500 }}
-			class="season flex bg-base-300 rounded-lg shadow-md max-w-4xl mx-auto"
-		>
+<div class="hero full-hero">
+	<div
+		class="container"
+		in:fly={{ x: 500, delay: 650, duration: 1000, easing: backOut }}
+		out:fly={{ x: 500, duration: 650, easing: backIn }}
+	>
+		<div class="season flex bg-base-300 rounded-lg shadow-md max-w-4xl mx-auto">
 			<div class="image-wrapper w-20 h-full shrink-0">
 				<img
 					class="rounded-l-lg"
@@ -30,8 +33,8 @@
 				</a>
 			</div>
 		</div>
-		<div in:fade={{ delay: 1250 }} class="divider mt-6" />
-		<div in:fly={{ y: -500, delay: 750 }} class="episodes">
+		<div class="divider mt-6" />
+		<div class="episodes">
 			<h3 class="text-xl font-semibold">
 				Episodes <span class="font-light">{seasonDetails.episodes.length}</span>
 			</h3>

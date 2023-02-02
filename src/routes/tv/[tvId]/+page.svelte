@@ -1,5 +1,6 @@
 <script>
 	import { fly, fade } from 'svelte/transition';
+	import { backIn, backOut } from 'svelte/easing';
 	import { getPremiereDate, getTimeUntil } from '$lib/functions/formatFunctions.js';
 
 	import Season from '../../../components/Season.svelte';
@@ -35,22 +36,22 @@
 	<title>{tvDetails.name}</title>
 </svelte:head>
 
-<div
-	out:fade
-	class="overflow-hidden min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)]"
->
-	<div class="container">
-		<div class="tv px-8 xl:mx-[10vw]">
-			<div in:fly={{ y: -500, delay: 400 }} class="img-container">
+<div class="hero full-hero">
+	<div
+		class="container"
+		in:fly={{ x: -500, delay: 650, duration: 1000, easing: backOut }}
+		out:fly={{ x: -500, duration: 650, easing: backIn }}
+	>
+		<div class="tv xl:mx-[10vw]">
+			<div class="hero-image">
 				<img
 					class="rounded-lg shadow-xl xl:rounded-xl"
 					src={'https://image.tmdb.org/t/p/w1280/' + tvDetails.backdrop_path}
 					alt={tvDetails.name}
 				/>
 			</div>
-
-			<div class="header flex flex-col lg:flex-row lg:justify-between">
-				<div in:fly={{ x: 500, delay: 550 }} class="prose mt-6 lg:mt-8 w-full">
+			<div class="tv-details flex flex-col lg:flex-row lg:justify-between">
+				<div class="prose mt-6 lg:mt-8 w-full">
 					<h1 class="title mb-4 sm:mb-0 text-3xl text-center sm:text-left sm:text-4xl">
 						{tvDetails.name}
 						<span class="font-normal">({new Date(tvDetails.first_air_date).getFullYear()})</span>
@@ -113,18 +114,19 @@
 						</p>
 					</div>
 				</div>
-				<div class="w-fit" in:fade={{ delay: 1500 }}>
+				<div class="w-fit">
 					{#if tvProviders.results.NO}
 						<WatchProviders providers={tvProviders} />
 					{/if}
 				</div>
 			</div>
-			<div in:fade={{ delay: 1250 }} class="divider" />
-			<div in:fly={{ y: 500, delay: 1000, duration: 650 }}>
-				<div class="seasons prose max-w-full">
-					<h2>Current season</h2>
-					<Season {...currentSeasonInfo} />
-				</div>
+			<div class="divider" in:fade={{ delay: 2250 }} />
+			<div
+				class="current-season prose max-w-full"
+				in:fly={{ y: 500, delay: 1250, duration: 1000, easing: backOut }}
+			>
+				<h2>Current season</h2>
+				<Season {...currentSeasonInfo} />
 			</div>
 		</div>
 		<Breadcrumbs {tvDetails} />

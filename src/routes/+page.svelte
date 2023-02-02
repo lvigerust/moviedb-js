@@ -29,9 +29,7 @@
 	<title>Home | Movie Database</title>
 </svelte:head>
 
-<div
-	class="min-h-[calc(100vh-64px-1rem-2.5rem)] lg:min-h-[calc(100vh-80px-3rem-3rem)] flex overflow-hidden"
->
+<div class="hero full-hero flex overflow-hidden">
 	<div
 		class="container flex flex-col gap-8 justify-center items-center pb-12"
 		in:fly={{ y: 500, delay: 850, duration: 750, easing: backOut }}
@@ -56,7 +54,7 @@
 							in:blur={{ duration: 2000, delay: 2000, easing: backOut }}
 							out:scale={{ duration: 750, easing: backOut }}
 							on:click={() => ((startTyping = true), (removebutton = true))}
-							class="btn btn-warning w-36">What?</button
+							class="btn btn-warning w-36">...What?</button
 						>
 					{/if}
 				</label>
