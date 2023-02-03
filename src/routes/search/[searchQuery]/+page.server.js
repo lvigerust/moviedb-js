@@ -9,8 +9,17 @@ export const load = ({ fetch, params }) => {
 		return multiSearchData.results;
 	};
 
+	const fetchKeywordSearch = async (query) => {
+		const keywordSearchRes = await fetch(
+			`https://api.themoviedb.org/3/search/keyword?api_key=${TMDB_API_KEY}&query=${query}&page=1`
+		);
+		const keywordSearchData = await keywordSearchRes.json();
+		return keywordSearchData.results.slice(0, 5);
+	};
+
 	return {
+		query: params.searchQuery,
 		multiSearch: fetchMultiSearch(params.searchQuery),
-		query: params.searchQuery
+		keywords: fetchKeywordSearch(params.searchQuery)
 	};
 };

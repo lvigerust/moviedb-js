@@ -7,7 +7,7 @@
 
 	/** @type {import('./$types').PageData} */
 	export let data;
-	let { multiSearch, query } = data;
+	let { query, multiSearch, keywords } = data;
 
 	const movieResults = multiSearch.filter(function (arr) {
 		return arr.media_type == 'movie';
@@ -19,8 +19,7 @@
 	const sortedTvResults = tvResults.sort(dynamicSort('-popularity'));
 	const sortedMovieResults = movieResults.sort(dynamicSort('-popularity'));
 
-	let firstResults;
-	let secondResults;
+	let firstResults, secondResults;
 
 	if (sortedTvResults[0].popularity > sortedMovieResults[0].popularity) {
 		firstResults = sortedTvResults;
@@ -92,6 +91,16 @@
 				</div>
 			</div>
 		{/if}
+		<div class="keyword prose flex flex-col items-center min-w-full py-4">
+			<h3 class="mb-3">Search by keyword</h3>
+			<div class="flex gap-4 justify-center min-w-full">
+				{#each keywords as keyword}
+					<a href={`/search/keyword/` + keyword.id} class="no-underline">
+						<p class="hover:text-accent m-0 font-light">{keyword.name}</p>
+					</a>
+				{/each}
+			</div>
+		</div>
 		<Breadcrumbs {query} />
 	</div>
 </div>
