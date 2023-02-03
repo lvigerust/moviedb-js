@@ -28,7 +28,7 @@
 							stop-color="#3cbec9"
 						/><stop offset="1" stop-color="#00b3e5" /></linearGradient
 					></defs
-				><title>Asset 2</title><g id="Layer_2" data-name="Layer 2"
+				><title>The Movie Database</title><g id="Layer_2" data-name="Layer 2"
 					><g id="Layer_1-2" data-name="Layer 1"
 						><path
 							class="cls-1"
