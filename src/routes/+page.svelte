@@ -1,9 +1,7 @@
 <script>
-	import { fly, fade, blur, scale } from 'svelte/transition';
-	import { backIn, backInOut, backOut, bounceInOut, bounceOut, elasticOut } from 'svelte/easing';
-
-	let startTyping = false;
-	let removebutton = false;
+	import { fly } from 'svelte/transition';
+	import { backIn, backOut } from 'svelte/easing';
+	import Search from '../components/Search.svelte';
 
 	function typewriter(node, { speed = 1.5 }) {
 		const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
@@ -35,30 +33,8 @@
 		in:fly={{ y: 500, delay: 850, duration: 750, easing: backOut }}
 		out:fly={{ x: 500, duration: 650, easing: backIn }}
 	>
-		<div class="flex flex-col prose w-full h-full gap-8 justify-center items-center">
-			<div class="w-full text-center">
-				<h1 class="m-0 mb-2">Hello</h1>
-				<h4 class="m-0">I've been wondering...</h4>
-			</div>
-			<div class="w-full h-20">
-				{#if startTyping}
-					<h3 in:typewriter class="m-0">
-						Imagine how gassed plumbers are... when shit goes wrong at their house?
-					</h3>
-				{/if}
-			</div>
-			<div class="h-20">
-				<label>
-					{#if removebutton == false}
-						<button
-							in:blur={{ duration: 2000, delay: 2000, easing: backOut }}
-							out:scale={{ duration: 750, easing: backOut }}
-							on:click={() => ((startTyping = true), (removebutton = true))}
-							class="btn btn-warning w-36">...What?</button
-						>
-					{/if}
-				</label>
-			</div>
+		<div class="prose">
+			<Search />
 		</div>
 	</div>
 </div>

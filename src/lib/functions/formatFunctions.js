@@ -48,9 +48,13 @@ export function getRuntime(minutes) {
 	let h = Math.floor(minutes / 60);
 	let m = minutes % 60;
 
-	if (h < 1) {
-		return (m + 'm').toString();
-	} else return (h + 'h ' + m + 'm').toString();
+	if (h >= 1) {
+		if (m != 0) {
+			return (h + 'h ' + m + 'm').toString();
+		} else {
+			return (h + 'h').toString();
+		}
+	} else return (m + 'm').toString();
 }
 
 export function dynamicSort(property) {

@@ -16,12 +16,12 @@
 
 <div class="hero full-hero">
 	<div
-		class="container"
+		class="container flex flex-col justify-between"
 		in:fly={{ x: 500, delay: 650, duration: 1000, easing: backOut }}
 		out:fly={{ x: 500, duration: 650, easing: backIn }}
 	>
 		<div class="movie xl:mx-[10vw]">
-			<div class="hero-image">
+			<div class="hero-image relative">
 				{#if movieImages.length > 0}
 					<img
 						class="rounded-lg shadow-xl xl:rounded-xl"
@@ -35,6 +35,16 @@
 						alt={movieDetails.title}
 					/>
 				{/if}
+				<!-- <div class="rating absolute bottom-6 right-6 drop-shadow-lg">
+					<div
+						class="border-2  border-neutral radial-progress text-accent bg-neutral"
+						style="--value:{Math.round(
+							movieDetails.vote_average * 10
+						)}; --size:4rem; --thickness: 4px;"
+					>
+						{Math.round(movieDetails.vote_average * 10)}%
+					</div>
+				</div> -->
 			</div>
 			<div class="movie-details flex flex-col lg:flex-row lg:justify-between">
 				<div class="prose mt-6 lg:mt-8 w-full">
