@@ -1,7 +1,7 @@
 <script>
 	import Card from '../../../components/Card.svelte';
 	import { fly } from 'svelte/transition';
-	import { backIn, backOut, cubicInOut } from 'svelte/easing';
+	import { backIn, backOut } from 'svelte/easing';
 	import { dynamicSort } from '$lib/functions/formatFunctions.js';
 	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
 
@@ -30,8 +30,10 @@
 		secondResults = sortedTvResults;
 	}
 
-	if (firstResults[6].popularity < 10) {
-		firstResults = firstResults.slice(0, 6);
+	if (firstResults[6]) {
+		if (firstResults[6].popularity < 10) {
+			firstResults = firstResults.slice(0, 6);
+		}
 	}
 </script>
 
