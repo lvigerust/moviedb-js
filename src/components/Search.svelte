@@ -24,6 +24,7 @@
 	</form>
 	<button
 		on:click={submitSearch}
+		aria-label="Press button to make a search"
 		class="btn btn-warning w-64 sm:w-80"
 		class:btn-disabled={searchTerm.length < 3}
 		class:loading>{buttonText}</button

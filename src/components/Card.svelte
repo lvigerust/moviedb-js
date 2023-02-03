@@ -7,7 +7,7 @@
 	export let type = '';
 </script>
 
-<div class="card mt-7 max-w-[15rem]">
+<div class="card mt-6 max-w-[15rem]">
 	<a href={`/${type}/` + request.id}>
 		<div class="image sm:hover:scale-105 transition-transform shadow-lg">
 			<div class="wrapper">
@@ -19,7 +19,7 @@
 			</div>
 		</div>
 	</a>
-	<div class="content flex flex-col pt-2 px-2 mb-4 gap-1">
+	<div class="content flex flex-col pt-2 px-2 gap-1">
 		<h2 class="font-bold text-md leading-snug">{request.title || request.name}</h2>
 		{#if releaseYear}
 			<p class="text-sm">{releaseYear}</p>

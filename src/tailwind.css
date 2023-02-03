@@ -16,4 +16,8 @@
 	.container {
 		@apply h-full px-8 sm:px-16;
 	}
+
+	.search-grid {
+		@apply grid grid-cols-[repeat(auto-fill,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fill,_minmax(140px,_1fr))] lg:grid-cols-6 gap-5 sm:gap-8;
+	}
 }

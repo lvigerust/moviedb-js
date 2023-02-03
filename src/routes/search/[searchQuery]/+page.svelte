@@ -44,12 +44,10 @@
 		out:fly={{ y: 500, duration: 500, easing: backIn }}
 	>
 		{#if firstResults[0].media_type == 'movie'}
-			<div class="search flex flex-col gap-14">
+			<div class="search">
 				<div class="movie-grid">
 					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">Movies</h1>
-					<div
-						class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-x-5 sm:gap-x-8"
-					>
+					<div class="popular-movies search-grid">
 						{#each firstResults.slice(0, 12) as movie}
 							{#if movie.poster_path}
 								<Card type={'movie'} request={movie} />
@@ -57,11 +55,10 @@
 						{/each}
 					</div>
 				</div>
+				<div class="divider my-10" />
 				<div class="tv-grid">
 					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">TV Shows</h1>
-					<div
-						class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-x-5 sm:gap-x-8"
-					>
+					<div class="popular-movies search-grid">
 						{#each secondResults.slice(0, 6) as show}
 							{#if show.poster_path}
 								<Card type={'tv'} request={show} />
@@ -71,12 +68,10 @@
 				</div>
 			</div>
 		{:else}
-			<div class="search flex flex-col gap-14">
+			<div class="search">
 				<div class="tv-grid">
 					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">TV Shows</h1>
-					<div
-						class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-x-5 sm:gap-x-8"
-					>
+					<div class="popular-movies search-grid">
 						{#each firstResults.slice(0, 5) as show}
 							{#if show.poster_path}
 								<Card type={'tv'} request={show} />
@@ -84,11 +79,10 @@
 						{/each}
 					</div>
 				</div>
+				<div class="divider my-10" />
 				<div class="movie-grid">
 					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">Movies</h1>
-					<div
-						class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(140px,_1fr))] gap-x-5 sm:gap-x-8"
-					>
+					<div class="popular-movies search-grid">
 						{#each secondResults.slice(0, 5) as movie}
 							{#if movie.poster_path}
 								<Card type={'movie'} request={movie} />
