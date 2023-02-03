@@ -29,12 +29,20 @@
 		firstResults = sortedMovieResults;
 		secondResults = sortedTvResults;
 	}
+
+	if (firstResults[6].popularity < 10) {
+		firstResults = firstResults.slice(0, 6);
+	}
 </script>
 
 <div class="hero full-hero">
-	<div class="container flex flex-col justify-between">
+	<div
+		class="container flex flex-col justify-between"
+		in:fly={{ x: -500, delay: 450, duration: 1000, easing: backOut }}
+		out:fly={{ y: 500, duration: 500, easing: backIn }}
+	>
 		{#if firstResults[0].media_type == 'movie'}
-			<div class="search flex flex-col gap-14" out:fly={{ y: 500, duration: 500, easing: backIn }}>
+			<div class="search flex flex-col gap-14">
 				<div class="movie-grid">
 					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">Movies</h1>
 					<div
@@ -61,7 +69,7 @@
 				</div>
 			</div>
 		{:else}
-			<div class="search flex flex-col gap-14" out:fly={{ y: 500, duration: 500, easing: backIn }}>
+			<div class="search flex flex-col gap-14">
 				<div class="tv-grid">
 					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">TV Shows</h1>
 					<div
