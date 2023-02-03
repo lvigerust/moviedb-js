@@ -33,7 +33,7 @@
 
 <div class="hero full-hero">
 	<div class="container flex flex-col justify-between">
-		<div class="search flex flex-col gap-14">
+		<div class="search flex flex-col gap-14" out:fly={{ y: 500, duration: 500, easing: backIn }}>
 			<div class="movie-grid" in:fly={{ x: -500, delay: 850, duration: 500, easing: cubicInOut }}>
 				<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">
 					{firstResults[0].media_type}
