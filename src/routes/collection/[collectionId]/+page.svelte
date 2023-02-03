@@ -18,7 +18,7 @@
 
 <div class="hero full-hero">
 	<div
-		class="container"
+		class="container flex flex-col justify-between"
 		in:fly={{ x: -500, delay: 650, duration: 1000, easing: backOut }}
 		out:fly={{ x: -500, duration: 650, easing: backIn }}
 	>
