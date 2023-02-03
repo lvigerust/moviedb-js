@@ -5,11 +5,20 @@
 	export let seasonDetails = {};
 	export let popularMovies = {};
 	export let popularTv = {};
+	export let query = '';
+
+	const queryFormatted = query.charAt(0).toUpperCase() + query.slice(1);
 </script>
 
 <div class="text-sm breadcrumbs flex justify-center my-8">
 	<ul class="flex flex-wrap justify-center">
 		<li><a href="/">Home</a></li>
+
+		{#if query}
+			<li>Search</li>
+
+			<li><a href={'#'}>{queryFormatted}</a></li>
+		{/if}
 
 		{#if popularMovies.length > 0}
 			<li><a href="/movie">Movie</a></li>
