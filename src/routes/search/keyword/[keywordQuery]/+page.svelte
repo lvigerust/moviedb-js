@@ -6,22 +6,23 @@
 	import { backIn, backOut } from 'svelte/easing';
 
 	export let data;
-	let { keywordMovies } = data;
+	let { keywordMovies, keywordQuery } = data;
 </script>
 
 <div class="hero full-hero">
-	<div
-		class="container"
-		in:fly={{ x: -500, delay: 450, duration: 1000, easing: backOut }}
-		out:fly={{ y: 500, duration: 500, easing: backIn }}
-	>
+	<div class="container" out:fly={{ x: 500, duration: 600, easing: backIn }}>
 		<div
 			class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-5 sm:gap-x-8"
 		>
-			{#each keywordMovies as movie}
-				<Card type={'movie'} request={movie} />
+			{#each keywordMovies.slice(0, 18) as movie, index}
+				<div
+					class="transition"
+					in:fly={{ y: 250, delay: 600 + index * 50, duration: 700, easing: backOut }}
+				>
+					<Card type={'movie'} request={movie} />
+				</div>
 			{/each}
 		</div>
-		<Breadcrumbs />
+		<Breadcrumbs {keywordQuery} />
 	</div>
 </div>

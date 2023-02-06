@@ -10,6 +10,7 @@ export const load = ({ fetch, params }) => {
 	};
 
 	return {
-		keywordMovies: fetchKeywordMovies(params.keywordQuery)
+		keywordMovies: fetchKeywordMovies(params.keywordQuery),
+		keywordQuery: params.keywordQuery
 	};
 };

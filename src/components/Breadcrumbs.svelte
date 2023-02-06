@@ -6,6 +6,7 @@
 	export let popularMovies = {};
 	export let popularTv = {};
 	export let query = '';
+	export let keywordQuery = '';
 
 	const queryFormatted = query.charAt(0).toUpperCase() + query.slice(1);
 </script>
@@ -14,10 +15,14 @@
 	<ul class="flex flex-wrap justify-center">
 		<li><a href="/">Home</a></li>
 
-		{#if query}
+		{#if query || keywordQuery}
 			<li>Search</li>
 
-			<li><a href={'#'}>{queryFormatted}</a></li>
+			{#if query}
+				<li>{queryFormatted}</li>
+			{:else}
+				<li>Keyword</li>
+			{/if}
 		{/if}
 
 		{#if popularMovies.length > 0}

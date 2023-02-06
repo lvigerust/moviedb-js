@@ -8,7 +8,6 @@
 	}
 
 	let searchTerm = '';
-
 	let loading = false;
 	let buttonText = 'Search';
 </script>
@@ -20,6 +19,7 @@
 			bind:value={searchTerm}
 			type="text"
 			placeholder="Search movie or TV show"
+			autocomplete="off"
 			class="input input-bordered rounded-xl text-sm w-64 sm:w-80"
 		/>
 	</form>
