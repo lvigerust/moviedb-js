@@ -3,33 +3,17 @@
 	import { backIn, backOut } from 'svelte/easing';
 	import Search from '../components/Search.svelte';
 
-	function typewriter(node, { speed = 1.5 }) {
-		const valid = node.childNodes.length === 1 && node.childNodes[0].nodeType === Node.TEXT_NODE;
-
-		if (!valid) {
-			throw new Error(`This transition only works on elements with a single text node child`);
-		}
-
-		const text = node.textContent;
-		const duration = text.length / (speed * 0.01);
-
-		return {
-			duration,
-			tick: (t) => {
-				const i = ~~(text.length * t);
-				node.textContent = text.slice(0, i);
-			}
-		};
-	}
+	export let data;
+	let { nowPlayingMovies, topRatedMovies, upcomingMovies } = data;
 </script>
 
 <svelte:head>
 	<title>Home | Movie Database</title>
 </svelte:head>
 
-<div class="hero full-hero flex overflow-hidden">
+<div class="hero full-hero flex flex-col justify-center">
 	<div
-		class="container flex flex-col gap-8 justify-center items-center pb-12"
+		class="px-[calc(3.5vw+24px)] flex flex-col gap-8 justify-center items-center pb-12"
 		in:fly={{ y: 500, duration: 600, delay: 600, easing: backOut }}
 		out:fly={{ x: 500, duration: 600, easing: backIn }}
 	>

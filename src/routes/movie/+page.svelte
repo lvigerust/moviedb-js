@@ -23,18 +23,16 @@
 			<h1 class="text-3xl sm:text-4xl ml-3 font-bold">Trending Movies</h1>
 			<Carousel name={'trending'} type="movie" request={trendingMovies} />
 		</div>
-		<div class="popular-grid" in:fly={{ x: -500, duration: 600, delay: 700, easing: backOut }}>
+		<div class="popular-movies" in:fly={{ x: -500, duration: 600, delay: 700, easing: backOut }}>
 			<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">Popular Movies</h1>
-			<div
-				class="popular-movies grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fit,_minmax(180px,_1fr))] gap-x-5 sm:gap-x-8"
-			>
+			<div class="popular-grid">
 				{#each popularMovies as movie, index}
 					<div class="transition" in:fly={{ y: 500, delay: 800 + index * 50 }}>
 						<Card type={'movie'} request={movie} />
 					</div>
 				{/each}
 			</div>
-			<div class="flex justify-center my-6">
+			<div class="flex justify-center mb-6 mt-10">
 				<button class="btn btn-wide" disabled="disabled">Load more</button>
 			</div>
 		</div>
