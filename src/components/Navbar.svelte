@@ -21,7 +21,7 @@
 
 	let currentTheme = '';
 	let lightTheme = 'garden';
-	let darkTheme = 'dark';
+	let darkTheme = 'night';
 
 	onMount(() => {
 		if (document.documentElement.dataset.theme) {

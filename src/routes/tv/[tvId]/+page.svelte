@@ -43,12 +43,24 @@
 		out:fly={{ x: -500, duration: 650, easing: backIn }}
 	>
 		<div class="tv xl:mx-[10vw]">
-			<div class="hero-image">
+			<div class="hero-image relative">
 				<img
 					class="rounded-lg shadow-xl xl:rounded-xl"
 					src={'https://image.tmdb.org/t/p/w1280/' + tvDetails.backdrop_path}
 					alt={tvDetails.name}
 				/>
+				<div
+					in:fly={{ x: 25, delay: 1000, duration: 1500 }}
+					class="logo absolute bottom-10 left-14"
+				>
+					{#if tvDetails.images.logos[0]}
+						<img
+							class="w-96 h-full drop-shadow-2xl"
+							src={'https://image.tmdb.org/t/p/w500/' + tvDetails.images.logos[0].file_path}
+							alt={tvDetails.name}
+						/>
+					{/if}
+				</div>
 			</div>
 			<div class="tv-details flex flex-col lg:flex-row lg:justify-between">
 				<div class="prose mt-6 lg:mt-8 w-full">

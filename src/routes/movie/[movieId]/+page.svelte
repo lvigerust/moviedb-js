@@ -7,7 +7,9 @@
 	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
 
 	export let data;
-	const { movieDetails, movieProviders, movieImages } = data;
+	const { movieDetails, movieProviders } = data;
+
+	let director = movieDetails.credits.crew.find((director) => director.job === 'Director').name;
 </script>
 
 <svelte:head>
@@ -22,29 +24,23 @@
 	>
 		<div class="movie xl:mx-[10vw]">
 			<div class="hero-image relative">
-				{#if movieImages.length > 0}
-					<img
-						class="rounded-lg shadow-xl xl:rounded-xl"
-						src={'https://image.tmdb.org/t/p/w1280/' + movieImages[0].file_path}
-						alt={movieDetails.title}
-					/>
-				{:else}
-					<img
-						class="rounded-lg shadow-xl xl:rounded-xl"
-						src={'https://image.tmdb.org/t/p/w1280/' + movieDetails.backdrop_path}
-						alt={movieDetails.title}
-					/>
-				{/if}
-				<!-- <div class="rating absolute bottom-6 right-6 drop-shadow-lg">
-					<div
-						class="border-2  border-neutral radial-progress text-accent bg-neutral"
-						style="--value:{Math.round(
-							movieDetails.vote_average * 10
-						)}; --size:4rem; --thickness: 4px;"
-					>
-						{Math.round(movieDetails.vote_average * 10)}%
-					</div>
-				</div> -->
+				<img
+					class="rounded-lg shadow-xl xl:rounded-xl"
+					src={'https://image.tmdb.org/t/p/w1280/' + movieDetails.backdrop_path}
+					alt={movieDetails.title}
+				/>
+				<div
+					in:fly={{ x: 25, delay: 1000, duration: 1500 }}
+					class="logo absolute bottom-10 left-14"
+				>
+					{#if movieDetails.images.logos[0]}
+						<img
+							class="w-96 h-full drop-shadow-2xl"
+							src={'https://image.tmdb.org/t/p/w500/' + movieDetails.images.logos[0].file_path}
+							alt={movieDetails.title}
+						/>
+					{/if}
+				</div>
 			</div>
 			<div class="movie-details flex flex-col lg:flex-row lg:justify-between">
 				<div class="prose mt-6 lg:mt-8 w-full">
@@ -86,6 +82,9 @@
 							<span>Rating:</span>
 							{Math.round(movieDetails.vote_average * 10) / 10} / 10<br />
 						</p>
+						{#if director}
+							<p>Director: {director}</p>
+						{/if}
 					</div>
 				</div>
 				<div>

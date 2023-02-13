@@ -17,8 +17,11 @@
 		return arr.media_type == 'tv';
 	});
 
-	movieResults = movieResults.sort(dynamicSort('-popularity'));
-	tvResults = tvResults.sort(dynamicSort('-popularity'));
+	movieResults = movieResults
+		.sort(dynamicSort('-popularity'))
+		.filter((movie) => movie.popularity > 1);
+
+	tvResults = tvResults.sort(dynamicSort('-popularity')).filter((show) => show.popularity > 1);
 
 	let reverse = false;
 
@@ -69,7 +72,7 @@
 			{/if}
 		</div>
 
-		<div class="keyword prose flex flex-col items-center min-w-full py-4">
+		<div class="keyword prose flex flex-col items-center min-w-full py-4 mt-10">
 			<h3 class="mb-3">Search by keyword</h3>
 			<div
 				class="flex flex-col sm:flex-row sm:flex-wrap items-center gap-4 justify-center min-w-full"
