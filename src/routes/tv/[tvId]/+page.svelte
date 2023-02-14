@@ -51,11 +51,11 @@
 				/>
 				<div
 					in:fly={{ x: 25, delay: 1000, duration: 1500 }}
-					class="logo absolute bottom-10 left-14"
+					class="logo absolute bottom-4 left-8 lg:bottom-10 lg:left-14"
 				>
 					{#if tvDetails.images.logos[0]}
 						<img
-							class="w-96 h-full drop-shadow-2xl"
+							class="w-[30vw] lg:w-[20vw] h-full drop-shadow-2xl"
 							src={'https://image.tmdb.org/t/p/w500/' + tvDetails.images.logos[0].file_path}
 							alt={tvDetails.name}
 						/>
