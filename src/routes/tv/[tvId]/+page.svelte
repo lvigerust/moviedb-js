@@ -39,8 +39,8 @@
 <div class="hero full-hero">
 	<div
 		class="container"
-		in:fly={{ x: -500, delay: 650, duration: 1000, easing: backOut }}
-		out:fly={{ x: -500, duration: 650, easing: backIn }}
+		in:fly={{ x: -500, delay: 600, duration: 600, easing: backOut }}
+		out:fly={{ x: -500, duration: 600, easing: backIn }}
 	>
 		<div class="tv xl:mx-[10vw]">
 			<div class="hero-image relative">

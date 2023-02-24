@@ -15,10 +15,10 @@
 </svelte:head>
 
 <div class="hero full-hero">
-	<div class="container" out:fly={{ x: 500, duration: 600, easing: backIn }}>
+	<div class="container" out:fly={{ x: 500, duration: 700, easing: backIn }}>
 		<div
 			class="trending-carousel max-w-5xl mx-auto"
-			in:fly={{ x: 500, duration: 600, delay: 600, easing: backOut }}
+			in:fly={{ x: 500, duration: 700, delay: 700, easing: backOut }}
 		>
 			<h1 class="text-3xl sm:text-4xl ml-3 font-bold">Trending TV</h1>
 			<Carousel name={'trending'} type={'tv'} request={trendingTv} />
