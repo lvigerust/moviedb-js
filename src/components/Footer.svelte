@@ -41,7 +41,7 @@
 				Powered by The Movie Database<br />
 			</p>
 		</a>
-		<p>Copyright © 2023 Vigerust Webutvikling - All right reserved</p>
+		<p>Copyright © 2023 Vigerust Webutvikling - All rights reserved</p>
 	</div>
 	<div>
 		<div class="grid grid-flow-col gap-4">

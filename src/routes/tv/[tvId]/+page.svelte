@@ -1,6 +1,4 @@
 <script>
-	import { fly, fade } from 'svelte/transition';
-	import { backIn, backOut } from 'svelte/easing';
 	import { getPremiereDate, getTimeUntil } from '$lib/functions/formatFunctions.js';
 
 	import Season from '../../../components/Season.svelte';
@@ -16,6 +14,8 @@
 		);
 		return result;
 	}
+
+	console.log(tvDetails);
 
 	const currentSeasonInfo = {
 		tv_id: tvDetails.id,
@@ -37,11 +37,7 @@
 </svelte:head>
 
 <div class="hero full-hero">
-	<div
-		class="container"
-		in:fly={{ x: -500, delay: 600, duration: 600, easing: backOut }}
-		out:fly={{ x: -500, duration: 600, easing: backIn }}
-	>
+	<div class="container">
 		<div class="tv xl:mx-[10vw]">
 			<div class="hero-image relative">
 				<img
@@ -49,10 +45,7 @@
 					src={'https://image.tmdb.org/t/p/w1280/' + tvDetails.backdrop_path}
 					alt={tvDetails.name}
 				/>
-				<div
-					in:fly={{ x: 25, delay: 1000, duration: 1500 }}
-					class="logo absolute bottom-4 left-8 lg:bottom-10 lg:left-14"
-				>
+				<div class="logo absolute bottom-4 left-8 lg:bottom-9 lg:left-12">
 					{#if tvDetails.images.logos[0]}
 						<img
 							class="w-[30vw] lg:w-[20vw] h-full drop-shadow-2xl"
@@ -73,10 +66,7 @@
 						class="facts sm:bg-base-100 sm:border-0 bg-base-200 w-screen sm:w-full relative -ml-[50vw] sm:ml-0 sm:left-0 left-[50%] py-2 border-y border-solid border-base-300 flex flex-wrap gap-x-2 justify-center items-center sm:justify-start "
 					>
 						<div class="seasons">
-							<a
-								href={`/tv/${tvDetails.id}` + `/` + tvDetails.last_episode_to_air.season_number}
-								class="no-underline font-normal text-current"
-							>
+							<a href={`/tv/${tvDetails.id}/seasons`} class="no-underline font-normal text-current">
 								<p class="m-0 ">
 									{tvDetails.last_episode_to_air.season_number}
 									{#if tvDetails.last_episode_to_air.season_number > 1}
@@ -132,13 +122,16 @@
 					{/if}
 				</div>
 			</div>
-			<div class="divider" in:fade={{ delay: 2250 }} />
-			<div
-				class="current-season prose max-w-full"
-				in:fly={{ y: 500, delay: 1250, duration: 1000, easing: backOut }}
-			>
-				<h2>Current season</h2>
+			<div class="divider" />
+			<div class="current-season prose max-w-full">
+				{#if tvDetails.in_production}
+					<h2>Current season</h2>
+				{:else}
+					<h2>Latest season</h2>
+				{/if}
+
 				<Season {...currentSeasonInfo} />
+				<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}><p>View all seasons</p></a>
 			</div>
 		</div>
 		<Breadcrumbs {tvDetails} />

@@ -1,20 +1,14 @@
 <script>
-	import { fly } from 'svelte/transition';
-	import { backIn, backOut } from 'svelte/easing';
 	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
 
-	import Breadcrumbs from '../../../../components/Breadcrumbs.svelte';
+	import Breadcrumbs from '../../../../../components/Breadcrumbs.svelte';
 
 	export let data;
 	const { tvDetails, seasonDetails } = data;
 </script>
 
 <div class="hero full-hero">
-	<div
-		class="container"
-		in:fly={{ x: 500, delay: 650, duration: 1000, easing: backOut }}
-		out:fly={{ x: 500, duration: 650, easing: backIn }}
-	>
+	<div class="container">
 		<div class="season flex bg-base-300 rounded-lg shadow-md max-w-4xl mx-auto">
 			<div class="image-wrapper w-20 h-full shrink-0">
 				<img
@@ -29,12 +23,12 @@
 					<span class="font-normal">({new Date(seasonDetails.air_date).getFullYear()})</span>
 				</h2>
 				<a href={`/tv/` + tvDetails.id}>
-					<p>Back to overview</p>
+					<p>Back to main</p>
 				</a>
 			</div>
 		</div>
 		<div class="divider mt-6" />
-		<div class="episodes">
+		<div class="episodes max-w-5xl mx-auto">
 			<h3 class="text-xl font-semibold">
 				Episodes <span class="font-light">{seasonDetails.episodes.length}</span>
 			</h3>
@@ -53,7 +47,7 @@
 								/>
 							{/if}
 							{#if episode.vote_average > 0}
-								<p class="absolute bottom-3 left-3 drop-shadow-sm">
+								<p class="absolute bottom-2 left-3 drop-shadow-sm">
 									<span class="badge badge-neutral">
 										{Math.round(episode.vote_average * 10) / 10}</span
 									>

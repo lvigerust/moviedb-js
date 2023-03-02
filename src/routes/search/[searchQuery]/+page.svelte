@@ -1,6 +1,4 @@
 <script>
-	import { fly } from 'svelte/transition';
-	import { backIn, backOut } from 'svelte/easing';
 	import { dynamicSort } from '$lib/functions/formatFunctions.js';
 
 	import Card from '../../../components/Card.svelte';
@@ -35,11 +33,7 @@
 </script>
 
 <div class="hero full-hero">
-	<div
-		class="container flex flex-col justify-between"
-		in:fly={{ x: -500, duration: 600, delay: 600, easing: backOut }}
-		out:fly={{ y: -500, duration: 600, easing: backIn }}
-	>
+	<div class="container flex flex-col justify-between">
 		<div class="search flex flex-col" class:flex-col-reverse={reverse}>
 			{#if movieResults.length}
 				<div class="movie-grid">

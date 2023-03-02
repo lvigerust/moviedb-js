@@ -1,10 +1,10 @@
 <script>
-	import { fade, fly } from 'svelte/transition';
-	import { backIn, backOut } from 'svelte/easing';
 	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
 
 	import WatchProviders from '../../../components/WatchProviders.svelte';
 	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
+
+	import { fly } from 'svelte/transition';
 
 	export let data;
 	const { movieDetails, movieProviders } = data;
@@ -17,11 +17,7 @@
 </svelte:head>
 
 <div class="hero full-hero">
-	<div
-		class="container flex flex-col justify-between"
-		in:fly={{ x: 500, delay: 600, duration: 600, easing: backOut }}
-		out:fly={{ x: 500, duration: 600, easing: backIn }}
-	>
+	<div class="container flex flex-col justify-between">
 		<div class="movie xl:mx-[10vw]">
 			<div class="hero-image relative">
 				<img
@@ -30,8 +26,8 @@
 					alt={movieDetails.title}
 				/>
 				<div
-					in:fly={{ x: 25, delay: 1000, duration: 1500 }}
-					class="logo absolute bottom-4 left-8 lg:bottom-10 lg:left-14"
+					in:fly={{ x: 50, duration: 600, delay: 150 }}
+					class="logo absolute bottom-4 left-8 lg:bottom-9 lg:left-12"
 				>
 					{#if movieDetails.images.logos[0]}
 						<img
@@ -95,11 +91,8 @@
 			</div>
 			<div class="movie-collection">
 				{#if movieDetails.belongs_to_collection != null}
-					<div class="divider" in:fade={{ delay: 2250 }} />
-					<div
-						in:fly={{ y: 500, delay: 1250, duration: 1000, easing: backOut }}
-						class="mt-6 mx-auto max-w-4xl"
-					>
+					<div class="divider" />
+					<div class="mt-6 mx-auto max-w-4xl">
 						<h1 class="text-center text-lg">
 							Part of the <a
 								href={'/collection/' + movieDetails.belongs_to_collection.id}
