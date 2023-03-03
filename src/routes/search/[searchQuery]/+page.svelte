@@ -2,7 +2,7 @@
 	import { dynamicSort } from '$lib/functions/formatFunctions.js';
 
 	import Card from '../../../components/Card.svelte';
-	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
+	import { Breadcrumbs } from '$components';
 
 	/** @type {import('./$types').PageData} */
 	export let data;

@@ -1,7 +1,7 @@
 <script>
 	import Card from '../../components/Card.svelte';
 	import Carousel from '../../components/Carousel.svelte';
-	import Breadcrumbs from '../../components/Breadcrumbs.svelte';
+	import { Breadcrumbs } from '$components';
 
 	export let data;
 	const { trendingMovies, popularMovies } = data;

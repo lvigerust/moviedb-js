@@ -1,7 +1,7 @@
 <script>
 	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
 
-	import Breadcrumbs from '../../../../../components/Breadcrumbs.svelte';
+	import { Breadcrumbs } from '$components';
 
 	export let data;
 	const { tvDetails, seasonDetails } = data;

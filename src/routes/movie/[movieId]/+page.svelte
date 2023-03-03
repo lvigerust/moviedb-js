@@ -2,7 +2,7 @@
 	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
 
 	import WatchProviders from '../../../components/WatchProviders.svelte';
-	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
+	import { Breadcrumbs } from '$components';
 
 	import { fly } from 'svelte/transition';
 

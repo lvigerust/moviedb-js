@@ -3,7 +3,7 @@
 
 	import Season from '../../../components/Season.svelte';
 	import WatchProviders from '../../../components/WatchProviders.svelte';
-	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
+	import { Breadcrumbs } from '$components';
 
 	export let data;
 	const { tvDetails, tvProviders } = data;
