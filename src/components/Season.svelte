@@ -8,7 +8,7 @@
 	export let premiere_date;
 </script>
 
-<a href={`/tv/${tv_id}` + `/season/` + season_number} class="no-underline ">
+<a href={`/tv/${tv_id}` + `/season/` + season_number} class="no-underline">
 	<div
 		class="season flex bg-base-200 rounded-lg shadow-lg sm:hover:scale-[102.5%] transition-transform sm:mb-8 mb-4"
 	>

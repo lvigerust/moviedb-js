@@ -17,8 +17,17 @@ export const load = async ({ fetch }) => {
 		return popularTvData.results;
 	};
 
+	const fetchTopRatedTv = async () => {
+		const topRatedTvRes = await fetch(
+			`https://api.themoviedb.org/3/tv/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`
+		);
+		const topRatedTvData = await topRatedTvRes.json();
+		return topRatedTvData.results;
+	};
+
 	return {
 		trendingTv: fetchTrendingTv(),
-		popularTv: fetchPopularTv()
+		popularTv: fetchPopularTv(),
+		topRatedTv: fetchTopRatedTv()
 	};
 };

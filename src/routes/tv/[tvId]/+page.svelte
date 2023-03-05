@@ -4,6 +4,7 @@
 	import Season from '../../../components/Season.svelte';
 	import WatchProviders from '../../../components/WatchProviders.svelte';
 	import { Breadcrumbs } from '$components';
+	import { fly } from 'svelte/transition';
 
 	export let data;
 	const { tvDetails, tvProviders } = data;
@@ -45,7 +46,10 @@
 					src={'https://image.tmdb.org/t/p/w1280/' + tvDetails.backdrop_path}
 					alt={tvDetails.name}
 				/>
-				<div class="logo absolute bottom-4 left-8 lg:bottom-9 lg:left-12">
+				<div
+					in:fly={{ x: 50, duration: 600, delay: 150 }}
+					class="logo absolute bottom-4 left-8 lg:bottom-9 lg:left-12"
+				>
 					{#if tvDetails.images.logos[0]}
 						<img
 							class="w-[30vw] lg:w-[20vw] h-full drop-shadow-2xl"
@@ -131,7 +135,7 @@
 				{/if}
 
 				<Season {...currentSeasonInfo} />
-				<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}><p>View all seasons</p></a>
+				<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}>View all seasons</a>
 			</div>
 		</div>
 		<Breadcrumbs {tvDetails} />

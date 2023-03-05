@@ -1,8 +1,9 @@
 <script>
-	import Carousel from './components/Carousel.svelte';
+	import { WebDevCarousel } from '$components';
 
 	export let data;
-	let { upcomingMovies } = data;
+	let { upcomingMovies, topRatedMovies } = data;
 </script>
 
-<Carousel data={upcomingMovies} />
+<WebDevCarousel data={upcomingMovies} />
+<WebDevCarousel data={topRatedMovies} posterSlider={true} />
