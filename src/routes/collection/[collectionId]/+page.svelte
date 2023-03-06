@@ -1,10 +1,8 @@
 <script>
-	import { fly } from 'svelte/transition';
-	import { backIn, backOut } from 'svelte/easing';
 	import { dynamicSort } from '$lib/functions/formatFunctions.js';
 
 	import Card from '../../../components/Card.svelte';
-	import Breadcrumbs from '../../../components/Breadcrumbs.svelte';
+	import { Breadcrumbs } from '$components';
 
 	export let data;
 	const { collectionDetails } = data;
@@ -17,11 +15,7 @@
 </svelte:head>
 
 <div class="hero full-hero">
-	<div
-		class="container flex flex-col justify-between"
-		in:fly={{ x: -500, delay: 650, duration: 1000, easing: backOut }}
-		out:fly={{ x: -500, duration: 650, easing: backIn }}
-	>
+	<div class="container flex flex-col justify-between">
 		<div class="collection">
 			<div class="collection-info text-center prose max-w-3xl mx-auto">
 				<h2>{collectionDetails.name}</h2>

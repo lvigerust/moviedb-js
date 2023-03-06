@@ -4,7 +4,7 @@
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
 
-	import DarkmodeToggle from '../lib/icons/DarkmodeToggle.svelte';
+	import DarkmodeToggle from '$lib/icons/DarkmodeToggle.svelte';
 
 	let previousY = 0;
 	let currentY = 0;

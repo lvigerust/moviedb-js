@@ -1,8 +1,5 @@
 <script>
-	import { fly } from 'svelte/transition';
-	import { backIn, backOut } from 'svelte/easing';
-	import Search from '../components/Search.svelte';
-	import Breadcrumbs from '../components/Breadcrumbs.svelte';
+	import { Search, Breadcrumbs, SwiperCarousel } from '$components';
 
 	export let data;
 	let { nowPlayingMovies, topRatedMovies, upcomingMovies } = data;
@@ -13,23 +10,25 @@
 </svelte:head>
 
 <div class="hero full-hero">
-	<div
-		class="container w-full h-full flex flex-col"
-		in:fly={{ y: 500, duration: 600, delay: 600, easing: backOut }}
-		out:fly={{ x: 500, duration: 600, easing: backIn }}
-	>
+	<div class="sm:container w-full h-full flex flex-col">
 		<div class="hero h-full">
 			<div class="hero-content text-center h-full flex flex-col center gap-20">
-				<div class="text-start">
-					<h1 class="text-4xl sm:text-5xl font-bold">Velkommen</h1>
+				<div class="text-start py-40">
+					<a href="/testing" class="">
+						<h1 class="text-4xl  sm:text-5xl font-bold inline ">Velkommen</h1>
+					</a>
 					<h4 class="text-2xl sm:text-3xl font-semibold py-6">
 						Millioner av filmer, TV-serier og personer å oppdage. Utforsk nå.
 					</h4>
+					<Search />
 				</div>
-				<Search />
 			</div>
 		</div>
-
+		<div class="bg-base-200 rounded-lg">
+			<SwiperCarousel data={nowPlayingMovies} name="Nye filmer" />
+			<SwiperCarousel data={topRatedMovies} name="Klassikere" tallSlider={true} />
+			<SwiperCarousel data={upcomingMovies} name="Kommer snart" slides={4} />
+		</div>
 		<Breadcrumbs />
 	</div>
 </div>
