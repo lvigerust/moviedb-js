@@ -1,5 +1,5 @@
 <script>
-	import { Breadcrumbs, Carousel, Card } from '$components';
+	import { Breadcrumbs, PosterCarousel } from '$components';
 
 	export let data;
 	const { trendingMovies, popularMovies } = data;
@@ -9,26 +9,11 @@
 	<title>Popular Movies</title>
 </svelte:head>
 
-<div class="hero full-hero">
+<div class="full-hero flex flex-col justify-between">
 	<div class="container">
-		<div class="trending-carousel max-w-5xl mx-auto">
-			<h1 class="text-3xl sm:text-4xl ml-3 font-bold">Trending</h1>
-			<Carousel name={'trending'} type="movie" request={trendingMovies} />
-		</div>
-
-		<div class="popular-movies">
-			<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">Popular</h1>
-			<div class="popular-grid">
-				{#each popularMovies as movie, index}
-					<div class="transition">
-						<Card type={'movie'} request={movie} />
-					</div>
-				{/each}
-			</div>
-			<div class="flex justify-center mb-6 mt-10">
-				<button class="btn btn-wide" disabled="disabled">Load more</button>
-			</div>
-		</div>
-		<Breadcrumbs {popularMovies} />
+		<PosterCarousel data={trendingMovies} name="Top i dag" />
+		<PosterCarousel data={popularMovies} name="Populære filmer" />
 	</div>
+
+	<Breadcrumbs {popularMovies} />
 </div>

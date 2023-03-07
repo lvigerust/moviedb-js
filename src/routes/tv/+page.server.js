@@ -6,7 +6,7 @@ export const load = async ({ fetch }) => {
 			`https://api.themoviedb.org/3/trending/tv/week?api_key=${TMDB_API_KEY}`
 		);
 		const trendingTvData = await trendingTvRes.json();
-		return trendingTvData.results.slice(0, 5);
+		return trendingTvData.results;
 	};
 
 	const fetchPopularTv = async () => {

@@ -7,8 +7,6 @@
 	export let popularTv = {};
 	export let query = '';
 	export let keywordQuery = '';
-
-	const queryFormatted = query.charAt(0).toUpperCase() + query.slice(1);
 </script>
 
 <div class="text-sm breadcrumbs flex justify-center py-8">
@@ -17,21 +15,14 @@
 
 		{#if query || keywordQuery}
 			<li>Search</li>
-
-			{#if query}
-				<li>{queryFormatted}</li>
-			{:else}
-				<li>Keyword</li>
-			{/if}
+			<li class="capitalize">{query}</li>
 		{/if}
 
 		{#if popularMovies.length > 0}
 			<li><a href="/movie">Movie</a></li>
-			<li>Popular</li>
 		{/if}
 		{#if popularTv.length > 0}
 			<li><a href="/tv">TV</a></li>
-			<li>Popular</li>
 		{/if}
 
 		{#if movieDetails.title}
