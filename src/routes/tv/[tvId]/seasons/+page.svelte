@@ -15,7 +15,7 @@
 	};
 </script>
 
-<div class="container">
+<div class="container px-4 sm:px-0">
 	<div class="max-w-7xl mx-auto">
 		{#each tvDetails.seasons as season}
 			<Season

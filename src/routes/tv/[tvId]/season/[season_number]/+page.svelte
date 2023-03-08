@@ -8,7 +8,7 @@
 </script>
 
 <div class="hero full-hero">
-	<div class="container">
+	<div class="container px-4 sm:px-0">
 		<div class="season flex bg-base-300 rounded-lg shadow-md max-w-4xl mx-auto">
 			<div class="image-wrapper w-20 h-full shrink-0">
 				<img
@@ -46,11 +46,11 @@
 									alt={episode.name}
 								/>
 							{/if}
-							{#if episode.vote_average > 0}
+							{#if episode.vote_count > 3}
 								<p class="absolute bottom-2 left-3 drop-shadow-sm">
 									<span class="badge badge-neutral">
-										{Math.round(episode.vote_average * 10) / 10}</span
-									>
+										{Math.round(episode.vote_average * 10) / 10}
+									</span>
 								</p>
 							{/if}
 						</div>
