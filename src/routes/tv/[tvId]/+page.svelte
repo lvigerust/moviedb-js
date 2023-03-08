@@ -23,7 +23,7 @@
 		poster_path:
 			getCurrentSeason(tvDetails.last_episode_to_air.season_number).poster_path ||
 			tvDetails.seasons[0].poster_path,
-		release_year: new Date(tvDetails.first_air_date).getFullYear(),
+		release_year: new Date(getCurrentSeason(tvDetails.last_episode_to_air.season_number).air_date),
 		episode_count: getCurrentSeason(tvDetails.last_episode_to_air.season_number).episode_count,
 		premiere_date: getPremiereDate(
 			getCurrentSeason(tvDetails.last_episode_to_air.season_number).air_date
@@ -149,7 +149,10 @@
 				{/if}
 
 				<Season {...currentSeasonInfo} />
-				<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}>View all seasons</a>
+
+				{#if tvDetails.seasons.length > 1 && tvDetails.seasons.slice(-1).pop().air_date}
+					<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}>View all seasons</a>
+				{/if}
 			</div>
 		</div>
 		<Breadcrumbs />

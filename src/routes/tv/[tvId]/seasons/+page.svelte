@@ -10,8 +10,7 @@
 
 	const seasonInfo = {
 		tv_id: tvDetails.id,
-		name: tvDetails.name,
-		release_year: new Date(tvDetails.first_air_date).getFullYear()
+		name: tvDetails.name
 	};
 </script>
 
@@ -24,6 +23,7 @@
 				poster_path={season.poster_path}
 				episode_count={season.episode_count}
 				premiere_date={getPremiereDate(season.air_date)}
+				release_year={season.air_date}
 			/>
 		{/each}
 	</div>

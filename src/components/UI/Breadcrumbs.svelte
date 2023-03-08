@@ -12,8 +12,6 @@
 			subRoute = true;
 		} else route = 'tv';
 	}
-
-	console.log($page.data.collectionDetails);
 </script>
 
 <div class="text-sm breadcrumbs flex justify-center py-8">
