@@ -1,64 +1,101 @@
 <script>
 	import { page } from '$app/stores';
 
-	let route = $page.route.id.substring(1);
-	let subRoute = false;
+	let routeId = $page.route.id.substring(1);
 
-	if (route.includes('movie')) {
-		route = 'movie';
-	} else if (route.includes('tv')) {
-		if (route.includes('seasons')) {
-			route = 'tv';
-			subRoute = true;
-		} else route = 'tv';
+	let route = {
+		media_type: '',
+		media_collection: '',
+		media_title: '',
+		media_id: '',
+		collection_id: '',
+		seasons: false,
+		season_number: ''
+	};
+
+	function getRouteInfo() {
+		if (routeId.includes('movie') || routeId.includes('collection')) {
+			route.media_type = 'movie';
+
+			if ($page.data.collectionDetails) {
+				if ($page.data.collectionDetails.backdrop_path) {
+					route.media_collection = $page.data.collectionDetails.name;
+					route.collection_id = $page.data.collectionDetails.id;
+				}
+			} else if ($page.data.movieDetails) {
+				route.media_title = $page.data.movieDetails.title;
+				route.media_id = $page.data.movieDetails.id;
+				if (
+					$page.data.movieDetails.belongs_to_collection &&
+					$page.data.movieDetails.belongs_to_collection.backdrop_path
+				) {
+					route.media_collection = $page.data.movieDetails.belongs_to_collection.name;
+					route.collection_id = $page.data.movieDetails.belongs_to_collection.id;
+				}
+			}
+		} else if (routeId.includes('tv')) {
+			route.media_type = 'tv';
+			if ($page.data.tvDetails) {
+				route.media_title = $page.data.tvDetails.name;
+				route.media_id = $page.data.tvDetails.id;
+				if (routeId.includes('seasons')) {
+					route.seasons = true;
+				} else if ($page.data.seasonDetails) {
+					route.season_number = $page.data.seasonDetails.season_number;
+				}
+			}
+		}
 	}
+
+	getRouteInfo();
+
+	let {
+		media_type,
+		media_id,
+		media_title,
+		media_collection,
+		seasons,
+		season_number,
+		collection_id
+	} = route;
 </script>
 
 <div class="text-sm breadcrumbs flex justify-center py-8">
 	<ul class="flex flex-wrap justify-center">
-		<!-- ---------- ROOT ---------- -->
 		<li><a href="/">Home</a></li>
 
-		<!-- ---------- MOVIE ROUTE ---------- -->
-		{#if route === 'movie'}
-			<li><a href="/{route}" class="capitalize">{route}</a></li>
+		{#if media_type === 'tv'}
+			<li><a href="/{media_type}" class="uppercase">{media_type}</a></li>
 
-			{#if $page.data.movieDetails}
-				{#if $page.data.movieDetails.belongs_to_collection && $page.data.movieDetails.belongs_to_collection.backdrop_path}
-					<li>
-						<a href="/collection/{$page.data.movieDetails.belongs_to_collection.id}"
-							>{$page.data.movieDetails.belongs_to_collection.name}</a
-						>
-					</li>
-				{/if}
+			{#if media_title}
+				<li><a href="/{media_type}/{media_id}">{media_title}</a></li>
+			{/if}
 
+			{#if seasons}
+				<li><a href="/{media_type}/{media_id}/seasons">Seasons</a></li>
+			{:else if season_number}
+				<li><a href="/{media_type}/{media_id}/seasons">Season</a></li>
 				<li>
-					<a href="/{route}/{$page.data.movieDetails.id}">{$page.data.movieDetails.title}</a>
+					<a href="/{media_type}/{media_id}/season/{season_number}">{season_number}</a>
 				</li>
 			{/if}
 
-			<!-- ---------- TV ROUTE ---------- -->
-		{:else if route === 'tv'}
-			<li><a href="/{route}" class="uppercase">{route}</a></li>
-			{#if $page.data.tvDetails}
-				<li>
-					<a href="/{route}/{$page.data.tvDetails.id}">{$page.data.tvDetails.name}</a>
-				</li>
+			<!-- ----- Movie Route ----- -->
+		{:else if media_type === 'movie'}
+			<li><a href="/{media_type}" class="capitalize">{route.media_type}</a></li>
+			{#if media_collection}
+				<li><a href="/collection/{collection_id}">{media_collection}</a></li>
 
-				{#if subRoute}
-					<li><a href="/{route}/{$page.data.tvDetails.id}/seasons">Seasons</a></li>
-				{/if}
-
-				{#if $page.data.seasonDetails}
-					<li><a href="/{route}/{$page.data.tvDetails.id}/seasons">Season</a></li>
+				{#if media_title}
 					<li>
-						<a href={''}> {$page.data.seasonDetails.season_number}</a>
+						<a href="/{media_type}/{media_id}">{media_title}</a>
 					</li>
 				{/if}
+			{:else if media_title}
+				<li>
+					<a href="/{media_type}/{media_id}">{media_title}</a>
+				</li>
 			{/if}
-		{:else if $page.data.collectionDetails}
-			<li><a href="/movie">Movie</a></li>
-			<li><a href="/{route}">{$page.data.collectionDetails.name}</a></li>
 		{/if}
 	</ul>
 </div>

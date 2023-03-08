@@ -53,7 +53,7 @@
 		<div class="navbar-start">
 			<div class="dropdown md:hidden">
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-				<label for="" tabindex="0" class="btn btn-ghost btn-circle opacity-75">
+				<label for="" tabindex="0" class="btn btn-ghost btn-circle opacity-80">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-5 w-5"
@@ -75,25 +75,25 @@
 					class="menu menu-compact dropdown-content mt-3.5 p-2 shadow bg-base-300/75 backdrop-blur-md font-[Poppins] rounded-box w-52"
 				>
 					<div>
-						<li><a class="opacity-75" href="/movie">Movies</a></li>
-						<li><a class="opacity-75" href="/tv">TV Shows</a></li>
+						<li><a class="opacity-80" href="/movie">Movies</a></li>
+						<li><a class="opacity-80" href="/tv">TV Shows</a></li>
 						<!-- <li><a href="/login">Login</a></li> -->
 					</div>
 				</ul>
 			</div>
 			<a
 				href="/"
-				class="btn btn-ghost rounded-full hidden md:flex flex-col gap-4 normal-case lg:text-lg "
+				class="opacity-80 btn btn-ghost rounded-full hidden md:flex flex-col gap-4 normal-case lg:text-lg "
 			>
 				<p>VIGERUST</p>
 			</a>
 		</div>
-		<div class="navbar-center w-1/3 flex justify-center md:hidden opacity-75">
+		<div class="navbar-center w-1/3 flex justify-center md:hidden opacity-80">
 			<a href="/" class="btn btn-ghost rounded-full normal-case  flex flex-col gap-3">
 				<p>VIGERUST</p>
 			</a>
 		</div>
-		<div class="navbar-end opacity-75">
+		<div class="navbar-end opacity-80">
 			<ul class="menu menu-horizontal p-0 hidden md:flex font-[Poppins] normal-case">
 				<li>
 					<a class="btn btn-ghost rounded-md  font-normal normal-case" href="/movie">Movies</a>
