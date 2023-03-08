@@ -1,6 +1,6 @@
 <script>
-	import { Breadcrumbs, PosterCarousel } from '$components';
-	import { dynamicSort } from '$lib/functions/formatFunctions.js';
+	import { Breadcrumbs, PosterCarousel, HeroCarousel } from '$components';
+	import { dynamicSort } from '$functions';
 
 	export let data;
 	let { trendingTv, popularTv, topRatedTv } = data;
@@ -14,9 +14,12 @@
 </svelte:head>
 
 <div class="full-hero flex flex-col justify-between">
-	<div class="container">
-		<PosterCarousel data={trendingTv} name="Top i dag" />
+	<div class="container flex flex-col gap-2">
+		<HeroCarousel data={trendingTv} />
+
+		<PosterCarousel data={popularTv} name="Populært" />
+		<PosterCarousel data={topRatedTv} name="Klassikere" />
 	</div>
 
-	<Breadcrumbs {popularTv} />
+	<Breadcrumbs />
 </div>

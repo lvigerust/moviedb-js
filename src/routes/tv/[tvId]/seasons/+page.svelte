@@ -28,4 +28,4 @@
 		{/each}
 	</div>
 </div>
-<Breadcrumbs {tvDetails} />
+<Breadcrumbs />

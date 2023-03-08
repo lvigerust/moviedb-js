@@ -1,8 +1,11 @@
 <script>
-	import { Breadcrumbs, PosterCarousel } from '$components';
+	import { Breadcrumbs, HeroCarousel, PosterCarousel } from '$components';
+	import { dynamicSort } from '$functions';
 
 	export let data;
-	const { trendingMovies, popularMovies } = data;
+	let { trendingMovies, popularMovies, topRatedMovies } = data;
+
+	topRatedMovies = topRatedMovies.sort(dynamicSort('-popularity'));
 </script>
 
 <svelte:head>
@@ -10,10 +13,12 @@
 </svelte:head>
 
 <div class="full-hero flex flex-col justify-between">
-	<div class="container">
-		<PosterCarousel data={trendingMovies} name="Top i dag" />
+	<div class="container flex flex-col gap-2">
+		<HeroCarousel data={trendingMovies} />
+
 		<PosterCarousel data={popularMovies} name="Populære filmer" />
+		<PosterCarousel data={topRatedMovies} name="Klassikere" />
 	</div>
 
-	<Breadcrumbs {popularMovies} />
+	<Breadcrumbs />
 </div>

@@ -76,6 +76,6 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs {tvDetails} {seasonDetails} />
+		<Breadcrumbs />
 	</div>
 </div>

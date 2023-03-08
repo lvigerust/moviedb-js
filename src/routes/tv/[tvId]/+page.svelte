@@ -16,8 +16,6 @@
 		return result;
 	}
 
-	console.log(tvDetails);
-
 	const currentSeasonInfo = {
 		tv_id: tvDetails.id,
 		season_number: tvDetails.last_episode_to_air.season_number,
@@ -138,6 +136,6 @@
 				<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}>View all seasons</a>
 			</div>
 		</div>
-		<Breadcrumbs {tvDetails} />
+		<Breadcrumbs />
 	</div>
 </div>

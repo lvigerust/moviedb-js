@@ -33,6 +33,6 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs {collectionDetails} />
+		<Breadcrumbs />
 	</div>
 </div>

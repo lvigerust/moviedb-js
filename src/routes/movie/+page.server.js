@@ -17,8 +17,17 @@ export const load = async ({ fetch }) => {
 		return popularMoviesData.results;
 	};
 
+	const fetchTopRatedMovies = async () => {
+		const topRatedMoviesRes = await fetch(
+			`https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`
+		);
+		const topRatedMoviesData = await topRatedMoviesRes.json();
+		return topRatedMoviesData.results;
+	};
+
 	return {
 		trendingMovies: fetchTrendingMovies(),
-		popularMovies: fetchPopularMovies()
+		popularMovies: fetchPopularMovies(),
+		topRatedMovies: fetchTopRatedMovies()
 	};
 };

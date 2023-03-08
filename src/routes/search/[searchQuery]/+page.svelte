@@ -81,7 +81,7 @@
 			</div>
 		</div>
 		<div>
-			<Breadcrumbs {query} />
+			<Breadcrumbs />
 		</div>
 	</div>
 </div>

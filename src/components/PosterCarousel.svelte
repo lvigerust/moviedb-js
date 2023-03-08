@@ -1,42 +1,46 @@
 <script>
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
+	import { page } from '$app/stores';
+
+	let type = $page.route.id.substring(1);
 
 	export let data;
 	export let name = ' "name" ';
 
 	let breakpoints = {
 		428: {
-			perPage: 2,
-			perMove: 2
+			perPage: 2
 		},
 		640: {
 			perPage: 3,
-			perMove: 3,
 			padding: '1.5rem'
 		},
 
 		768: {
 			perPage: 4,
-			perMove: 4,
 			gap: '.75rem'
 		},
 
 		1024: {
-			perPage: 5,
-			perMove: 5
+			perPage: 5
 		},
 
 		1280: {
-			perPage: 6,
-			perMove: 6
+			perPage: 6
 		}
 	};
 </script>
 
-<div class="bg-base-100 pt-3 pb-2">
-	<h2 class="pl-6 sm:pl-8 font-medium sm:font-semibold text-xl sm:text-2xl  -mb-3">{name}</h2>
+<div class="bg-base-100">
+	<h2
+		id="carousel-heading"
+		class="pl-6 sm:pl-8 font-medium sm:font-semibold text-xl sm:text-2xl -mb-2"
+	>
+		{name}
+	</h2>
 	<Splide
+		aria-labelledby="carousel-heading"
 		hasTrack={false}
 		options={{
 			pagination: false,
@@ -44,7 +48,10 @@
 			breakpoints: breakpoints,
 			perPage: 6,
 			speed: 800,
-			gap: '1rem',
+			rewindSpeed: 1200,
+			drag: 'free',
+			snap: true,
+			gap: '1.25rem',
 			padding: '2rem',
 			easing: 'cubic-bezier(0.65, 0, 0.35, 1)'
 		}}
@@ -52,10 +59,10 @@
 		<SplideTrack>
 			{#each data as item}
 				<SplideSlide>
-					<a href={`/${item.media_type}/${item.id}`}>
-						<div class="flex justify-center my-6 ">
+					<a href={`/${type}/${item.id}`} title={item.title || item.name}>
+						<div class="flex justify-center my-6">
 							<img
-								class="rounded-xl shadow-lg shadow-black/50 h-full w-96 hover:scale-105 transition-all outline outline-transparent hover:outline-slate-500/25 duration-300"
+								class="rounded-lg shadow-lg shadow-black/50 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent hover:outline-slate-500/25 duration-200"
 								src={'https://image.tmdb.org/t/p/w1280/' + item.poster_path}
 								alt={item.title || item.name}
 							/>

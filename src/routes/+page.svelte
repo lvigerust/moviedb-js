@@ -1,8 +1,5 @@
 <script>
 	import { Search, Breadcrumbs } from '$components';
-
-	export let data;
-	let { nowPlayingMovies, topRatedMovies, upcomingMovies } = data;
 </script>
 
 <svelte:head>
