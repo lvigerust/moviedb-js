@@ -6,16 +6,14 @@
 
 	export let data;
 	const { collectionDetails } = data;
-
-	collectionDetails.parts.sort(dynamicSort('release_date'));
 </script>
 
 <svelte:head>
 	<title>{collectionDetails.name}</title>
 </svelte:head>
 
-<div class="hero full-hero">
-	<div class="container flex flex-col justify-between">
+<div class="full-hero">
+	<div class="container px-4 sm:px-2">
 		<div class="collection">
 			<div class="collection-info text-center prose max-w-3xl mx-auto">
 				<h2>{collectionDetails.name}</h2>

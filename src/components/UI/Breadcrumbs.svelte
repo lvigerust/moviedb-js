@@ -12,6 +12,8 @@
 			subRoute = true;
 		} else route = 'tv';
 	}
+
+	console.log($page.data.collectionDetails);
 </script>
 
 <div class="text-sm breadcrumbs flex justify-center py-8">
@@ -22,6 +24,7 @@
 		<!-- ---------- MOVIE ROUTE ---------- -->
 		{#if route === 'movie'}
 			<li><a href="/{route}" class="capitalize">{route}</a></li>
+
 			{#if $page.data.movieDetails}
 				{#if $page.data.movieDetails.belongs_to_collection && $page.data.movieDetails.belongs_to_collection.backdrop_path}
 					<li>
@@ -55,6 +58,9 @@
 					</li>
 				{/if}
 			{/if}
+		{:else if $page.data.collectionDetails}
+			<li><a href="/movie">Movie</a></li>
+			<li><a href="/{route}">{$page.data.collectionDetails.name}</a></li>
 		{/if}
 	</ul>
 </div>

@@ -10,6 +10,22 @@
 	const { movieDetails, movieProviders } = data;
 
 	let director = movieDetails.credits.crew.find((director) => director.job === 'Director').name;
+
+	let logoWidth = 'w-[calc(100vw/2)]';
+	let logoMaxWidth = 'max-w-md';
+
+	if (movieDetails.images.logos[0].aspect_ratio < 3) {
+		logoWidth = 'w-[calc(100vw/2.5)]';
+		logoMaxWidth = 'max-w-sm';
+		if (movieDetails.images.logos[0].aspect_ratio < 2) {
+			logoWidth = 'w-[calc(100vw/3)]';
+			logoMaxWidth = 'max-w-xs';
+			if (movieDetails.images.logos[0].aspect_ratio < 1) {
+				logoWidth = 'w-[calc(100vw/5)]';
+				logoMaxWidth = 'max-w-[250px]';
+			}
+		}
+	}
 </script>
 
 <svelte:head>
@@ -17,7 +33,7 @@
 </svelte:head>
 
 <div class="hero full-hero">
-	<div class="container flex flex-col justify-between">
+	<div class="container  px-4 sm:px-2">
 		<div class="movie xl:mx-[10vw]">
 			<div class="hero-image relative">
 				<img
@@ -27,11 +43,11 @@
 				/>
 				<div
 					in:fly={{ x: 50, duration: 600, delay: 150 }}
-					class="logo absolute bottom-4 left-8 lg:bottom-9 lg:left-12"
+					class="logo absolute bottom-4 lg:bottom-9 left-6 lg:left-12"
 				>
 					{#if movieDetails.images.logos[0]}
 						<img
-							class="w-[30vw] lg:w-[20vw] h-full drop-shadow-2xl"
+							class="h-full {logoWidth} {logoMaxWidth} object-contain drop-shadow-2xl"
 							src={'https://image.tmdb.org/t/p/w500/' + movieDetails.images.logos[0].file_path}
 							alt={movieDetails.title}
 						/>

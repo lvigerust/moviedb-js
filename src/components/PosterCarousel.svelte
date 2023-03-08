@@ -62,8 +62,8 @@
 					<a href={`/${type}/${item.id}`} title={item.title || item.name}>
 						<div class="flex justify-center my-6">
 							<img
-								class="rounded-lg shadow-lg shadow-black/50 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent hover:outline-slate-500/25 duration-200"
-								src={'https://image.tmdb.org/t/p/w1280/' + item.poster_path}
+								class="rounded-lg shadow-lg shadow-black/50 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"
+								src={'https://image.tmdb.org/t/p/w780/' + item.poster_path}
 								alt={item.title || item.name}
 							/>
 						</div>

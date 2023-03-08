@@ -29,6 +29,22 @@
 			getCurrentSeason(tvDetails.last_episode_to_air.season_number).air_date
 		)
 	};
+
+	let logoWidth = 'w-[calc(100vw/2)]';
+	let logoMaxWidth = 'max-w-md';
+
+	if (tvDetails.images.logos[0].aspect_ratio < 3) {
+		logoWidth = 'w-[calc(100vw/2.5)]';
+		logoMaxWidth = 'max-w-sm';
+		if (tvDetails.images.logos[0].aspect_ratio < 2) {
+			logoWidth = 'w-[calc(100vw/3)]';
+			logoMaxWidth = 'max-w-xs';
+			if (tvDetails.images.logos[0].aspect_ratio < 1) {
+				logoWidth = 'w-[calc(100vw/5)]';
+				logoMaxWidth = 'max-w-[250px]';
+			}
+		}
+	}
 </script>
 
 <svelte:head>
@@ -36,7 +52,7 @@
 </svelte:head>
 
 <div class="hero full-hero">
-	<div class="container">
+	<div class="container px-4 sm:px-0">
 		<div class="tv xl:mx-[10vw]">
 			<div class="hero-image relative">
 				<img
@@ -50,7 +66,7 @@
 				>
 					{#if tvDetails.images.logos[0]}
 						<img
-							class="w-[30vw] lg:w-[20vw] h-full drop-shadow-2xl"
+							class="h-full {logoWidth} {logoMaxWidth} object-contain drop-shadow-2xl"
 							src={'https://image.tmdb.org/t/p/w500/' + tvDetails.images.logos[0].file_path}
 							alt={tvDetails.name}
 						/>
