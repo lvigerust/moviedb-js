@@ -3,6 +3,8 @@
 	import '@splidejs/svelte-splide/css';
 	import { page } from '$app/stores';
 
+	import { slugify } from '$functions';
+
 	let type = $page.route.id.substring(1);
 
 	export let data;
@@ -59,7 +61,10 @@
 		<SplideTrack>
 			{#each data as item}
 				<SplideSlide>
-					<a href={`/${type}/${item.id}`} title={item.title || item.name}>
+					<a
+						href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
+						title={item.title || item.name}
+					>
 						<div class="flex justify-center my-6">
 							<img
 								class="rounded-lg shadow-lg shadow-black/50 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"

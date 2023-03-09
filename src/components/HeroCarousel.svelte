@@ -2,7 +2,8 @@
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
 	import { page } from '$app/stores';
-	import { dynamicSort } from '$lib/functions/formatFunctions.js';
+
+	import { dynamicSort, slugify } from '$functions';
 
 	let type = $page.route.id.substring(1);
 
@@ -41,7 +42,7 @@
 		{#each heroItems.splice(0, 5) as item}
 			<SplideSlide class="flex justify-center">
 				<a
-					href={`/${type}/${item.id}`}
+					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
 					title={item.title || item.name}
 					class="mb-12 mt-1 max-h-[200px] md:max-h-[250px] lg:max-h-[300px] xl:max-h-[400px] w-full relative sm:hover:scale-[101%] transition-transform"
 				>

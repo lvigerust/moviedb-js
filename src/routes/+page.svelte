@@ -1,8 +1,5 @@
 <script>
 	import { Search, Breadcrumbs } from '$components';
-
-	export let data;
-	let { movieDetails } = data;
 </script>
 
 <div class="hero full-hero">

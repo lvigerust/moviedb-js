@@ -1,10 +1,10 @@
 <script>
-	import { clickOutside } from '$lib/functions/clickOutside.js';
-	import { page } from '$app/stores';
 	import { enhance } from '$app/forms';
 	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
 
 	import DarkmodeToggle from '$lib/icons/DarkmodeToggle.svelte';
+	import { clickOutside } from '$functions';
 
 	let previousY = 0;
 	let currentY = 0;

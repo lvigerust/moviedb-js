@@ -1,1 +1,10 @@
-export { dynamicSort } from './formatFunctions.js';
+export {
+	getPremiereDate,
+	getTimeUntil,
+	getRuntime,
+	dynamicSort,
+	slugify
+} from './formatFunctions.js';
+
+export { clickOutside } from './clickOutside.js';
+export { calculateLogoSize } from './calculateLogoSize.js';

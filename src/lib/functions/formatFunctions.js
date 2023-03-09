@@ -68,3 +68,12 @@ export function dynamicSort(property) {
 		return result * sortOrder;
 	};
 }
+
+export function slugify(string) {
+	let slug = string
+		.split(/\s+|\W+/)
+		.filter((word) => word.trim() !== '')
+		.join('-')
+		.toLowerCase();
+	return slug;
+}

@@ -1,33 +1,13 @@
 <script>
-	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
-
-	import WatchProviders from '../../../components/WatchProviders.svelte';
-	import { Breadcrumbs } from '$components';
-
 	import { fly } from 'svelte/transition';
+	import { getPremiereDate, getRuntime, calculateLogoSize } from '$functions';
+	import { Breadcrumbs, WatchProviders } from '$components';
 
 	export let data;
 	const { movieDetails, movieProviders } = data;
 
-	let director = movieDetails.credits.crew.find((director) => director.job === 'Director').name;
-
-	let logoWidth = 'w-[calc(100vw/2)]';
-	let logoMaxWidth = 'max-w-md';
-
-	if (movieDetails.images.logos.length > 0) {
-		if (movieDetails.images.logos[0].aspect_ratio < 3) {
-			logoWidth = 'w-[calc(100vw/2.5)]';
-			logoMaxWidth = 'max-w-sm';
-			if (movieDetails.images.logos[0].aspect_ratio < 2) {
-				logoWidth = 'w-[calc(100vw/3)]';
-				logoMaxWidth = 'max-w-xs';
-				if (movieDetails.images.logos[0].aspect_ratio < 1) {
-					logoWidth = 'w-[calc(100vw/5)]';
-					logoMaxWidth = 'max-w-[250px]';
-				}
-			}
-		}
-	}
+	const director = movieDetails.credits.crew.find((director) => director.job === 'Director').name;
+	const logoSize = calculateLogoSize(movieDetails);
 </script>
 
 <div class="hero full-hero">
@@ -45,7 +25,7 @@
 				>
 					{#if movieDetails.images.logos[0]}
 						<img
-							class="h-full {logoWidth} {logoMaxWidth} object-contain drop-shadow-2xl"
+							class="h-full {logoSize.logoWidth} {logoSize.logoMaxWidth} object-contain drop-shadow-2xl"
 							src={'https://image.tmdb.org/t/p/w500/' + movieDetails.images.logos[0].file_path}
 							alt={movieDetails.title}
 						/>

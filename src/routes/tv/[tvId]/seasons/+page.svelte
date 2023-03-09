@@ -1,7 +1,6 @@
 <script>
-	import Season from '../../../../components/Season.svelte';
-	import { getPremiereDate, getTimeUntil } from '$lib/functions/formatFunctions.js';
-	import { Breadcrumbs } from '$components';
+	import { getPremiereDate } from '$functions';
+	import { Breadcrumbs, Season } from '$components';
 
 	/** @type {import('./$types').PageData} */
 	export let data;

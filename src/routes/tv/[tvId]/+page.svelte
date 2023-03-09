@@ -1,10 +1,7 @@
 <script>
-	import { getPremiereDate, getTimeUntil } from '$lib/functions/formatFunctions.js';
-
-	import Season from '../../../components/Season.svelte';
-	import WatchProviders from '../../../components/WatchProviders.svelte';
-	import { Breadcrumbs } from '$components';
 	import { fly } from 'svelte/transition';
+	import { getPremiereDate, calculateLogoSize, getTimeUntil } from '$functions';
+	import { Breadcrumbs, WatchProviders, Season } from '$components';
 
 	export let data;
 	const { tvDetails, tvProviders } = data;
@@ -30,23 +27,7 @@
 		)
 	};
 
-	let logoWidth = 'w-[calc(100vw/2)]';
-	let logoMaxWidth = 'max-w-md';
-
-	if (tvDetails.images.logos.length > 0) {
-		if (tvDetails.images.logos[0].aspect_ratio < 3) {
-			logoWidth = 'w-[calc(100vw/2.5)]';
-			logoMaxWidth = 'max-w-sm';
-			if (tvDetails.images.logos[0].aspect_ratio < 2) {
-				logoWidth = 'w-[calc(100vw/3)]';
-				logoMaxWidth = 'max-w-xs';
-				if (tvDetails.images.logos[0].aspect_ratio < 1) {
-					logoWidth = 'w-[calc(100vw/5)]';
-					logoMaxWidth = 'max-w-[250px]';
-				}
-			}
-		}
-	}
+	const logoSize = calculateLogoSize(tvDetails);
 </script>
 
 <div class="hero full-hero">
@@ -64,7 +45,7 @@
 				>
 					{#if tvDetails.images.logos[0]}
 						<img
-							class="h-full {logoWidth} {logoMaxWidth} object-contain drop-shadow-2xl"
+							class="h-full {logoSize.logoWidth} {logoSize.logoMaxWidth} object-contain drop-shadow-2xl"
 							src={'https://image.tmdb.org/t/p/w500/' + tvDetails.images.logos[0].file_path}
 							alt={tvDetails.name}
 						/>

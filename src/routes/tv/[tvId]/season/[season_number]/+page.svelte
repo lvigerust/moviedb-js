@@ -1,6 +1,5 @@
 <script>
-	import { getPremiereDate, getRuntime } from '$lib/functions/formatFunctions.js';
-
+	import { getPremiereDate, getRuntime } from '$functions';
 	import { Breadcrumbs } from '$components';
 
 	export let data;
