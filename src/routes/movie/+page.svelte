@@ -8,10 +8,6 @@
 	topRatedMovies = topRatedMovies.sort(dynamicSort('-popularity'));
 </script>
 
-<svelte:head>
-	<title>Popular Movies</title>
-</svelte:head>
-
 <div class="full-hero flex flex-col justify-between">
 	<div class="container flex flex-col gap-2">
 		<HeroCarousel data={trendingMovies} />

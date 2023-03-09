@@ -1,7 +1,15 @@
 <script>
 	import '../app.css';
 	import { Navbar, Footer } from '$components';
+
+	import { page } from '$app/stores';
+
+	console.log($page);
 </script>
+
+<svelte:head>
+	<title>{$page.data.title ? `${$page.data.title}` : 'TITLE'}</title>
+</svelte:head>
 
 <Navbar />
 <main class="pt-10 sm:pt-12">

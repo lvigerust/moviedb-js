@@ -28,6 +28,7 @@ export const load = async ({ fetch }) => {
 	return {
 		trendingMovies: fetchTrendingMovies(),
 		popularMovies: fetchPopularMovies(),
-		topRatedMovies: fetchTopRatedMovies()
+		topRatedMovies: fetchTopRatedMovies(),
+		title: 'Movies | Stinkmeaner'
 	};
 };

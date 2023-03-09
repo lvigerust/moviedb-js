@@ -19,34 +19,20 @@ export const actions = {
 
 import { TMDB_API_KEY } from '$env/static/private';
 
-export const load = async ({ fetch }) => {
-	const fetchNowPlayingMovies = async () => {
-		const nowPlayingMoviesRes = await fetch(
-			`https://api.themoviedb.org/3/movie/now_playing?api_key=${TMDB_API_KEY}&page=1&region=no`
-		);
-		const nowPlayingMoviesData = await nowPlayingMoviesRes.json();
-		return nowPlayingMoviesData.results;
-	};
+export const load = ({ fetch, params }) => {
+	console.log('Starting Load');
 
-	const fetchTopRatedMovies = async () => {
-		const topRatedMoviesRes = await fetch(
-			`https://api.themoviedb.org/3/movie/top_rated?api_key=${TMDB_API_KEY}&language=en-US&page=1`
+	const fetchMovieDetails = async (id) => {
+		const movieDetailsRes = await fetch(
+			`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&language=en-US&include_image_language=en`
 		);
-		const topRatedMoviesData = await topRatedMoviesRes.json();
-		return topRatedMoviesData.results;
-	};
+		const movieDetailsData = await movieDetailsRes.json();
+		const title = movieDetailsData.title;
 
-	const fetchUpcomingMovies = async () => {
-		const upcomingMoviesRes = await fetch(
-			`https://api.themoviedb.org/3/movie/upcoming?api_key=${TMDB_API_KEY}&language=en-US&page=1`
-		);
-		const upcomingMoviesData = await upcomingMoviesRes.json();
-		return upcomingMoviesData.results;
+		return movieDetailsData;
 	};
 
 	return {
-		nowPlayingMovies: fetchNowPlayingMovies(),
-		topRatedMovies: fetchTopRatedMovies(),
-		upcomingMovies: fetchUpcomingMovies()
+		movieDetails: fetchMovieDetails(1011679)
 	};
 };

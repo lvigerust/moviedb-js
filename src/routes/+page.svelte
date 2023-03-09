@@ -1,10 +1,9 @@
 <script>
 	import { Search, Breadcrumbs } from '$components';
-</script>
 
-<svelte:head>
-	<title>Home | Movie Database</title>
-</svelte:head>
+	export let data;
+	let { movieDetails } = data;
+</script>
 
 <div class="hero full-hero">
 	<div class="sm:container w-full h-full flex flex-col">

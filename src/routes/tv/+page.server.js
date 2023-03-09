@@ -28,6 +28,7 @@ export const load = async ({ fetch }) => {
 	return {
 		trendingTv: fetchTrendingTv(),
 		popularTv: fetchPopularTv(),
-		topRatedTv: fetchTopRatedTv()
+		topRatedTv: fetchTopRatedTv(),
+		title: 'TV Shows | Stinkmeaner'
 	};
 };

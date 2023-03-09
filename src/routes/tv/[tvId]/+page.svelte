@@ -49,10 +49,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{tvDetails.name}</title>
-</svelte:head>
-
 <div class="hero full-hero">
 	<div class="container px-4 sm:px-0">
 		<div class="tv xl:mx-[10vw]">
@@ -127,14 +123,16 @@
 						<h3>Overview</h3>
 						<p>{tvDetails.overview}</p>
 						<p>
-							{#if getTimeUntil(tvDetails.next_episode_to_air.air_date)}
-								Next episode:
-								<span class="font-semibold">
-									{getTimeUntil(tvDetails.next_episode_to_air.air_date)}
-								</span>
-							{:else}
-								Next episode:
-								<span class="font-semibold"> Today </span>
+							{#if tvDetails.next_episode_to_air}
+								{#if getTimeUntil(tvDetails.next_episode_to_air.air_date)}
+									Next episode:
+									<span class="font-semibold">
+										{getTimeUntil(tvDetails.next_episode_to_air.air_date)}
+									</span>
+								{:else}
+									Next episode:
+									<span class="font-semibold"> Today </span>
+								{/if}
 							{/if}
 						</p>
 					</div>

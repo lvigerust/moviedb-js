@@ -8,10 +8,6 @@
 	const { collectionDetails } = data;
 </script>
 
-<svelte:head>
-	<title>{collectionDetails.name}</title>
-</svelte:head>
-
 <div class="full-hero">
 	<div class="container px-4 sm:px-2">
 		<div class="collection">
@@ -27,7 +23,9 @@
 			sm:flex flex-wrap justify-center"
 			>
 				{#each collectionDetails.parts as movie}
-					<Card type={'movie'} request={movie} />
+					{#if movie.poster_path}
+						<Card type={'movie'} request={movie} />
+					{/if}
 				{/each}
 			</div>
 		</div>

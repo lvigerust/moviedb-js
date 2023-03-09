@@ -30,10 +30,6 @@
 	}
 </script>
 
-<svelte:head>
-	<title>{movieDetails.title}</title>
-</svelte:head>
-
 <div class="hero full-hero">
 	<div class="container  px-4 sm:px-2">
 		<div class="movie xl:mx-[10vw]">
