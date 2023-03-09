@@ -1,15 +1,16 @@
 <script>
+	import { page } from '$app/stores';
 	import { dynamicSort } from '$functions';
 	import { Breadcrumbs, HeroCarousel, PosterCarousel } from '$components';
 
 	export let data;
-	let { trendingMovies, popularMovies, topRatedMovies } = data;
+	let { trendingMovies, popularMovies, topRatedMovies, trendingMoviesDetails } = data;
 
 	trendingMovies = trendingMovies.sort(dynamicSort('-popularity'));
 </script>
 
 <div class="full-hero flex flex-col justify-between">
-	<HeroCarousel data={trendingMovies} />
+	<HeroCarousel data={trendingMovies} details={trendingMoviesDetails} />
 	<div class="container flex flex-col gap-2">
 		<PosterCarousel data={trendingMovies} name="Topp filmer i dag" />
 		<PosterCarousel data={topRatedMovies} name="Kritikerroste filmer" />

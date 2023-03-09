@@ -3,7 +3,7 @@
 	import '@splidejs/svelte-splide/css';
 	import { page } from '$app/stores';
 
-	import { slugify } from '$functions';
+	import { slugify, calculateLogoSize } from '$functions';
 
 	let type = $page.route.id.substring(1);
 	let breakpoints = {
@@ -17,6 +17,9 @@
 	};
 
 	export let data;
+	export let details;
+
+	const logoSize = calculateLogoSize(details);
 </script>
 
 <Splide
@@ -28,9 +31,9 @@
 		// wheelMinThreshold: 15,
 		pagination: false,
 		arrows: false,
-		autoplay: true,
-		interval: 5000,
-		speed: 2000,
+		autoplay: false,
+		interval: 10000,
+		// speed: 2000,
 		easing: 'cubic-bezier(.65, 1.2, 0.45, 1)',
 		padding: '9rem',
 		gap: '2rem',
@@ -47,10 +50,18 @@
 					class="mb-12 mt-1 max-h-[200px] md:max-h-[250px] lg:max-h-[300px] xl:max-h-[400px] w-full relative sm:hover:scale-[101%] transition-transform"
 				>
 					<img
-						class=" shadow-xl shadow-black/50 rounded-xl w-full h-full object-cover"
+						class="shadow-xl shadow-black/50 rounded-xl w-full h-full object-cover"
 						src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
 						alt={item.title || item.name}
 					/>
+
+					<!-- <div class="logo absolute bottom-4 lg:bottom-9 left-6 lg:left-12">
+						<img
+							class="h-full {logoSize.logoWidth} {logoSize.logoMaxWidth} object-contain drop-shadow-2xl"
+							src={'https://image.tmdb.org/t/p/w500/' + details.images.logos[0].file_path}
+							alt={details.title}
+						/>
+					</div> -->
 					<div
 						class="absolute flex items-end justify-end bottom-0 rounded-b-xl bg-gradient-to-t from-black/50 w-full h-20"
 					>
