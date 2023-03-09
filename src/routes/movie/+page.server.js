@@ -29,6 +29,10 @@ export const load = async ({ fetch }) => {
 		trendingMovies: fetchTrendingMovies(),
 		popularMovies: fetchPopularMovies(),
 		topRatedMovies: fetchTopRatedMovies(),
-		title: 'Movies | Stinkmeaner'
+		head: {
+			title: 'Movies',
+			description:
+				'Oversikt over filmer. Sortert etter filmer som trender akkurat nå, er populære på The Movie Database eller høyt vurdert på IMDB.com'
+		}
 	};
 };

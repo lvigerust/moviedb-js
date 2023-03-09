@@ -9,7 +9,15 @@ export const load = ({ fetch, params }) => {
 		return collectionDetailsData;
 	};
 
+	const getHead = async () => {
+		const data = await fetchCollectionDetails(params.collectionId);
+		const title = data.name;
+		const description = data.overview;
+		return { title, description };
+	};
+
 	return {
-		collectionDetails: fetchCollectionDetails(params.collectionId)
+		collectionDetails: fetchCollectionDetails(params.collectionId),
+		head: getHead()
 	};
 };

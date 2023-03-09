@@ -6,7 +6,7 @@
 
 	/** @type {import('./$types').PageData} */
 	export let data;
-	let { query, multiSearch, keywords } = data;
+	let { query, multiSearch } = data;
 
 	let movieResults = multiSearch.filter(function (arr) {
 		return arr.media_type == 'movie';
@@ -66,20 +66,6 @@
 			{/if}
 		</div>
 
-		<div class="keyword prose flex flex-col items-center min-w-full py-4 mt-10">
-			<h3 class="mb-3">Search by keyword</h3>
-			<div
-				class="flex flex-col sm:flex-row sm:flex-wrap items-center gap-4 justify-center min-w-full"
-			>
-				{#each keywords as keyword}
-					<a href={`/search/keyword/` + keyword.id} class="no-underline">
-						<p class="hover:text-accent hover:drop-shadow whitespace-nowrap m-0 font-light">
-							{keyword.name}
-						</p>
-					</a>
-				{/each}
-			</div>
-		</div>
 		<div>
 			<Breadcrumbs />
 		</div>

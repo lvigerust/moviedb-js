@@ -17,8 +17,16 @@ export const load = ({ fetch, params }) => {
 		return TvProviderData;
 	};
 
+	const getHead = async () => {
+		const data = await fetchTvDetails(params.tvId);
+		const title = data.name;
+		const description = data.overview;
+		return { title, description };
+	};
+
 	return {
 		tvDetails: fetchTvDetails(params.tvId),
-		tvProviders: fetchTvProviders(params.tvId)
+		tvProviders: fetchTvProviders(params.tvId),
+		head: getHead()
 	};
 };

@@ -7,6 +7,9 @@ module.exports = {
 			center: true
 		}
 	},
+	daisyui: {
+		themes: ['garden', 'night']
+	},
 
 	plugins: [require('@tailwindcss/typography'), require('daisyui')]
 };

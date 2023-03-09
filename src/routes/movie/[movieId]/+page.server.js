@@ -17,8 +17,16 @@ export const load = ({ fetch, params }) => {
 		return movieProviderData;
 	};
 
+	const getHead = async () => {
+		const data = await fetchMovieDetails(params.movieId);
+		const title = data.title;
+		const description = data.overview;
+		return { title, description };
+	};
+
 	return {
 		movieDetails: fetchMovieDetails(params.movieId),
-		movieProviders: fetchMovieProviders(params.movieId)
+		movieProviders: fetchMovieProviders(params.movieId),
+		head: getHead()
 	};
 };

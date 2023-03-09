@@ -9,17 +9,15 @@ export const load = ({ fetch, params }) => {
 		return multiSearchData.results;
 	};
 
-	const fetchKeywordSearch = async (query) => {
-		const keywordSearchRes = await fetch(
-			`https://api.themoviedb.org/3/search/keyword?api_key=${TMDB_API_KEY}&query=${query}&page=1`
-		);
-		const keywordSearchData = await keywordSearchRes.json();
-		return keywordSearchData.results.slice(0, 5);
+	const getHead = async () => {
+		const data = await fetchMultiSearch(params.searchQuery);
+		const description = `${data.length} results for query`;
+		return { description };
 	};
 
 	return {
 		query: params.searchQuery,
 		multiSearch: fetchMultiSearch(params.searchQuery),
-		keywords: fetchKeywordSearch(params.searchQuery)
+		head: { title: `${params.searchQuery} | Stinkmeaner`, description: 'Results' }
 	};
 };
