@@ -6,15 +6,14 @@
 	let { trendingTv, popularTv, topRatedTv } = data;
 
 	trendingTv = trendingTv.sort(dynamicSort('-popularity'));
-	topRatedTv = topRatedTv.sort(dynamicSort('-vote_average'));
 </script>
 
 <div class="full-hero flex flex-col justify-between">
+	<HeroCarousel data={trendingTv} />
 	<div class="container flex flex-col gap-2">
-		<HeroCarousel data={trendingTv} />
-
-		<PosterCarousel data={popularTv} name="Populært" />
-		<PosterCarousel data={topRatedTv} name="Klassikere" />
+		<PosterCarousel data={trendingTv} name="Topp serier i dag" />
+		<PosterCarousel data={topRatedTv} name="Kritikerroste serier" />
+		<PosterCarousel data={popularTv} name="Populært nå" />
 	</div>
 
 	<Breadcrumbs />

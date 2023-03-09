@@ -3,10 +3,9 @@
 	import '@splidejs/svelte-splide/css';
 	import { page } from '$app/stores';
 
-	import { dynamicSort, slugify } from '$functions';
+	import { slugify } from '$functions';
 
 	let type = $page.route.id.substring(1);
-
 	let breakpoints = {
 		640: { padding: '1.5rem' },
 
@@ -18,28 +17,29 @@
 	};
 
 	export let data;
-	let heroItems = data.map((a) => {
-		return { ...a };
-	});
-
-	heroItems = heroItems.sort(dynamicSort('-popularity'));
 </script>
 
 <Splide
+	class="mb-2"
 	hasTrack={false}
 	options={{
+		// wheel: true,
+		// waitForTransition: true,
+		// wheelMinThreshold: 15,
 		pagination: false,
 		arrows: false,
 		autoplay: true,
-		interval: 7500,
-		padding: '12rem',
+		interval: 5000,
+		speed: 2000,
+		easing: 'cubic-bezier(.65, 1.2, 0.45, 1)',
+		padding: '9rem',
 		gap: '2rem',
 		breakpoints: breakpoints,
 		type: 'loop'
 	}}
 >
 	<SplideTrack>
-		{#each heroItems.splice(0, 5) as item}
+		{#each data.slice(0, 6) as item}
 			<SplideSlide class="flex justify-center">
 				<a
 					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}

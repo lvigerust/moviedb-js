@@ -34,14 +34,15 @@
 	};
 </script>
 
-<div class="bg-base-100">
+<div class="bg-base-100 -mt-2">
 	<h2
 		id="carousel-heading"
-		class="pl-6 sm:pl-8 font-medium sm:font-semibold text-xl sm:text-2xl -mb-2"
+		class="pl-6 sm:pl-8 font-medium sm:font-semibold text-xl sm:text-2xl inline"
 	>
 		{name}
 	</h2>
 	<Splide
+		class="-mt-2 mb-2"
 		aria-labelledby="carousel-heading"
 		hasTrack={false}
 		options={{
@@ -51,8 +52,8 @@
 			perPage: 6,
 			speed: 800,
 			rewindSpeed: 1200,
+			flickPower: 500,
 			drag: 'free',
-			snap: true,
 			gap: '1.25rem',
 			padding: '2rem',
 			easing: 'cubic-bezier(0.65, 0, 0.35, 1)'
@@ -65,7 +66,7 @@
 						href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
 						title={item.title || item.name}
 					>
-						<div class="flex justify-center my-6">
+						<div class="flex justify-center my-6 mb-8">
 							<img
 								class="rounded-lg shadow-lg shadow-black/50 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"
 								src={'https://image.tmdb.org/t/p/w780/' + item.poster_path}
@@ -99,5 +100,9 @@
 	}
 	.splide__arrow--prev {
 		left: -50px;
+	}
+
+	#carousel-heading {
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 	}
 </style>

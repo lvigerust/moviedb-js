@@ -5,15 +5,15 @@
 	export let data;
 	let { trendingMovies, popularMovies, topRatedMovies } = data;
 
-	topRatedMovies = topRatedMovies.sort(dynamicSort('-popularity'));
+	trendingMovies = trendingMovies.sort(dynamicSort('-popularity'));
 </script>
 
 <div class="full-hero flex flex-col justify-between">
+	<HeroCarousel data={trendingMovies} />
 	<div class="container flex flex-col gap-2">
-		<HeroCarousel data={trendingMovies} />
-
-		<PosterCarousel data={popularMovies} name="Populære filmer" />
-		<PosterCarousel data={topRatedMovies} name="Klassikere" />
+		<PosterCarousel data={trendingMovies} name="Topp filmer i dag" />
+		<PosterCarousel data={topRatedMovies} name="Kritikerroste filmer" />
+		<PosterCarousel data={popularMovies} name="Populært nå" />
 	</div>
 
 	<Breadcrumbs />
