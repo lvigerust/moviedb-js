@@ -6,6 +6,8 @@
 
 	export let data;
 	const { collectionDetails } = data;
+
+	let sortedCollection = collectionDetails.parts.sort(dynamicSort('release_date'));
 </script>
 
 <div class="full-hero">
@@ -22,7 +24,7 @@
 				class="collection-items grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] gap-x-5 sm:gap-x-8 mt-4
 			sm:flex flex-wrap justify-center"
 			>
-				{#each collectionDetails.parts as movie}
+				{#each sortedCollection as movie}
 					{#if movie.poster_path}
 						<Card type={'movie'} request={movie} />
 					{/if}

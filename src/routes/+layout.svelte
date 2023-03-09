@@ -3,8 +3,6 @@
 	import { Navbar, Footer } from '$components';
 
 	import { page } from '$app/stores';
-
-	console.log($page);
 </script>
 
 <svelte:head>
