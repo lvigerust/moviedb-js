@@ -5,7 +5,7 @@
 @layer components {
 	.sticky-glass-navbar {
 		@apply bg-base-300/75 backdrop-blur-md rounded-full 
-		mx-4 mt-4 lg:mx-auto lg:mt-12 max-w-5xl 
+		mx-4 mt-4 lg:mx-auto lg:mt-8 max-w-5xl 
 		sticky z-50 transition-transform ease-in 
 		top-[var(--header-top-margin)] lg:top-[var(--header-top-margin-lg)];
 	}
@@ -16,5 +16,9 @@
 
 	.search-grid {
 		@apply grid grid-cols-[repeat(auto-fill,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fill,_minmax(140px,_1fr))] lg:grid-cols-4 xl:grid-cols-6 gap-5 sm:gap-8;
+	}
+
+	.layout-padding {
+		@apply pt-4 sm:pt-6 lg:pt-8;
 	}
 }

@@ -49,7 +49,7 @@
 	class:lg:motion-safe:-translate-y-[var(--header-with-margin-lg)]={offscreen}
 	bind:clientHeight
 >
-	<div class="navbar px-4 lg:px-8 lg:min-h-[5rem]">
+	<div class="navbar px-4  lg:min-h-[4rem]">
 		<div class="navbar-start">
 			<div class="dropdown md:hidden">
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->

@@ -10,7 +10,7 @@
 </svelte:head>
 
 <Navbar />
-<main class="pt-10 sm:pt-12">
+<main class="layout-padding">
 	<slot />
 </main>
 <Footer />

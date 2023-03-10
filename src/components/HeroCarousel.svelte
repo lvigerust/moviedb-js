@@ -7,19 +7,9 @@
 	import { slugify, dynamicCTA } from '$functions';
 
 	let type = $page.route.id.substring(1);
-	let breakpoints = {
-		640: { padding: '1.5rem' },
-
-		768: { padding: '2rem', gap: '1rem' },
-
-		1024: { padding: '5rem' },
-
-		1280: { padding: '8rem', gap: '1.5rem' }
-	};
+	let startIndex = Math.round(Math.random() * 10);
 
 	export let data;
-
-	let startIndex = Math.round(Math.random() * 10);
 
 	// Generate CTA
 	if (type === 'tv') {
@@ -31,10 +21,24 @@
 			movie.CTA = dynamicCTA(movie);
 		});
 	}
+
+	let breakpoints = {
+		428: {
+			padding: '1rem'
+		},
+		640: { padding: '5rem', gap: '1.25rem' },
+
+		768: { padding: '6rem', gap: '1.5rem' },
+
+		1024: { padding: '10rem' },
+
+		1280: { padding: '12rem', gap: '2rem' },
+		1500: { padding: '15rem', gap: '2.5rem' }
+	};
 </script>
 
 <Splide
-	class="mb-2"
+	class="mb-2 lg:mb-6"
 	hasTrack={false}
 	options={{
 		// wheel: true,
@@ -45,11 +49,11 @@
 		autoplay: false,
 		interval: 10000,
 		start: startIndex,
+		breakpoints: breakpoints,
 		// speed: 2000,
 		easing: 'cubic-bezier(.65, 1.2, 0.45, 1)',
-		padding: '9rem',
-		gap: '2rem',
-		breakpoints: breakpoints,
+		padding: '25rem',
+		gap: '3rem',
 		type: 'loop'
 	}}
 >
@@ -59,7 +63,7 @@
 				<a
 					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
 					title={item.title || item.name}
-					class="mb-12 mt-1 max-h-[200px] md:max-h-[250px] lg:max-h-[300px] xl:max-h-[400px] w-full relative sm:hover:scale-[101%] transition-transform"
+					class="mb-12 mt-1 max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[400px] 2xl:max-h-[480px] w-full relative sm:hover:scale-[101%] transition-all outline outline-transparent rounded-xl sm:hover:outline-slate-500/25 duration-200"
 				>
 					<img
 						class="shadow-xl shadow-black/50 rounded-xl w-full h-full object-cover"
@@ -94,7 +98,7 @@
 					>
 						{#if item.CTA}
 							<button
-								class="btn btn-ghost rounded-full btn-xs  sm:btn-md left-3 bottom-3 sm:bottom-1 lg:left-16 lg:bottom-6 absolute normal-case"
+								class="btn btn-ghost text-slate-300/90 rounded-full btn-xs  sm:btn-md left-3 bottom-3 sm:bottom-1 lg:left-12 xl:left-16 lg:bottom-6 absolute normal-case"
 							>
 								{item.CTA}
 							</button>
