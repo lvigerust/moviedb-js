@@ -44,7 +44,7 @@
 <div class="bg-base-100 -mt-8 mb-5 sm:-mt-6">
 	<h2
 		id="carousel-heading"
-		class="max-[428px]:pl-5 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-32 font-medium sm:font-semibold text-xl sm:text-2xl inline"
+		class="max-[428px]:pl-5 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 font-medium sm:font-semibold text-xl sm:text-2xl inline"
 	>
 		{name}
 	</h2>
@@ -61,8 +61,8 @@
 			rewindSpeed: 1200,
 			flickPower: 500,
 			drag: 'free',
-			gap: '1rem',
-			padding: '8rem',
+			gap: '1.2rem',
+			padding: '6rem',
 			easing: 'cubic-bezier(0.65, 0, 0.35, 1)'
 		}}
 	>

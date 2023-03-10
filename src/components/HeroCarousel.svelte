@@ -52,7 +52,7 @@
 		breakpoints: breakpoints,
 		// speed: 2000,
 		easing: 'cubic-bezier(.65, 1.2, 0.45, 1)',
-		padding: '25rem',
+		padding: '17rem',
 		gap: '3rem',
 		type: 'loop'
 	}}
