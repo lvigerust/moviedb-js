@@ -82,7 +82,7 @@ export function dynamicCTA(data) {
 			}
 		} else {
 			if (miniSeries === true) {
-				CTA = 'Se miniserien';
+				CTA = 'Miniserie';
 			} else if (show.tagline) {
 				CTA = show.tagline;
 			} else CTA = 'Strøm hele serien  nå';

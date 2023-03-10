@@ -46,7 +46,7 @@
 		// wheelMinThreshold: 15,
 		pagination: false,
 		arrows: false,
-		autoplay: false,
+		autoplay: true,
 		interval: 10000,
 		start: startIndex,
 		breakpoints: breakpoints,

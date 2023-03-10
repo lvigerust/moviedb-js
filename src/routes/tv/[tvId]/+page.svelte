@@ -132,7 +132,9 @@
 					<h2>Latest season</h2>
 				{/if}
 
-				<Season {...currentSeasonInfo} />
+				<div class="mb-4">
+					<Season {...currentSeasonInfo} />
+				</div>
 
 				{#if tvDetails.seasons.length > 1 && tvDetails.seasons.slice(-1).pop().air_date}
 					<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}>View all seasons</a>

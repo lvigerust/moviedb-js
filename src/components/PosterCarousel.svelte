@@ -49,7 +49,7 @@
 		{name}
 	</h2>
 	<Splide
-		class="-mt-3"
+		class="-mt-3 sm:-mt-2"
 		aria-labelledby="carousel-heading"
 		hasTrack={false}
 		options={{

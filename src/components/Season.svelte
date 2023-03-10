@@ -6,6 +6,7 @@
 	export let release_year;
 	export let episode_count;
 	export let premiere_date;
+	export let season_name;
 
 	if (release_year) {
 		release_year = new Date(release_year);
@@ -13,10 +14,14 @@
 	}
 </script>
 
+{#if season_name === 'Specials'}
+	<div class="divider" />
+{/if}
+
 {#if release_year}
 	<a href={`/tv/${tv_id}` + `/season/` + season_number} class="no-underline">
 		<div
-			class="season flex bg-base-200 rounded-lg shadow-lg sm:hover:scale-[102.5%] transition-transform sm:mb-8 mb-4"
+			class="season flex bg-base-200 rounded-lg shadow-lg sm:hover:scale-[102.5%] transition-transform"
 		>
 			<div class="image-wrapper">
 				<div class="wrapper w-32 sm:w-36 h-full">

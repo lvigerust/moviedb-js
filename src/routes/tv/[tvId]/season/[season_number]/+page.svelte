@@ -26,7 +26,7 @@
 				</a>
 			</div>
 		</div>
-		<div class="divider mt-6" />
+		<div class="divider max-w-6xl mx-auto mt-6" />
 		<div class="episodes max-w-5xl mx-auto">
 			<h3 class="text-xl font-semibold">
 				Episodes <span class="font-light">{seasonDetails.episodes.length}</span>
