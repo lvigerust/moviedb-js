@@ -9,7 +9,7 @@ export const load = async ({ fetch }) => {
 		return trendingMoviesData.results;
 	};
 
-	const fetchTrendingMovieDetails = async () => {
+	const getTrendingMoviesDetailsEndpoint = async () => {
 		// Get trending movies
 		const trendingMovies = await fetchTrendingMovies();
 
@@ -27,23 +27,33 @@ export const load = async ({ fetch }) => {
 		}
 		trendingMovies.sort(dynamicSort('-popularity'));
 
-		// Assign ID to movie
-		const id = trendingMovies[0].id;
+		// Set number of movies
 
-		// Get movie details
-		const fetchTrendingMoviesDetails = async () => {
-			const trendingDetailsRes = await fetch(
-				`https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&append_to_response=images`
-			);
-			const trendingDetailsData = await trendingDetailsRes.json();
-			return trendingDetailsData;
-		};
+		let movieIds = trendingMovies.map((movie) => movie.id);
 
-		const trendingDetailsData = await fetchTrendingMoviesDetails(id);
-		return trendingDetailsData;
+		let endpointArray = [];
+
+		movieIds.forEach(function (id) {
+			const endPoint = `https://api.themoviedb.org/3/movie/${id}?api_key=${TMDB_API_KEY}&append_to_response=images&include_image_language=en`;
+			endpointArray.push(endPoint);
+		});
+
+		return endpointArray;
 	};
 
-	// -----------------------------
+	const fetchTrendingMoviesDetails = async () => {
+		const endpointArray = await getTrendingMoviesDetailsEndpoint();
+
+		let detailsArray = [];
+		const detailsResponses = await Promise.all(
+			endpointArray.map(async (endpoint) => {
+				const res = await fetch(`${endpoint}`);
+				const data = await res.json();
+				return data;
+			})
+		);
+		return detailsResponses;
+	};
 
 	const fetchPopularMovies = async () => {
 		const popularMoviesRes = await fetch(
@@ -65,11 +75,11 @@ export const load = async ({ fetch }) => {
 		trendingMovies: fetchTrendingMovies(),
 		popularMovies: fetchPopularMovies(),
 		topRatedMovies: fetchTopRatedMovies(),
+		trendingMoviesDetails: fetchTrendingMoviesDetails(),
 		head: {
 			title: 'Movies',
 			description:
 				'Oversikt over filmer. Sortert etter filmer som trender akkurat nå, er populære på The Movie Database eller høyt vurdert på IMDB.com'
-		},
-		trendingMoviesDetails: fetchTrendingMovieDetails()
+		}
 	};
 };

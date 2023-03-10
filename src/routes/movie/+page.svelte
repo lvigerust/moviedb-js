@@ -1,5 +1,4 @@
 <script>
-	import { page } from '$app/stores';
 	import { dynamicSort } from '$functions';
 	import { Breadcrumbs, HeroCarousel, PosterCarousel } from '$components';
 
@@ -10,7 +9,7 @@
 </script>
 
 <div class="full-hero flex flex-col justify-between">
-	<HeroCarousel data={trendingMovies} details={trendingMoviesDetails} />
+	<HeroCarousel data={trendingMoviesDetails} />
 	<div class="container flex flex-col gap-2">
 		<PosterCarousel data={trendingMovies} name="Topp filmer i dag" />
 		<PosterCarousel data={topRatedMovies} name="Kritikerroste filmer" />

@@ -9,6 +9,52 @@ export const load = async ({ fetch }) => {
 		return trendingTvData.results;
 	};
 
+	const getTrendingTvDetailsEndpoint = async () => {
+		// Get trending movies
+		const trendingTv = await fetchTrendingTv();
+
+		// Sort movies by popularity
+		function dynamicSort(property) {
+			let sortOrder = 1;
+			if (property[0] === '-') {
+				sortOrder = -1;
+				property = property.substr(1);
+			}
+			return function (a, b) {
+				let result = a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+				return result * sortOrder;
+			};
+		}
+		trendingTv.sort(dynamicSort('-popularity'));
+
+		// Set number of movies
+
+		let showIds = trendingTv.map((show) => show.id);
+
+		let endpointArray = [];
+
+		showIds.forEach(function (id) {
+			const endPoint = `https://api.themoviedb.org/3/tv/${id}?api_key=${TMDB_API_KEY}&append_to_response=images&include_image_language=en`;
+			endpointArray.push(endPoint);
+		});
+
+		return endpointArray;
+	};
+
+	const fetchTrendingTvDetails = async () => {
+		const endpointArray = await getTrendingTvDetailsEndpoint();
+
+		let detailsArray = [];
+		const detailsResponses = await Promise.all(
+			endpointArray.map(async (endpoint) => {
+				const res = await fetch(`${endpoint}`);
+				const data = await res.json();
+				return data;
+			})
+		);
+		return detailsResponses;
+	};
+
 	const fetchPopularTv = async () => {
 		const popularTvRes = await fetch(
 			`https://api.themoviedb.org/3/tv/popular?api_key=${TMDB_API_KEY}&language=en-US&page=1`
@@ -29,6 +75,7 @@ export const load = async ({ fetch }) => {
 		trendingTv: fetchTrendingTv(),
 		popularTv: fetchPopularTv(),
 		topRatedTv: fetchTopRatedTv(),
+		trendingTvDetails: fetchTrendingTvDetails(),
 		head: {
 			title: 'TV Shows',
 			description:

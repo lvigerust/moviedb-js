@@ -2,8 +2,9 @@
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
 	import { page } from '$app/stores';
+	import { fly } from 'svelte/transition';
 
-	import { slugify, calculateLogoSize } from '$functions';
+	import { slugify } from '$functions';
 
 	let type = $page.route.id.substring(1);
 	let breakpoints = {
@@ -17,9 +18,8 @@
 	};
 
 	export let data;
-	export let details;
 
-	const logoSize = calculateLogoSize(details);
+	console.log(data[0]);
 </script>
 
 <Splide
@@ -55,19 +55,32 @@
 						alt={item.title || item.name}
 					/>
 
-					<!-- <div class="logo absolute bottom-4 lg:bottom-9 left-6 lg:left-12">
-						<img
-							class="h-full {logoSize.logoWidth} {logoSize.logoMaxWidth} object-contain drop-shadow-2xl"
-							src={'https://image.tmdb.org/t/p/w500/' + details.images.logos[0].file_path}
-							alt={details.title}
-						/>
-					</div> -->
+					{#if item.images && item.images.logos[0]}
+						<div
+							in:fly={{ x: 50, duration: 600, delay: 150 }}
+							class="logo absolute bottom-4 lg:bottom-9 right-6 z-10 opacity-90 lg:right-12"
+						>
+							<img
+								class="h-full w-[calc(100vw/3)] max-w-xs object-contain drop-shadow-2xl"
+								src={'https://image.tmdb.org/t/p/w500/' + item.images.logos[0].file_path}
+								alt={item.title}
+							/>
+						</div>
+					{/if}
 					<div
-						class="absolute flex items-end justify-end bottom-0 rounded-b-xl bg-gradient-to-t from-black/50 w-full h-20"
+						class="absolute flex items-end justify-end bottom-0 rounded-b-xl bg-gradient-to-t from-black/50 w-full h-1/2"
 					>
-						<h1 class="md:text-lg sm:text-base text-sm text-slate-200 font-[Poppins] mr-4 mb-2">
-							{item.title || item.name}
-						</h1>
+						{#if item.last_episode_to_air}
+							<button
+								class="btn btn-ghost rounded-full btn-xs  sm:btn-md left-3 bottom-3 sm:bottom-1 lg:left-16 lg:bottom-6 absolute"
+							>
+								{#if item.last_episode_to_air.episode_number === item.number_of_episodes}
+									Strøm sesongfinalen nå
+								{:else}
+									Strøm episode {item.last_episode_to_air.episode_number} nå
+								{/if}
+							</button>
+						{/if}
 					</div>
 				</a>
 			</SplideSlide>
