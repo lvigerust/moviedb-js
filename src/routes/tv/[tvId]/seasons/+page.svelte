@@ -11,11 +11,17 @@
 		tv_id: tvDetails.id,
 		name: tvDetails.name
 	};
+
+	let seasons = tvDetails.seasons;
+
+	if (tvDetails.seasons[0].name === 'Specials') {
+		seasons = [...tvDetails.seasons.slice(1), tvDetails.seasons[0]];
+	}
 </script>
 
 <div class="container px-4 sm:px-0">
 	<div class="max-w-7xl mx-auto">
-		{#each tvDetails.seasons as season}
+		{#each seasons as season}
 			<Season
 				{...seasonInfo}
 				season_number={season.season_number}
