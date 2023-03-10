@@ -28,6 +28,7 @@ export const load = async ({ fetch }) => {
 		trendingTv.sort(dynamicSort('-popularity'));
 
 		// Set number of movies
+		// trendingTv.length = 5;
 
 		let showIds = trendingTv.map((show) => show.id);
 
