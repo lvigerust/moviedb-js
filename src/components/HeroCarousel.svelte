@@ -87,7 +87,7 @@
 							class="logo absolute bottom-4 lg:bottom-9 right-6 z-10 opacity-90 lg:right-12"
 						>
 							<img
-								class="h-full w-[calc(100vw/3)] max-w-xs object-contain drop-shadow-2xl"
+								class="h-full w-[calc(100vw/3)] max-h-[250px] max-w-xs object-contain drop-shadow-2xl"
 								src={'https://image.tmdb.org/t/p/w500/' + item.images.logos[0].file_path}
 								alt={item.title}
 							/>

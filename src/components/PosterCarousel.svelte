@@ -11,7 +11,7 @@
 	export let name = ' "name" ';
 
 	let breakpoints = {
-		428: {
+		390: {
 			padding: '1.25rem',
 			gap: '.6rem',
 			perPage: 2
@@ -36,7 +36,11 @@
 			padding: '5rem'
 		},
 		1440: {
-			perPage: 6
+			perPage: 6,
+			gap: '1rem'
+		},
+		1900: {
+			perPage: 7
 		}
 	};
 </script>
@@ -56,7 +60,7 @@
 			pagination: false,
 			rewind: true,
 			breakpoints: breakpoints,
-			perPage: 7,
+			perPage: 9,
 			speed: 800,
 			rewindSpeed: 1200,
 			flickPower: 500,

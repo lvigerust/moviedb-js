@@ -126,7 +126,9 @@
 			</div>
 			<div class="divider" />
 			<div class="current-season prose max-w-full">
-				{#if tvDetails.in_production}
+				{#if tvDetails.type === 'Miniseries' && tvDetails.in_production === false}
+					<h2>Miniseries</h2>
+				{:else if tvDetails.in_production}
 					<h2>Current season</h2>
 				{:else}
 					<h2>Latest season</h2>
