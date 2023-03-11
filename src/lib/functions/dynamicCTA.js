@@ -71,7 +71,11 @@ export function dynamicCTA(data) {
 				CTA = 'Episode ' + last_episode.episode_number + ' ute nå ';
 			} else if (next_episode) {
 				if ((next_episode_is_final = true)) {
-					CTA = 'Sesongfinalen kommer ' + next_episode_day;
+					if (days_until_episode < 1) {
+						CTA = 'Sesongfinale i morgen';
+					} else CTA = 'Sesongfinalen kommer ' + next_episode_day;
+				} else if (days_until_episode > 1) {
+					CTA = 'Ny episode i morgen';
 				} else CTA = 'Episode ' + next_episode.episode_number + ' kommer ' + next_episode_day;
 			}
 
