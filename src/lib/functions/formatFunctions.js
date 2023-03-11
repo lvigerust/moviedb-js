@@ -1,4 +1,8 @@
-export function getPremiereDate(first_air_date) {
+export function dateToSentence(date) {
+	if (typeof date !== 'object') {
+		date = new Date(date);
+	}
+
 	const months = [
 		'January',
 		'February',
@@ -14,34 +18,32 @@ export function getPremiereDate(first_air_date) {
 		'December'
 	];
 
-	const premiereDate = new Date(first_air_date);
-	let day = premiereDate.getDate();
-	let month = months[premiereDate.getMonth()];
-	let year = premiereDate.getFullYear();
+	let day = date.getDate();
+	let month = months[date.getMonth()];
+	let year = date.getFullYear();
 	return `${month} ${day}, ${year}`;
 }
 
-export function getTimeUntil(next_air_date) {
-	let today = new Date();
-	let air_date = new Date(next_air_date);
+export function getTimeUntil(date) {
+	if (typeof date !== 'object') {
+		date = new Date(date);
+	}
+	const timeLeft = date - new Date();
+	let days = timeLeft / (1000 * 60 * 60 * 24);
 
-	let diff = air_date.getTime() - today.getTime();
+	days = days.toFixed(2);
 
-	const formatDuration = (ms) => {
-		if (ms < 0) ms = -ms;
-		const time = {
-			day: Math.floor(ms / 86400000)
-			// hour: Math.floor(ms / 3600000) % 24
-			// minute: Math.floor(ms / 60000) % 60
-			// second: Math.floor(ms / 1000) % 60
-			// millisecond: Math.floor(ms) % 1000
-		};
-		return Object.entries(time)
-			.filter((val) => val[1] !== 0)
-			.map((val) => val[1] + ' ' + (val[1] !== 1 ? val[0] + 's' : val[0]))
-			.join(' and ');
-	};
-	return formatDuration(diff);
+	return days;
+}
+
+export function getAirDate(date) {
+	if (typeof date !== 'object') {
+		date = new Date(date);
+	}
+	const weekday = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
+	let dayOfWeek = weekday[date.getDay()];
+
+	return dayOfWeek;
 }
 
 export function getRuntime(minutes) {

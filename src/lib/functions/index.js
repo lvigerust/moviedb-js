@@ -1,5 +1,6 @@
 export {
-	getPremiereDate,
+	dateToSentence,
+	getAirDate,
 	getTimeUntil,
 	getRuntime,
 	dynamicSort,

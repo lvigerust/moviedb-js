@@ -1,42 +1,32 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { getPremiereDate, calculateLogoSize, getTimeUntil } from '$functions';
+	import { calculateLogoSize, getTimeUntil, getAirDate, slugify } from '$functions';
 	import { Breadcrumbs, WatchProviders, Season } from '$components';
 
 	export let data;
 	const { tvDetails, tvProviders } = data;
 
-	function getCurrentSeason(last_episode_air_date) {
-		const result = tvDetails.seasons.find(
-			({ season_number }) => season_number === last_episode_air_date
-		);
-		return result;
-	}
-
-	const currentSeasonInfo = {
-		tv_id: tvDetails.id,
-		season_number: tvDetails.last_episode_to_air.season_number,
-		name: tvDetails.name,
-		poster_path:
-			getCurrentSeason(tvDetails.last_episode_to_air.season_number).poster_path ||
-			tvDetails.seasons[0].poster_path,
-		release_year: new Date(getCurrentSeason(tvDetails.last_episode_to_air.season_number).air_date),
-		episode_count: getCurrentSeason(tvDetails.last_episode_to_air.season_number).episode_count,
-		premiere_date: getPremiereDate(
-			getCurrentSeason(tvDetails.last_episode_to_air.season_number).air_date
-		)
-	};
-
 	const logoSize = calculateLogoSize(tvDetails);
+	const latestSeason = tvDetails.seasons.slice(-1)[0];
+	const latestSeasonInfo = {
+		show: tvDetails.name,
+		id: tvDetails.id,
+		number: latestSeason.season_number,
+		poster: latestSeason.poster_path,
+		release_year: latestSeason.air_date,
+		episode_count: latestSeason.episode_count,
+		premiere_date: latestSeason.air_date,
+		name: latestSeason.name
+	};
 </script>
 
 <div class="hero full-hero">
 	<div class="container px-4 sm:px-0">
 		<div class="tv xl:mx-[10vw]">
-			<div class="hero-image relative">
+			<div class="hero-image relative mt-1">
 				<img
-					class="rounded-lg shadow-xl xl:rounded-xl"
-					src={'https://image.tmdb.org/t/p/w1280/' + tvDetails.backdrop_path}
+					class="rounded-lg shadow-xl shadow-black/40 xl:rounded-xl"
+					src={'https://image.tmdb.org/t/p/original/' + tvDetails.backdrop_path}
 					alt={tvDetails.name}
 				/>
 				<div
@@ -105,14 +95,14 @@
 						<p>{tvDetails.overview}</p>
 						<p>
 							{#if tvDetails.next_episode_to_air}
-								{#if getTimeUntil(tvDetails.next_episode_to_air.air_date)}
-									Next episode:
-									<span class="font-semibold">
-										{getTimeUntil(tvDetails.next_episode_to_air.air_date)}
-									</span>
+								Next episode:
+
+								{#if getTimeUntil(tvDetails.next_episode_to_air.air_date) < 1}
+									<span class="font-semibold"> Tomorrow </span>
 								{:else}
-									Next episode:
-									<span class="font-semibold"> Today </span>
+									<span class="font-semibold">
+										{getAirDate(tvDetails.next_episode_to_air.air_date)}
+									</span>
 								{/if}
 							{/if}
 						</p>
@@ -131,15 +121,17 @@
 				{:else if tvDetails.in_production}
 					<h2>Current season</h2>
 				{:else}
-					<h2>Latest season</h2>
+					<h2>Last season</h2>
 				{/if}
 
 				<div class="mb-4">
-					<Season {...currentSeasonInfo} />
+					<Season {...latestSeasonInfo} />
 				</div>
 
 				{#if tvDetails.seasons.length > 1 && tvDetails.seasons.slice(-1).pop().air_date}
-					<a class="no-underline" href={`/tv/${tvDetails.id}/seasons`}>View all seasons</a>
+					<a class="no-underline" href={`/tv/${tvDetails.id}-${slugify(tvDetails.name)}/seasons`}
+						>View all seasons</a
+					>
 				{/if}
 			</div>
 		</div>

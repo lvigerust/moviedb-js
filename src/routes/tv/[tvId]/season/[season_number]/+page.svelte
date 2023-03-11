@@ -1,5 +1,5 @@
 <script>
-	import { getPremiereDate, getRuntime } from '$functions';
+	import { dateToSentence, getRuntime } from '$functions';
 	import { Breadcrumbs } from '$components';
 
 	export let data;
@@ -22,7 +22,7 @@
 					<span class="font-normal">({new Date(seasonDetails.air_date).getFullYear()})</span>
 				</h2>
 				<a href={`/tv/` + tvDetails.id}>
-					<p>Back to main</p>
+					<p>Back to overview</p>
 				</a>
 			</div>
 		</div>
@@ -60,7 +60,7 @@
 									<h4>{episode.name}</h4>
 								</div>
 								<div class="facts text-sm sm:text-right">
-									<p>{getPremiereDate(episode.air_date)}</p>
+									<p>{dateToSentence(episode.air_date)}</p>
 
 									{#if episode.runtime}
 										<p>{getRuntime(episode.runtime)}</p>

@@ -1,6 +1,6 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { getPremiereDate, getRuntime, calculateLogoSize } from '$functions';
+	import { dateToSentence, getRuntime, calculateLogoSize } from '$functions';
 	import { Breadcrumbs, WatchProviders } from '$components';
 
 	export let data;
@@ -13,10 +13,10 @@
 <div class="hero full-hero">
 	<div class="container  px-4 sm:px-2">
 		<div class="movie xl:mx-[10vw]">
-			<div class="hero-image relative">
+			<div class="hero-image relative mt-1">
 				<img
-					class="rounded-lg shadow-xl xl:rounded-xl"
-					src={'https://image.tmdb.org/t/p/w1280/' + movieDetails.backdrop_path}
+					class="rounded-lg shadow-xl shadow-black/40 xl:rounded-xl"
+					src={'https://image.tmdb.org/t/p/original/' + movieDetails.backdrop_path}
 					alt={movieDetails.title}
 				/>
 				<div
@@ -43,7 +43,7 @@
 						class="facts sm:bg-base-100 sm:border-0 bg-base-200 w-screen sm:w-full relative -ml-[50vw] sm:ml-0 sm:left-0 left-[50%] py-2 border-y border-solid border-base-300 flex flex-wrap gap-x-2 justify-center items-center sm:justify-start "
 					>
 						<div class="release">
-							<p class="m-0">{getPremiereDate(movieDetails.release_date)}</p>
+							<p class="m-0">{dateToSentence(movieDetails.release_date)}</p>
 						</div>
 						<div class="font-bold text-lg select-none">&bullet;</div>
 						<div class="runtime md:order-last">
