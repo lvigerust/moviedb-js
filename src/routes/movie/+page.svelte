@@ -9,7 +9,7 @@
 </script>
 
 <div class="full-hero flex flex-col justify-between">
-	<div class="flex flex-col gap-2">
+	<div class="flex flex-col sm:gap-2">
 		<div class="sm:mb-4">
 			<HeroCarousel data={trendingMoviesDetails} />
 		</div>
