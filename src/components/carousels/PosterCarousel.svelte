@@ -12,12 +12,11 @@
 
 	let breakpoints = {
 		390: {
-			padding: '1.25rem',
 			gap: '.6rem',
 			perPage: 2
 		},
 		640: {
-			padding: '1.5rem',
+			padding: '1rem',
 			perPage: 3
 		},
 
@@ -45,56 +44,54 @@
 	};
 </script>
 
-<div class="bg-base-100 -mt-8 mb-5 sm:-mt-6">
-	<h2
-		id="carousel-heading"
-		class="max-[428px]:pl-5 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 font-medium sm:font-semibold text-xl sm:text-2xl inline"
-	>
-		{name}
-	</h2>
-	<Splide
-		class="-mt-3 sm:-mt-2"
-		aria-labelledby="carousel-heading"
-		hasTrack={false}
-		options={{
-			pagination: false,
-			rewind: true,
-			breakpoints: breakpoints,
-			perPage: 9,
-			speed: 800,
-			rewindSpeed: 1200,
-			flickPower: 500,
-			drag: 'free',
-			gap: '1.2rem',
-			padding: '6rem',
-			easing: 'cubic-bezier(0.65, 0, 0.35, 1)'
-		}}
-	>
-		<SplideTrack>
-			{#each data as item}
-				<SplideSlide>
-					<a
-						href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
-						title={item.title || item.name}
-					>
-						<div class="flex justify-center my-6 mb-8">
-							<img
-								class="rounded-lg shadow-lg shadow-black/50 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"
-								src={'https://image.tmdb.org/t/p/w500/' + item.poster_path}
-								alt={item.title || item.name}
-							/>
-						</div>
-					</a>
-				</SplideSlide>
-			{/each}
-		</SplideTrack>
+<h2
+	id="carousel-heading"
+	class="max-[428px]:pl-5 pl-6 sm:pl-8 md:pl-12 lg:pl-20 xl:pl-24 font-medium sm:font-semibold text-xl sm:text-2xl inline"
+>
+	{name}
+</h2>
+<Splide
+	class="-mt-3"
+	aria-labelledby="carousel-heading"
+	hasTrack={false}
+	options={{
+		pagination: false,
+		rewind: true,
+		breakpoints: breakpoints,
+		perPage: 9,
+		speed: 800,
+		rewindSpeed: 1200,
+		flickPower: 500,
+		drag: 'free',
+		gap: '1.1rem',
+		padding: '6rem',
+		easing: 'cubic-bezier(0.65, 0, 0.35, 1)'
+	}}
+>
+	<SplideTrack>
+		{#each data as item}
+			<SplideSlide>
+				<a
+					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
+					title={item.title || item.name}
+				>
+					<div class="flex justify-center my-6 sm:mb-8">
+						<img
+							class="rounded-lg shadow-lg shadow-black/30 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"
+							src={'https://image.tmdb.org/t/p/w500/' + item.poster_path}
+							alt={item.title || item.name}
+						/>
+					</div>
+				</a>
+			</SplideSlide>
+		{/each}
+	</SplideTrack>
 
-		<div class="splide__arrows">
-			<button class="splide__arrow splide__arrow--prev">&#8249;</button>
-			<button class="splide__arrow splide__arrow--next">&#8250;</button>
-		</div>
-	</Splide>
-</div>
+	<div class="splide__arrows">
+		<button class="splide__arrow splide__arrow--prev">&#8249;</button>
+		<button class="splide__arrow splide__arrow--next">&#8250;</button>
+	</div>
+</Splide>
 
 <style>
 	.splide__arrow {
@@ -114,6 +111,6 @@
 	}
 
 	#carousel-heading {
-		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
+		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 	}
 </style>

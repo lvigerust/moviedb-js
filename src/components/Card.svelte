@@ -1,15 +1,17 @@
 <script>
+	import { slugify } from '$functions';
+
 	export let request;
 
 	const releaseDate = new Date(request.release_date || request.first_air_date);
 	const releaseYear = releaseDate.getFullYear();
 
-	export let type = '';
+	export let type;
 </script>
 
 <div class="card mt-6 max-w-[15rem]">
-	<a href={`/${type}/` + request.id}>
-		<div class="image sm:hover:scale-105 transition-transform shadow-lg">
+	<a href={`/${type}/${request.id}-${slugify(request.title || request.name)}`}>
+		<div class="image sm:hover:scale-105 duration-200 transition-transform shadow-lg">
 			<div class="wrapper">
 				<img
 					class="rounded-lg"

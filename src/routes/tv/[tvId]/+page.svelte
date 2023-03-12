@@ -7,7 +7,12 @@
 	const { tvDetails, tvProviders } = data;
 
 	const logoSize = calculateLogoSize(tvDetails);
-	const latestSeason = tvDetails.seasons.slice(-1)[0];
+
+	let latestSeason;
+	if (tvDetails.seasons.slice(-1)[0].air_date) {
+		latestSeason = tvDetails.seasons.slice(-1)[0];
+	} else latestSeason = tvDetails.seasons.slice(-2)[0];
+
 	const latestSeasonInfo = {
 		show: tvDetails.name,
 		id: tvDetails.id,
@@ -124,7 +129,7 @@
 					<h2>Last season</h2>
 				{/if}
 
-				<div class="mb-4">
+				<div class="mb-5">
 					<Season {...latestSeasonInfo} />
 				</div>
 

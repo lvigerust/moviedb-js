@@ -24,6 +24,17 @@ export function dateToSentence(date) {
 	return `${month} ${day}, ${year}`;
 }
 
+export function getTimeSince(date) {
+	if (typeof date !== 'object') {
+		date = new Date(date);
+	}
+
+	let seconds = Math.floor((new Date() - date) / 1000);
+	let days = Math.floor(seconds / 86400);
+
+	return days;
+}
+
 export function getTimeUntil(date) {
 	if (typeof date !== 'object') {
 		date = new Date(date);

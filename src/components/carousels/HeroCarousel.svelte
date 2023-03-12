@@ -38,40 +38,35 @@
 </script>
 
 <Splide
-	class="mb-2 lg:mb-6"
 	hasTrack={false}
 	options={{
-		// wheel: true,
-		// waitForTransition: true,
-		// wheelMinThreshold: 15,
 		pagination: false,
 		arrows: false,
-		autoplay: true,
+		autoplay: false,
 		interval: 10000,
 		start: startIndex,
 		breakpoints: breakpoints,
-		// speed: 2000,
 		easing: 'cubic-bezier(.65, 1.2, 0.45, 1)',
 		padding: '17rem',
-		gap: '2.5rem',
+		gap: '2rem',
 		type: 'loop'
 	}}
 >
 	<SplideTrack>
-		{#each data.slice(0, 10) as item}
+		{#each data.slice(0, 14) as item}
 			<SplideSlide class="flex justify-center">
 				<a
 					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
 					title={item.title || item.name}
-					class="mb-12 mt-1 max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[400px] 2xl:max-h-[480px] w-full relative sm:hover:scale-[101%] transition-all outline outline-transparent rounded-xl sm:hover:outline-slate-500/25 duration-200"
+					class="mb-7 mt-1 max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[400px] 2xl:max-h-[480px] w-full relative sm:hover:scale-[101%] transition-all outline outline-transparent rounded-xl sm:hover:outline-slate-500/25 duration-200"
 				>
 					<img
-						class="shadow-xl shadow-black/50 rounded-xl w-full h-full object-cover"
+						class="shadow-lg shadow-black/40 rounded-xl w-full h-full object-cover"
 						src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
 						alt={item.title || item.name}
 					/>
 
-					{#if item.displayNetwork === true}
+					<!-- {#if item.displayNetwork === true}
 						<div class="absolute top-6 right-8 opacity-75">
 							<img
 								class="h-full w-28 object-contain"
@@ -79,7 +74,7 @@
 								alt=""
 							/>
 						</div>
-					{/if}
+					{/if} -->
 
 					{#if item.images && item.images.logos[0]}
 						<div

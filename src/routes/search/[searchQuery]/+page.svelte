@@ -4,7 +4,7 @@
 
 	/** @type {import('./$types').PageData} */
 	export let data;
-	let { query, multiSearch } = data;
+	let { multiSearch } = data;
 
 	let movieResults = multiSearch.filter(function (arr) {
 		return arr.media_type == 'movie';

@@ -10,7 +10,9 @@
 
 <div class="full-hero flex flex-col justify-between">
 	<div class="flex flex-col gap-2">
-		<HeroCarousel data={trendingMoviesDetails} />
+		<div class="sm:mb-4">
+			<HeroCarousel data={trendingMoviesDetails} />
+		</div>
 		<PosterCarousel data={trendingMovies} name="Topp filmer i dag" />
 		<PosterCarousel data={topRatedMovies} name="Kritikerroste filmer" />
 		<PosterCarousel data={popularMovies} name="Populært nå" />

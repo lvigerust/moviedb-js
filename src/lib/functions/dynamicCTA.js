@@ -1,41 +1,37 @@
-let getTimeSince = function (date) {
+import { getAirDate, getTimeSince, getTimeUntil } from '$functions';
+
+function dateToSentence(date) {
 	if (typeof date !== 'object') {
 		date = new Date(date);
 	}
 
-	let seconds = Math.floor((new Date() - date) / 1000);
-	let days = Math.floor(seconds / 86400);
+	const months = [
+		'Januar',
+		'Februar',
+		'Mars',
+		'April',
+		'Mai',
+		'Juni',
+		'Juli',
+		'August',
+		'September',
+		'Oktober',
+		'November',
+		'Desember'
+	];
 
-	return days;
-};
-
-let getTimeUntil = function (date) {
-	if (typeof date !== 'object') {
-		date = new Date(date);
-	}
-	const timeLeft = date - new Date();
-	let days = timeLeft / (1000 * 60 * 60 * 24);
-
-	days = days.toFixed(2);
-
-	return days;
-};
-
-let getAirDate = function (date) {
-	if (typeof date !== 'object') {
-		date = new Date(date);
-	}
-	const weekday = ['Søndag', 'Mandag', 'Tirsdag', 'Onsdag', 'Torsdag', 'Fredag', 'Lørdag'];
-	let dayOfWeek = weekday[date.getDay()];
-
-	return dayOfWeek;
-};
+	let day = date.getDate();
+	let month = months[date.getMonth()];
+	let year = date.getFullYear();
+	return `${day}. ${month}`;
+}
 
 export function dynamicCTA(data) {
 	let show, movie;
 
 	let CTA = 'Not set';
 
+	// TV Show Call to Action
 	if (data.name) {
 		show = data;
 
@@ -52,35 +48,40 @@ export function dynamicCTA(data) {
 		let next_episode;
 		let days_until_episode;
 		let next_episode_day;
-		let next_episode_is_final = false;
-
-		if (show.next_episode) {
-			if (show.next_episode.episode_number === last_season.episode_count) {
-				next_episode_is_final = true;
-			}
-		}
+		let next_episode_is_final;
 
 		if (active) {
+			CTA = show.tagline;
+			// Sjekk om neste episode finnes
 			if (show.next_episode_to_air) {
 				next_episode = show.next_episode_to_air;
 				days_until_episode = getTimeUntil(next_episode.air_date);
 				next_episode_day = getAirDate(next_episode.air_date);
+				if (next_episode.episode_number === last_season.episode_count) {
+					next_episode_is_final = true;
+				}
 			}
 
+			// Sjekk om dager til neste episode er større enn dager siden forrige episode
 			if (days_until_episode > days_since_episode) {
-				CTA = 'Episode ' + last_episode.episode_number + ' ute nå ';
+				CTA = `Episode ${last_episode.episode_number} ute nå`;
 			} else if (next_episode) {
-				if ((next_episode_is_final = true)) {
-					if (days_until_episode < 1) {
-						CTA = 'Sesongfinale i morgen';
-					} else CTA = 'Sesongfinalen kommer ' + next_episode_day;
-				} else if (days_until_episode > 1) {
-					CTA = 'Ny episode i morgen';
-				} else CTA = 'Episode ' + next_episode.episode_number + ' kommer ' + next_episode_day;
+				if (next_episode_is_final === true && days_until_episode < 1) {
+					CTA = `Sesongfinalen kommer i morgen`;
+					if (days_until_episode < 0) {
+						CTA = 'Se sesongfinalen i dag';
+					}
+				} else {
+					if (days_until_episode > 6) {
+						CTA = `Episode ${next_episode.episode_number} kommer ${dateToSentence(
+							next_episode.air_date
+						)}`;
+					} else CTA = `Episode ${next_episode.episode_number} kommer ${next_episode_day}`;
+				}
 			}
 
 			if (last_episode.episode_number === last_season.episode_count && days_since_episode > 10) {
-				CTA = 'Se hele sesong ' + last_season.season_number + ' nå';
+				CTA = `Se sesong ${last_season.season_number}`;
 			} else if (last_episode.episode_number === last_season.episode_count) {
 				CTA = 'Se sesongfinalen';
 			}
@@ -89,11 +90,13 @@ export function dynamicCTA(data) {
 				CTA = 'Miniserie';
 			} else if (show.tagline) {
 				CTA = show.tagline;
-			} else CTA = 'Strøm hele serien  nå';
+			} else CTA = 'Strøm hele serien';
 		}
-
 		return CTA.toUpperCase();
-	} else if (data.title) {
+	}
+
+	// Movies Call to Action
+	else if (data.title) {
 		movie = data;
 
 		CTA = movie.tagline;
