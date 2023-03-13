@@ -42,7 +42,7 @@
 	options={{
 		pagination: false,
 		arrows: false,
-		autoplay: false,
+		autoplay: true,
 		interval: 10000,
 		start: startIndex,
 		breakpoints: breakpoints,
@@ -80,12 +80,12 @@
 						class="absolute flex items-end bottom-0 rounded-b-xl bg-gradient-to-t from-black/50 w-full h-1/2 "
 					>
 						<div
-							class="flex gap-4 items-end justify-between w-full m-3 lg:m-5 2xl:m-10 2xl:mx-14 lg:mx-8"
+							class="flex gap-0 items-end justify-between w-full m-3 lg:m-5 lg:mx-8 2xl:m-10 2xl:mx-16"
 						>
 							<div class="cta basis-1/2">
 								{#if item.CTA}
 									<button
-										class="btn btn-ghost text-slate-300/90 rounded-full btn-xs sm:btn-md normal-case text-start py-1 h-fit"
+										class="btn btn-ghost text-slate-300/90 rounded-full btn-xs sm:btn-sm lg:btn-md normal-case text-[0.71rem] text-start py-1 h-fit"
 									>
 										{item.CTA}
 									</button>

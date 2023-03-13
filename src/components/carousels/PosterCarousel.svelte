@@ -52,6 +52,7 @@
 	hasTrack={false}
 	options={{
 		pagination: false,
+		arrows: false,
 		rewind: true,
 		breakpoints: breakpoints,
 		perPage: 9,
@@ -72,14 +73,14 @@
 		{/each}
 	</SplideTrack>
 
-	<div class="splide__arrows">
+	<!-- <div class="splide__arrows">
 		<button class="splide__arrow splide__arrow--prev">&#8249;</button>
 		<button class="splide__arrow splide__arrow--next">&#8250;</button>
-	</div>
+	</div> -->
 </Splide>
 
 <style>
-	.splide__arrow {
+	/* .splide__arrow {
 		background-color: transparent;
 		font-size: 4rem;
 		transition: opacity 150ms ease-in-out;
@@ -93,7 +94,7 @@
 	}
 	.splide__arrow--prev {
 		left: -20px;
-	}
+	} */
 
 	#carousel-heading {
 		text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);

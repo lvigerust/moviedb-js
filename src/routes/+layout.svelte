@@ -9,9 +9,9 @@
 	<meta name="description" content={$page.data.head ? `${$page.data.head.description}` : ''} />
 </svelte:head>
 
+<Navbar />
 <div class="overflow-hidden">
-	<Navbar />
-	<main class="layout-padding">
+	<main class="layout-padding ">
 		<slot />
 		<Breadcrumbs />
 	</main>
