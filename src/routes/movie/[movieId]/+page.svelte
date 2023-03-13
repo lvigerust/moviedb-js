@@ -77,11 +77,9 @@
 						{/if}
 					</div>
 				</div>
-				<div>
-					{#if movieProviders.results.NO}
-						<WatchProviders providers={movieProviders} />
-					{/if}
-				</div>
+				{#if movieProviders.results.NO}
+					<WatchProviders providers={movieProviders} />
+				{/if}
 			</div>
 			<div class="movie-collection">
 				{#if movieDetails.belongs_to_collection && movieDetails.belongs_to_collection.backdrop_path}

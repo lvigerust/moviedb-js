@@ -21,27 +21,29 @@
 	const provider = getProviders(providers);
 </script>
 
-<a href={link} target="_blank" rel="noreferrer">
-	<div class="providers">
-		<div class="p-2 shadow-md pb-1 rounded-md my-3 bg-base-200 lg:mt-7 lg:mr-4 w-fit">
-			<div class="flex flex-col-reverse justify-center gap-[0.25rem]">
-				<p class="text-[8px] font-light text-center border-t border-base-300 ">
-					Provided by JustWatch
-				</p>
-				<div class="flex items-center justify-between gap-2">
-					<div class="logo">
-						<img
-							class="w-10 h-10 rounded-md"
-							src={'http://image.tmdb.org/t/p/w500/' + provider.logo_path}
-							alt={provider.provider_name}
-						/>
-					</div>
-					<div class="text text-start leading-5 text-sm">
-						<p class="font-light">Watch on</p>
-						<p class="font-bold">{provider.provider_name}</p>
+<div class="w-fit">
+	<a href={link} target="_blank" rel="noreferrer">
+		<div class="providers">
+			<div class="p-2 shadow-md pb-1 rounded-md my-3 bg-base-200 lg:mt-7 lg:mr-4 w-fit">
+				<div class="flex flex-col-reverse justify-center gap-[0.25rem]">
+					<p class="text-[8px] font-light text-center border-t border-base-300 ">
+						Provided by JustWatch
+					</p>
+					<div class="flex items-center justify-between gap-2">
+						<div class="logo">
+							<img
+								class="w-10 h-10 rounded-md"
+								src={'http://image.tmdb.org/t/p/w500/' + provider.logo_path}
+								alt={provider.provider_name}
+							/>
+						</div>
+						<div class="text text-start leading-5 text-sm">
+							<p class="font-light">Watch on</p>
+							<p class="font-bold">{provider.provider_name}</p>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-</a>
+	</a>
+</div>

@@ -113,11 +113,9 @@
 						</p>
 					</div>
 				</div>
-				<div class="w-fit">
-					{#if tvProviders.results.NO}
-						<WatchProviders providers={tvProviders} />
-					{/if}
-				</div>
+				{#if tvProviders.results.NO}
+					<WatchProviders providers={tvProviders} />
+				{/if}
 			</div>
 			<div class="divider" />
 			<div class="current-season prose max-w-full">
