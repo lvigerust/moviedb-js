@@ -42,7 +42,7 @@
 	options={{
 		pagination: false,
 		arrows: false,
-		autoplay: true,
+		autoplay: false,
 		interval: 10000,
 		start: startIndex,
 		breakpoints: breakpoints,
@@ -76,28 +76,37 @@
 						</div>
 					{/if} -->
 
-					{#if item.images && item.images.logos[0]}
-						<div
-							in:fly={{ x: 50, duration: 600, delay: 150 }}
-							class="logo absolute bottom-4 lg:bottom-9 right-6 z-10 opacity-90 lg:right-12"
-						>
-							<img
-								class="h-full w-[calc(100vw/3)] max-h-[250px] max-w-xs object-contain drop-shadow-2xl"
-								src={'https://image.tmdb.org/t/p/w500/' + item.images.logos[0].file_path}
-								alt={item.title}
-							/>
-						</div>
-					{/if}
 					<div
-						class="absolute flex items-end justify-end bottom-0 rounded-b-xl bg-gradient-to-t from-black/50 w-full h-1/2"
+						class="absolute flex items-end bottom-0 rounded-b-xl bg-gradient-to-t from-black/50 w-full h-1/2 "
 					>
-						{#if item.CTA}
-							<button
-								class="btn btn-ghost text-slate-300/90 rounded-full btn-xs  sm:btn-md left-3 bottom-3 sm:bottom-1 lg:left-12 xl:left-16 lg:bottom-6 absolute normal-case"
-							>
-								{item.CTA}
-							</button>
-						{/if}
+						<div
+							class="flex gap-4 items-end justify-between w-full m-3 lg:m-5 2xl:m-10 2xl:mx-14 lg:mx-8"
+						>
+							<div class="cta basis-1/2">
+								{#if item.CTA}
+									<button
+										class="btn btn-ghost text-slate-300/90 rounded-full btn-xs sm:btn-md normal-case text-start py-1 h-fit"
+									>
+										{item.CTA}
+									</button>
+								{/if}
+							</div>
+
+							{#if item.images && item.images.logos[0]}
+								<div
+									in:fly={{ x: 50, duration: 600, delay: 150 }}
+									class="logo basis-1/2 flex justify-end"
+								>
+									<div class="w-3/4 lg:w-11/12 flex justify-end">
+										<img
+											class="h-full max-h-[100px] sm:max-h-[125px] md:max-h-[200px] object-contain opacity-90"
+											src={'https://image.tmdb.org/t/p/w500/' + item.images.logos[0].file_path}
+											alt={item.title || item.name}
+										/>
+									</div>
+								</div>
+							{/if}
+						</div>
 					</div>
 				</a>
 			</SplideSlide>

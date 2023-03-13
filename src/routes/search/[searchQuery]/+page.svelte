@@ -2,6 +2,7 @@
 	import { dynamicSort } from '$functions';
 	import { Card } from '$components';
 	import { fade, fly } from 'svelte/transition';
+	import Avatar from './Avatar.svelte';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
@@ -25,31 +26,40 @@
 		.sort(dynamicSort('-popularity'))
 		.filter((show) => show.popularity > 1 && show.poster_path);
 
+	people = people.sort(dynamicSort('-popularity')).filter((person) => person.popularity > 1);
+
+	if (movies.length > 12) {
+		movies.length = 12;
+	}
+
+	if (shows.length > 12) {
+		shows.length = 12;
+	}
+
+	movies.total_popularity = movies.slice(0, 3).reduce((n, { popularity }) => n + popularity, 0);
+	shows.total_popularity = shows.slice(0, 3).reduce((n, { popularity }) => n + popularity, 0);
+
 	let reverse = false;
-
-	let staggerSpeed = 50;
-
+	let staggerSpeed = 40;
 	let moviesDelay = 400;
 	let showsDelay = 400 + movies.length * staggerSpeed;
 	let dividerDelay;
 
-	if (movies.length && shows.length) {
-		if (movies[0].popularity && shows[0].popularity) {
-			if (movies[0].popularity < shows[0].popularity) {
-				reverse = true;
-				moviesDelay = 400 + shows.length * staggerSpeed;
-				showsDelay = 400;
-			}
-			dividerDelay = Math.max(moviesDelay, showsDelay) + 250 + 400;
-		}
+	if (movies.total_popularity < shows.total_popularity) {
+		reverse = true;
+		moviesDelay = 400 + shows.length * staggerSpeed;
+		showsDelay = 400;
 	}
+	dividerDelay = Math.max(moviesDelay, showsDelay) + 250 + 400;
 </script>
 
 <div class="full-hero flex flex-col justify-between">
 	<div class="flex flex-col container px-4 sm:px-0" class:flex-col-reverse={reverse}>
 		<div class="movies">
 			{#if movies.length}
-				<h1 class="font-semibold text-2xl mb-4" in:fly={{ y: 150, delay: moviesDelay }}>Movies</h1>
+				<h4 class="font-semibold text-2xl mb-2 sm:mb-3" in:fly={{ y: 150, delay: moviesDelay }}>
+					Movies
+				</h4>
 				<div class="grid-layout">
 					{#each movies as movie, index}
 						<div in:fly={{ y: 150, delay: moviesDelay + index * staggerSpeed }}>
@@ -66,7 +76,9 @@
 
 		<div class="shows">
 			{#if shows.length}
-				<h1 class="font-semibold text-2xl mb-4" in:fly={{ y: 150, delay: showsDelay }}>TV Shows</h1>
+				<h4 class="font-semibold text-2xl mb-2 sm:mb-3" in:fly={{ y: 150, delay: showsDelay }}>
+					TV Shows
+				</h4>
 
 				<div class="grid-layout">
 					{#each shows as show, index}
@@ -77,5 +89,11 @@
 				</div>
 			{/if}
 		</div>
+
+		<!-- <div class="people">
+			{#each people as person}
+				<Avatar data={person} />
+			{/each}
+		</div> -->
 	</div>
 </div>
