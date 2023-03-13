@@ -10,10 +10,8 @@
 </svelte:head>
 
 <Navbar />
-<div class="overflow-hidden">
-	<main class="layout-padding ">
-		<slot />
-		<Breadcrumbs />
-	</main>
-	<Footer />
-</div>
+<main class="layout-padding">
+	<slot />
+	<Breadcrumbs />
+</main>
+<Footer />
