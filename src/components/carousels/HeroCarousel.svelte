@@ -22,36 +22,33 @@
 		});
 	}
 
-	let breakpoints = {
-		428: {
-			padding: '1rem'
-		},
-		640: { padding: '5rem', gap: '1.25rem' },
-
-		768: { padding: '6rem', gap: '1.5rem' },
-
-		1024: { padding: '10rem' },
-
-		1280: { padding: '12rem', gap: '2rem' },
-		1500: { padding: '15rem', gap: '2.5rem' }
-	};
-</script>
-
-<Splide
-	hasTrack={false}
-	options={{
+	let options = {
 		pagination: false,
 		arrows: false,
 		autoplay: true,
 		interval: 10000,
 		start: startIndex,
-		breakpoints: breakpoints,
+		breakpoints: {
+			428: {
+				padding: '1rem'
+			},
+			640: { padding: '5rem', gap: '1.25rem' },
+
+			768: { padding: '6rem', gap: '1.5rem' },
+
+			1024: { padding: '10rem' },
+
+			1280: { padding: '12rem', gap: '2rem' },
+			1500: { padding: '15rem', gap: '2.5rem' }
+		},
 		easing: 'cubic-bezier(.65, 1.2, 0.45, 1)',
 		padding: '17rem',
 		gap: '2rem',
 		type: 'loop'
-	}}
->
+	};
+</script>
+
+<Splide hasTrack={false} {options}>
 	<SplideTrack>
 		{#each data.slice(0, 14) as item}
 			<SplideSlide class="flex justify-center">
