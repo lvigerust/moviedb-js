@@ -79,10 +79,12 @@
 		{/each}
 	</SplideTrack>
 
-	<div class="splide__arrows">
-		<button class="splide__arrow splide__arrow--prev">&#8249;</button>
-		<button class="splide__arrow splide__arrow--next">&#8250;</button>
-	</div>
+	{#if desktop}
+		<div class="splide__arrows">
+			<button class="splide__arrow splide__arrow--prev">&#8249;</button>
+			<button class="splide__arrow splide__arrow--next">&#8250;</button>
+		</div>
+	{/if}
 </Splide>
 
 <style>
