@@ -1,5 +1,5 @@
 <script>
-	import { Breadcrumbs, Season } from '$components';
+	import { Season } from '$components';
 	import { slugify } from '$functions';
 
 	/** @type {import('./$types').PageData} */
@@ -15,11 +15,11 @@
 
 <div class="prose max-w-none flex justify-center">
 	<a class="no-underline" href={`/tv/${tvDetails.id}-${slugify(tvDetails.name)}`}>
-		<h3>Back to overview</h3>
+		<h3 class="m-0 text-base md:text-lg xl:text-xl">Back to overview</h3>
 	</a>
 </div>
 
-<div class="divider mx-auto my-10 container" />
+<div class="divider m-4 sm:container sm:my-6" />
 
 <div class="container px-4 sm:px-0">
 	<div class="max-w-7xl mx-auto flex flex-col gap-5">
@@ -37,4 +37,3 @@
 		{/each}
 	</div>
 </div>
-<Breadcrumbs />

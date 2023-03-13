@@ -17,7 +17,7 @@
 </script>
 
 {#if name === 'Specials'}
-	<div class="divider" />
+	<div class="divider m-0 sm:my-4" />
 {/if}
 
 <a href={`/tv/${id}-${slugify(show)}/season/${number}`} class="no-underline">

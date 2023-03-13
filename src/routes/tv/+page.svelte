@@ -1,6 +1,6 @@
 <script>
 	import { dynamicSort } from '$functions';
-	import { Breadcrumbs, PosterCarousel, HeroCarousel } from '$components';
+	import { PosterCarousel, HeroCarousel } from '$components';
 
 	export let data;
 	let { trendingTv, popularTv, topRatedTv, trendingTvDetails } = data;
@@ -17,5 +17,4 @@
 		<PosterCarousel data={topRatedTv} name="Kritikerroste serier" />
 		<PosterCarousel data={popularTv} name="Populært nå" />
 	</div>
-	<Breadcrumbs />
 </div>

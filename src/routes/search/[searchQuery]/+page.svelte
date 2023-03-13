@@ -1,71 +1,81 @@
 <script>
 	import { dynamicSort } from '$functions';
-	import { Breadcrumbs, Card } from '$components';
+	import { Card } from '$components';
+	import { fade, fly } from 'svelte/transition';
 
 	/** @type {import('./$types').PageData} */
 	export let data;
 	let { multiSearch } = data;
 
-	let movieResults = multiSearch.filter(function (arr) {
+	let movies = multiSearch.filter(function (arr) {
 		return arr.media_type == 'movie';
 	});
-	let tvResults = multiSearch.filter(function (arr) {
+	let shows = multiSearch.filter(function (arr) {
 		return arr.media_type == 'tv';
 	});
+	let people = multiSearch.filter(function (arr) {
+		return arr.media_type == 'person';
+	});
 
-	movieResults = movieResults
+	movies = movies
 		.sort(dynamicSort('-popularity'))
-		.filter((movie) => movie.popularity > 1);
+		.filter((movie) => movie.popularity > 1 && movie.poster_path);
 
-	tvResults = tvResults.sort(dynamicSort('-popularity')).filter((show) => show.popularity > 1);
+	shows = shows
+		.sort(dynamicSort('-popularity'))
+		.filter((show) => show.popularity > 1 && show.poster_path);
 
 	let reverse = false;
 
-	if (movieResults.length && tvResults.length) {
-		if (movieResults[0].popularity && tvResults[0].popularity) {
-			if (movieResults[0].popularity < tvResults[0].popularity) {
+	let staggerSpeed = 50;
+
+	let moviesDelay = 400;
+	let showsDelay = 400 + movies.length * staggerSpeed;
+	let dividerDelay;
+
+	if (movies.length && shows.length) {
+		if (movies[0].popularity && shows[0].popularity) {
+			if (movies[0].popularity < shows[0].popularity) {
 				reverse = true;
+				moviesDelay = 400 + shows.length * staggerSpeed;
+				showsDelay = 400;
 			}
+			dividerDelay = Math.max(moviesDelay, showsDelay) + 250 + 400;
 		}
 	}
 </script>
 
-<div class="hero full-hero">
-	<div class="container flex flex-col justify-between">
-		<div class="search flex flex-col" class:flex-col-reverse={reverse}>
-			{#if movieResults.length}
-				<div class="movie-grid">
-					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">Movies</h1>
-					<div class="movies search-grid">
-						{#each movieResults.slice(0, 12) as movie}
-							{#if movie.poster_path && movie.popularity > 1}
-								<Card type={'movie'} request={movie} />
-							{/if}
-						{/each}
-					</div>
-				</div>
-			{/if}
-
-			{#if movieResults.length && tvResults.length}
-				<div class="divider my-10" />
-			{/if}
-
-			{#if tvResults.length}
-				<div class="tv-grid">
-					<h1 class="text-xl sm:text-2xl font-bold -mb-2 text-start ml-3">TV Shows</h1>
-					<div class="tv search-grid">
-						{#each tvResults.slice(0, 6) as show}
-							{#if show.poster_path && show.popularity > 1}
-								<Card type={'tv'} request={show} />
-							{/if}
-						{/each}
-					</div>
+<div class="full-hero flex flex-col justify-between">
+	<div class="flex flex-col container px-4 sm:px-0" class:flex-col-reverse={reverse}>
+		<div class="movies">
+			{#if movies.length}
+				<h1 class="font-semibold text-2xl mb-4" in:fly={{ y: 150, delay: moviesDelay }}>Movies</h1>
+				<div class="grid-layout">
+					{#each movies as movie, index}
+						<div in:fly={{ y: 150, delay: moviesDelay + index * staggerSpeed }}>
+							<Card data={movie} info={true} margin={false} />
+						</div>
+					{/each}
 				</div>
 			{/if}
 		</div>
 
-		<div>
-			<Breadcrumbs />
+		{#if movies.length && shows.length}
+			<div in:fade={{ delay: dividerDelay }} class="divider container mt-6 sm:mb-8  sm:mt-10" />
+		{/if}
+
+		<div class="shows">
+			{#if shows.length}
+				<h1 class="font-semibold text-2xl mb-4" in:fly={{ y: 150, delay: showsDelay }}>TV Shows</h1>
+
+				<div class="grid-layout">
+					{#each shows as show, index}
+						<div in:fly={{ y: 150, delay: showsDelay + index * staggerSpeed }}>
+							<Card data={show} info={true} margin={false} />
+						</div>
+					{/each}
+				</div>
+			{/if}
 		</div>
 	</div>
 </div>

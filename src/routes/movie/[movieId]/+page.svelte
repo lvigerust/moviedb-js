@@ -1,7 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { dateToSentence, getRuntime, calculateLogoSize } from '$functions';
-	import { Breadcrumbs, WatchProviders } from '$components';
+	import { WatchProviders } from '$components';
 
 	export let data;
 	const { movieDetails, movieProviders } = data;
@@ -105,6 +105,5 @@
 				{/if}
 			</div>
 		</div>
-		<Breadcrumbs />
 	</div>
 </div>

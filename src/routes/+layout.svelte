@@ -1,6 +1,6 @@
 <script>
 	import '../app.css';
-	import { Navbar, Footer } from '$components';
+	import { Navbar, Footer, Breadcrumbs } from '$components';
 	import { page } from '$app/stores';
 </script>
 
@@ -9,8 +9,11 @@
 	<meta name="description" content={$page.data.head ? `${$page.data.head.description}` : ''} />
 </svelte:head>
 
-<Navbar />
-<main class="layout-padding">
-	<slot />
-</main>
-<Footer />
+<div class="overflow-hidden">
+	<Navbar />
+	<main class="layout-padding">
+		<slot />
+		<Breadcrumbs />
+	</main>
+	<Footer />
+</div>

@@ -1,7 +1,7 @@
 <script>
 	import { fly } from 'svelte/transition';
 	import { calculateLogoSize, getTimeUntil, getAirDate, slugify } from '$functions';
-	import { Breadcrumbs, WatchProviders, Season } from '$components';
+	import { WatchProviders, Season } from '$components';
 
 	export let data;
 	const { tvDetails, tvProviders } = data;
@@ -140,6 +140,5 @@
 				{/if}
 			</div>
 		</div>
-		<Breadcrumbs />
 	</div>
 </div>

@@ -1,30 +1,47 @@
 <script>
 	import { slugify } from '$functions';
 
-	export let request;
+	export let data;
+	export let info = false;
+	export let margin = true;
 
-	const releaseDate = new Date(request.release_date || request.first_air_date);
-	const releaseYear = releaseDate.getFullYear();
+	let marginClasses;
+	if (margin) {
+		marginClasses = 'my-6 sm:mb-8';
+	}
 
-	export let type;
+	let type;
+	let release_date;
+
+	if (data.title) {
+		type = 'movie';
+		if (data.release_date) {
+			release_date = new Date(data.release_date).getFullYear();
+		}
+	} else if (data.name) {
+		type = 'tv';
+
+		if (data.first_air_date) {
+			release_date = new Date(data.first_air_date).getFullYear();
+		}
+	}
 </script>
 
-<div class="card mt-6 max-w-[15rem]">
-	<a href={`/${type}/${request.id}-${slugify(request.title || request.name)}`}>
-		<div class="image sm:hover:scale-105 duration-200 transition-transform shadow-lg">
-			<div class="wrapper">
-				<img
-					class="rounded-lg"
-					src={'https://image.tmdb.org/t/p/w500' + request.poster_path}
-					alt={request.title || request.name}
-				/>
+<a href={`/${type}/${data.id}-${slugify(data.title || data.name)}`} title={data.title || data.name}>
+	<div class={marginClasses}>
+		<img
+			class="rounded-lg shadow-lg shadow-black/30 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"
+			src={'https://image.tmdb.org/t/p/w500/' + data.poster_path}
+			alt={data.title || data.name}
+		/>
+
+		{#if info}
+			<div class="prose mt-3">
+				<h4 class="mb-0 text-sm sm:text-base">{data.title || data.name}</h4>
+				{#if release_date}
+					<h5 class="text-xs sm:text-sm">{release_date}</h5>
+				{/if}
 			</div>
-		</div>
-	</a>
-	<div class="content flex flex-col pt-2 px-2 gap-1">
-		<h2 class="font-bold text-md leading-snug">{request.title || request.name}</h2>
-		{#if releaseYear}
-			<p class="text-sm">{releaseYear}</p>
 		{/if}
 	</div>
-</div>
+</a>

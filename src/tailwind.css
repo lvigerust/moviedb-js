@@ -11,14 +11,20 @@
 	}
 
 	.full-hero {
-		@apply min-h-[calc(100vh-64px-1rem-1rem)] lg:min-h-[calc(100vh-80px-2rem-1rem)] overflow-hidden;
+		@apply min-h-[calc(100vh-64px-1rem-1rem)] lg:min-h-[calc(100vh-80px-2rem-1rem)];
 	}
 
-	.search-grid {
-		@apply grid grid-cols-[repeat(auto-fill,_minmax(120px,_1fr))] sm:grid-cols-[repeat(auto-fill,_minmax(140px,_1fr))] lg:grid-cols-4 xl:grid-cols-6 gap-5 sm:gap-8;
+	.grid-layout {
+		@apply grid  
+		
+		gap-y-6 sm:gap-y-8
+		
+		max-[428px]:gap-x-[.6rem] gap-x-3 xl:gap-x-4
+		
+		max-[428px]:grid-cols-3 grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6;
 	}
 
 	.layout-padding {
-		@apply pt-4 sm:pt-6 lg:pt-8;
+		@apply mt-4 sm:mt-6 lg:mt-8;
 	}
 }

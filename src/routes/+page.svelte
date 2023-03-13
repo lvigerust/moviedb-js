@@ -1,12 +1,13 @@
 <script>
-	import { Search, Breadcrumbs } from '$components';
+	import { Search } from '$components';
+	import { fly } from 'svelte/transition';
 </script>
 
 <div class="hero full-hero">
 	<div class="sm:container w-full h-full flex flex-col">
 		<div class="hero h-full">
 			<div class="hero-content text-center h-full flex flex-col center gap-20">
-				<div class="text-start py-40">
+				<div out:fly={{ y: -500 }} class="text-start py-40">
 					<a href="/" class="">
 						<h1 class="text-4xl  sm:text-5xl font-bold inline ">Velkommen</h1>
 					</a>
@@ -17,7 +18,5 @@
 				</div>
 			</div>
 		</div>
-
-		<Breadcrumbs />
 	</div>
 </div>

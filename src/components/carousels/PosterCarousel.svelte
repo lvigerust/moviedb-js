@@ -1,11 +1,7 @@
 <script>
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
-	import { page } from '$app/stores';
-
-	import { slugify } from '$functions';
-
-	let type = $page.route.id.substring(1);
+	import { Card } from '$components';
 
 	export let data;
 	export let name = ' "name" ';
@@ -71,18 +67,7 @@
 	<SplideTrack>
 		{#each data as item}
 			<SplideSlide>
-				<a
-					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
-					title={item.title || item.name}
-				>
-					<div class="flex justify-center my-6 sm:mb-8">
-						<img
-							class="rounded-lg shadow-lg shadow-black/30 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"
-							src={'https://image.tmdb.org/t/p/w500/' + item.poster_path}
-							alt={item.title || item.name}
-						/>
-					</div>
-				</a>
+				<Card data={item} />
 			</SplideSlide>
 		{/each}
 	</SplideTrack>

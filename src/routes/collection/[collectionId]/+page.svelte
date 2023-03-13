@@ -1,6 +1,6 @@
 <script>
 	import { dynamicSort } from '$functions';
-	import { Breadcrumbs, Card } from '$components';
+	import { Card } from '$components';
 
 	export let data;
 	const { collectionDetails } = data;
@@ -29,6 +29,5 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs />
 	</div>
 </div>

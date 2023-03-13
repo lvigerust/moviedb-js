@@ -97,5 +97,10 @@
 				</li>
 			{/if}
 		{/if}
+
+		{#if $page.params.searchQuery}
+			<li><a href="/">Search</a></li>
+			<li><a href={''} class="capitalize">{$page.params.searchQuery}</a></li>
+		{/if}
 	</ul>
 </div>

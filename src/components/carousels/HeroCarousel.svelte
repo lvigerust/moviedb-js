@@ -42,7 +42,7 @@
 	options={{
 		pagination: false,
 		arrows: false,
-		autoplay: false,
+		autoplay: true,
 		interval: 10000,
 		start: startIndex,
 		breakpoints: breakpoints,
@@ -58,7 +58,7 @@
 				<a
 					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
 					title={item.title || item.name}
-					class="mb-7 mt-1 max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[400px] 2xl:max-h-[480px] w-full relative sm:hover:scale-[101%] transition-all outline outline-transparent rounded-xl sm:hover:outline-slate-500/25 duration-200"
+					class="mb-7 mt-2 max-h-[200px] sm:max-h-[250px] md:max-h-[300px] lg:max-h-[350px] xl:max-h-[400px] 2xl:max-h-[480px] w-full relative sm:hover:scale-[101%] transition-all outline outline-transparent rounded-xl sm:hover:outline-slate-500/25 duration-200"
 				>
 					<img
 						class="shadow-lg shadow-black/40 rounded-xl w-full h-full object-cover"

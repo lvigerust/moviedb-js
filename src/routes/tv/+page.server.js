@@ -10,10 +10,8 @@ export const load = async ({ fetch }) => {
 	};
 
 	const getTrendingTvDetailsEndpoint = async () => {
-		// Get trending movies
 		const trendingTv = await fetchTrendingTv();
 
-		// Sort movies by popularity
 		function dynamicSort(property) {
 			let sortOrder = 1;
 			if (property[0] === '-') {
@@ -26,9 +24,6 @@ export const load = async ({ fetch }) => {
 			};
 		}
 		trendingTv.sort(dynamicSort('-popularity'));
-
-		// Set number of movies
-		// trendingTv.length = 5;
 
 		let showIds = trendingTv.map((show) => show.id);
 

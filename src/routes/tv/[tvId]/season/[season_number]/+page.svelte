@@ -1,6 +1,5 @@
 <script>
 	import { dateToSentence, getRuntime } from '$functions';
-	import { Breadcrumbs } from '$components';
 
 	export let data;
 	const { tvDetails, seasonDetails } = data;
@@ -75,6 +74,5 @@
 				{/each}
 			</div>
 		</div>
-		<Breadcrumbs />
 	</div>
 </div>
