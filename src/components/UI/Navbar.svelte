@@ -53,7 +53,7 @@
 		<div class="navbar-start">
 			<div class="dropdown md:hidden">
 				<!-- svelte-ignore a11y-no-noninteractive-tabindex -->
-				<label for="" tabindex="0" class="btn btn-ghost btn-circle opacity-80">
+				<label for="" tabindex="0" class="btn-ghost btn-circle btn opacity-80">
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
 						class="h-5 w-5"
@@ -72,7 +72,7 @@
 				<ul
 					use:clickOutside
 					tabindex="0"
-					class="menu menu-compact dropdown-content mt-3.5 p-2 shadow bg-base-300/75 backdrop-blur-md font-[Poppins] rounded-box w-52"
+					class="dropdown-content menu rounded-box menu-compact mt-3.5 w-52 bg-base-300/75 p-2 font-[Poppins] shadow backdrop-blur-md"
 				>
 					<div>
 						<li><a class="opacity-80" href="/movie">Movies</a></li>
@@ -83,23 +83,23 @@
 			</div>
 			<a
 				href="/"
-				class="opacity-80 btn btn-ghost rounded-full hidden md:flex flex-col gap-4 normal-case lg:text-lg "
+				class="btn-ghost btn hidden flex-col gap-4 rounded-full normal-case opacity-80 md:flex lg:text-lg "
 			>
 				<p>VIGERUST</p>
 			</a>
 		</div>
-		<div class="navbar-center w-1/3 flex justify-center md:hidden opacity-80">
-			<a href="/" class="btn btn-ghost rounded-full normal-case  flex flex-col gap-3">
+		<div class="navbar-center flex w-1/3 justify-center opacity-80 md:hidden">
+			<a href="/" class="btn-ghost btn flex flex-col  gap-3 rounded-full normal-case">
 				<p>VIGERUST</p>
 			</a>
 		</div>
 		<div class="navbar-end opacity-80">
-			<ul class="menu menu-horizontal p-0 hidden md:flex font-[Poppins] normal-case">
+			<ul class="menu menu-horizontal hidden p-0 font-[Poppins] normal-case md:flex">
 				<li>
-					<a class="btn btn-ghost rounded-md  font-normal normal-case" href="/movie">Movies</a>
+					<a class="btn-ghost btn rounded-md  font-normal normal-case" href="/movie">Movies</a>
 				</li>
 				<li>
-					<a class="btn btn-ghost rounded-md font-normal normal-case" href="/tv">TV Shows</a>
+					<a class="btn-ghost btn rounded-md font-normal normal-case" href="/tv">TV Shows</a>
 				</li>
 				<!-- <li>
 					<a class="btn btn-ghost rounded-md font-normal normal-case" href="/login">Login</a>
@@ -112,7 +112,7 @@
 						<button
 							data-sveltekit-noscroll
 							aria-label="Toggle dark theme"
-							class="btn btn-ghost btn-circle"
+							class="btn-ghost btn-circle btn"
 							formaction="/?/setTheme&theme={darkTheme}&redirectTo={$page.url.pathname}"
 						>
 							<DarkmodeToggle symbol={'sun'} />
@@ -121,7 +121,7 @@
 						<button
 							data-sveltekit-noscroll
 							aria-label="Toggle light theme"
-							class="btn btn-ghost btn-circle"
+							class="btn-ghost btn-circle btn"
 							formaction="/?/setTheme&theme={lightTheme}&redirectTo={$page.url.pathname}"
 						>
 							<DarkmodeToggle symbol={'moon'} />

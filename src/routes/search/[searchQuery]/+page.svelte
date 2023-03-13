@@ -54,10 +54,10 @@
 </script>
 
 <div out:fly={{ y: -500 }} class="full-hero flex flex-col justify-between">
-	<div class="flex flex-col container px-4 sm:px-0" class:flex-col-reverse={reverse}>
+	<div class="container flex flex-col px-4 sm:px-0" class:flex-col-reverse={reverse}>
 		<div class="movies">
 			{#if movies.length}
-				<h4 class="font-semibold text-2xl mb-2 sm:mb-3" in:fly={{ y: 150, delay: moviesDelay }}>
+				<h4 class="mb-2 text-2xl font-semibold sm:mb-3" in:fly={{ y: 150, delay: moviesDelay }}>
 					Movies
 				</h4>
 				<div class="grid-layout">
@@ -71,12 +71,12 @@
 		</div>
 
 		{#if movies.length && shows.length}
-			<div in:fade={{ delay: dividerDelay }} class="divider container mt-6 sm:mb-8  sm:mt-10" />
+			<div in:fade={{ delay: dividerDelay }} class="container divider mt-6 sm:mb-8  sm:mt-10" />
 		{/if}
 
 		<div class="shows">
 			{#if shows.length}
-				<h4 class="font-semibold text-2xl mb-2 sm:mb-3" in:fly={{ y: 150, delay: showsDelay }}>
+				<h4 class="mb-2 text-2xl font-semibold sm:mb-3" in:fly={{ y: 150, delay: showsDelay }}>
 					TV Shows
 				</h4>
 

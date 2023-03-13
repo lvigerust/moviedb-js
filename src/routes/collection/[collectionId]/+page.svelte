@@ -11,7 +11,7 @@
 <div class="full-hero">
 	<div class="container px-4 sm:px-2">
 		<div class="collection">
-			<div class="collection-info text-center prose max-w-3xl mx-auto">
+			<div class="collection-info prose mx-auto max-w-3xl text-center">
 				<h2>{collectionDetails.name}</h2>
 				<p>
 					{collectionDetails.overview}
@@ -19,8 +19,8 @@
 			</div>
 
 			<div
-				class="collection-items grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] gap-x-5 sm:gap-x-8 mt-4
-			sm:flex flex-wrap justify-center"
+				class="collection-items mt-4 grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] flex-wrap justify-center
+			gap-x-5 sm:flex sm:gap-x-8"
 			>
 				{#each sortedCollection as movie}
 					{#if movie.poster_path}

@@ -1,4 +1,4 @@
-<footer class="footer footer-center p-10 bg-primary text-primary-content">
+<footer class="footer footer-center bg-primary p-10 text-primary-content">
 	<div class="flex flex-col gap-6">
 		<a
 			class="flex flex-col items-center gap-4"

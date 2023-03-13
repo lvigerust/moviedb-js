@@ -25,7 +25,7 @@
 	};
 </script>
 
-<div class="hero full-hero">
+<div class="full-hero hero">
 	<div class="container px-4 sm:px-0">
 		<div class="tv xl:mx-[10vw]">
 			<div class="hero-image relative mt-1">
@@ -48,17 +48,17 @@
 				</div>
 			</div>
 			<div class="tv-details flex flex-col lg:flex-row lg:justify-between">
-				<div class="prose mt-6 lg:mt-8 w-full">
-					<h1 class="title mb-4 sm:mb-0 text-3xl text-center sm:text-left sm:text-4xl">
+				<div class="prose mt-6 w-full lg:mt-8">
+					<h1 class="title mb-4 text-center text-3xl sm:mb-0 sm:text-left sm:text-4xl">
 						{tvDetails.name}
 						<span class="font-normal">({new Date(tvDetails.first_air_date).getFullYear()})</span>
 					</h1>
 
 					<div
-						class="facts sm:bg-base-100 sm:border-0 bg-base-200 w-screen sm:w-full relative -ml-[50vw] sm:ml-0 sm:left-0 left-[50%] py-2 border-y border-solid border-base-300 flex flex-wrap gap-x-2 justify-center items-center sm:justify-start "
+						class="facts relative left-[50%] -ml-[50vw] flex w-screen flex-wrap items-center justify-center gap-x-2 border-y border-solid border-base-300 bg-base-200 py-2 sm:left-0 sm:ml-0 sm:w-full sm:justify-start sm:border-0 sm:bg-base-100 "
 					>
 						<div class="seasons">
-							<a href={`/tv/${tvDetails.id}/seasons`} class="no-underline font-normal text-current">
+							<a href={`/tv/${tvDetails.id}/seasons`} class="font-normal text-current no-underline">
 								<p class="m-0 ">
 									{tvDetails.last_episode_to_air.season_number}
 									{#if tvDetails.last_episode_to_air.season_number > 1}
@@ -69,7 +69,7 @@
 								</p>
 							</a>
 						</div>
-						<div class="font-bold text-lg select-none">&bullet;</div>
+						<div class="select-none text-lg font-bold">&bullet;</div>
 						<div class="episodes">
 							<p class="m-0 ">
 								{tvDetails.number_of_episodes}
@@ -80,8 +80,8 @@
 								{/if}
 							</p>
 						</div>
-						<div class="genres basis-full sm:basis-[auto] flex justify-center flex-wrap gap-1">
-							<div class="font-bold hidden sm:inline  text-lg select-none mr-[0.15rem]">
+						<div class="genres flex basis-full flex-wrap justify-center gap-1 sm:basis-[auto]">
+							<div class="mr-[0.15rem] hidden select-none  text-lg font-bold sm:inline">
 								&bullet;
 							</div>
 							{#each tvDetails.genres.slice(0, 5) as genre, index}
@@ -93,7 +93,7 @@
 						</div>
 					</div>
 
-					<h4 class="italic font-light mt-8">{tvDetails.tagline}</h4>
+					<h4 class="mt-8 font-light italic">{tvDetails.tagline}</h4>
 
 					<div class="overview">
 						<h3>Overview</h3>

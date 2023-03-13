@@ -30,7 +30,7 @@
 <a href={`/${type}/${data.id}-${slugify(data.title || data.name)}`} title={data.title || data.name}>
 	<div class={marginClasses}>
 		<img
-			class="rounded-lg shadow-lg shadow-black/30 h-full w-96 sm:hover:scale-105 transition-all outline outline-transparent sm:hover:outline-slate-500/25 duration-200"
+			class="h-full w-96 rounded-lg shadow-lg shadow-black/30 outline outline-transparent transition-all duration-200 sm:hover:scale-105 sm:hover:outline-slate-500/25"
 			src={'https://image.tmdb.org/t/p/w500/' + data.poster_path}
 			alt={data.title || data.name}
 		/>

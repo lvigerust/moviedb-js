@@ -60,7 +60,7 @@
 	} = route;
 </script>
 
-<div class="text-sm breadcrumbs flex justify-center py-8">
+<div class="breadcrumbs flex justify-center py-8 text-sm">
 	<ul class="flex flex-wrap justify-center">
 		<li><a href="/">Home</a></li>
 

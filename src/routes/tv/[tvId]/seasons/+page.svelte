@@ -13,7 +13,7 @@
 	}
 </script>
 
-<div class="prose max-w-none flex justify-center">
+<div class="prose flex max-w-none justify-center">
 	<a class="no-underline" href={`/tv/${tvDetails.id}-${slugify(tvDetails.name)}`}>
 		<h3 class="m-0 text-base md:text-lg xl:text-xl">Back to overview</h3>
 	</a>
@@ -22,7 +22,7 @@
 <div class="divider m-4 sm:container sm:my-6" />
 
 <div class="container px-4 sm:px-0">
-	<div class="max-w-7xl mx-auto flex flex-col gap-5">
+	<div class="mx-auto flex max-w-7xl flex-col gap-5">
 		{#each seasons as season}
 			<Season
 				id={tvDetails.id}

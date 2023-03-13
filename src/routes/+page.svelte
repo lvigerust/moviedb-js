@@ -4,13 +4,13 @@
 </script>
 
 <div in:fly={{ y: 500, delay: 400 }} out:fly={{ y: -500 }} class="full-hero">
-	<div class="sm:container w-full h-full flex flex-col">
-		<div class="hero-content text-center h-full flex flex-col center gap-20">
-			<div class="text-start py-40">
+	<div class="flex h-full w-full flex-col sm:container">
+		<div class="center hero-content flex h-full flex-col gap-20 text-center">
+			<div class="py-40 text-start">
 				<a href="/" class="">
-					<h1 class="text-4xl  sm:text-5xl font-bold inline ">Velkommen</h1>
+					<h1 class="inline  text-4xl font-bold sm:text-5xl ">Velkommen</h1>
 				</a>
-				<h4 class="text-2xl sm:text-3xl font-semibold py-6">
+				<h4 class="py-6 text-2xl font-semibold sm:text-3xl">
 					Millioner av filmer, TV-serier og personer å oppdage. Utforsk nå.
 				</h4>
 				<Search />

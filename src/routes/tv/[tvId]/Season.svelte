@@ -22,19 +22,19 @@
 
 <a href={`/tv/${id}-${slugify(show)}/season/${number}`} class="no-underline">
 	<div
-		class="season flex bg-base-200 rounded-lg shadow-lg duration-200 sm:hover:scale-[102.5%] transition-transform"
+		class="season flex rounded-lg bg-base-200 shadow-lg transition-transform duration-200 sm:hover:scale-[102.5%]"
 	>
 		<div class="image-wrapper">
-			<div class="wrapper w-32 sm:w-36 h-full">
+			<div class="wrapper h-full w-32 sm:w-36">
 				<img
-					class="rounded-l-lg m-0"
+					class="m-0 rounded-l-lg"
 					src={'https://image.tmdb.org/t/p/w780/' + poster}
 					alt={`${show}-${name}`}
 				/>
 			</div>
 		</div>
-		<div class="content-wrapper flex flex-col justify-center px-4 sm:px-8 prose">
-			<h2 class="font-medium text-lg sm:text-2xl">
+		<div class="content-wrapper prose flex flex-col justify-center px-4 sm:px-8">
+			<h2 class="text-lg font-medium sm:text-2xl">
 				{#if number === 0}
 					Specials
 				{:else}
