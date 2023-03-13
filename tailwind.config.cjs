@@ -8,7 +8,10 @@ module.exports = {
 		}
 	},
 	daisyui: {
-		themes: ['garden', 'night']
+		logs: false,
+		themes: ['garden', 'night'],
+		darkTheme: 'night',
+		lightTheme: 'garden'
 	},
 
 	plugins: [require('@tailwindcss/typography'), require('daisyui')]
