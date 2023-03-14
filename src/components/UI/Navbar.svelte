@@ -1,9 +1,4 @@
 <script>
-	import { enhance } from '$app/forms';
-	import { onMount } from 'svelte';
-	import { page } from '$app/stores';
-
-	import DarkmodeToggle from '$lib/icons/DarkmodeToggle.svelte';
 	import { clickOutside } from '$functions';
 
 	let previousY = 0;
@@ -18,27 +13,6 @@
 
 	$: scrollDirection = deriveDirection(currentY);
 	$: offscreen = scrollDirection === 'down' && currentY > clientHeight * 2;
-
-	let currentTheme = '';
-	let lightTheme = 'garden';
-	let darkTheme = 'night';
-
-	onMount(() => {
-		if (document.documentElement.dataset.theme) {
-			currentTheme = document.documentElement.dataset.theme;
-		} else {
-			currentTheme = darkTheme;
-		}
-	});
-
-	const submitUpdateTheme = ({ action }) => {
-		const theme = action.searchParams.get('theme');
-		if (theme) {
-			document.documentElement.setAttribute('data-theme', theme);
-		}
-		currentTheme = theme;
-	};
-	export {};
 </script>
 
 <svelte:window bind:scrollY={currentY} />
@@ -77,7 +51,6 @@
 					<div>
 						<li><a class="opacity-80" href="/movie">Movies</a></li>
 						<li><a class="opacity-80" href="/tv">TV Shows</a></li>
-						<!-- <li><a href="/login">Login</a></li> -->
 					</div>
 				</ul>
 			</div>
@@ -101,33 +74,10 @@
 				<li>
 					<a class="btn-ghost btn rounded-md font-normal normal-case" href="/tv">TV Shows</a>
 				</li>
-				<!-- <li>
-					<a class="btn btn-ghost rounded-md font-normal normal-case" href="/login">Login</a>
-				</li> -->
 			</ul>
 
 			<div class="ml-4 w-12">
-				<form method="post" use:enhance={submitUpdateTheme}>
-					{#if currentTheme == lightTheme}
-						<button
-							data-sveltekit-noscroll
-							aria-label="Toggle dark theme"
-							class="btn-ghost btn-circle btn"
-							formaction="/?/setTheme&theme={darkTheme}&redirectTo={$page.url.pathname}"
-						>
-							<DarkmodeToggle symbol={'sun'} />
-						</button>
-					{:else if currentTheme == darkTheme}
-						<button
-							data-sveltekit-noscroll
-							aria-label="Toggle light theme"
-							class="btn-ghost btn-circle btn"
-							formaction="/?/setTheme&theme={lightTheme}&redirectTo={$page.url.pathname}"
-						>
-							<DarkmodeToggle symbol={'moon'} />
-						</button>
-					{/if}
-				</form>
+				<p>hei</p>
 			</div>
 		</div>
 	</div>
