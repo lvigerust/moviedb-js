@@ -32,7 +32,7 @@
 			428: {
 				padding: '1rem'
 			},
-			640: { padding: '5rem', gap: '1.25rem' },
+			640: { padding: '3rem', gap: '1.25rem' },
 
 			768: { padding: '6rem', gap: '1.5rem' },
 

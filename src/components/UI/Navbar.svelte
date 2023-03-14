@@ -1,5 +1,18 @@
 <script>
+	import { browser } from '$app/environment';
+	import { enhance } from '$app/forms';
+	import { page } from '$app/stores';
 	import { clickOutside } from '$functions';
+	import ThemeToggleIcon from './ThemeToggleIcon.svelte';
+
+	$: nextTheme =
+		$page.data.theme === 'auto'
+			? browser && window.matchMedia('(prefers-color-scheme: dark)').matches
+				? 'garden'
+				: 'night'
+			: $page.data.theme === 'night'
+			? 'garden'
+			: 'night';
 
 	let previousY = 0;
 	let currentY = 0;
@@ -76,8 +89,22 @@
 				</li>
 			</ul>
 
-			<div class="ml-4 w-12">
-				<p>hei</p>
+			<div class="ml-4">
+				<form
+					method="POST"
+					action="/?/theme"
+					use:enhance={() => {
+						console.log(nextTheme);
+
+						const htmlElement = document.querySelector('html');
+						htmlElement.setAttribute('data-theme', nextTheme);
+					}}
+				>
+					<input name="theme" value={nextTheme} hidden />
+					<button class="btn-ghost btn-circle btn">
+						<ThemeToggleIcon currentTheme={$page.data.theme} />
+					</button>
+				</form>
 			</div>
 		</div>
 	</div>
