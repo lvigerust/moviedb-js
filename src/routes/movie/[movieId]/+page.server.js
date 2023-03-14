@@ -21,7 +21,8 @@ export const load = ({ fetch, params }) => {
 		const data = await fetchMovieDetails(params.movieId);
 		const title = data.title;
 		const description = data.overview;
-		return { title, description };
+		const type = 'movie';
+		return { title, description, type };
 	};
 
 	return {

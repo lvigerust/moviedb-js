@@ -24,7 +24,7 @@
 			>
 				{#each sortedCollection as movie}
 					{#if movie.poster_path}
-						<Card type={'movie'} request={movie} />
+						<Card data={movie} />
 					{/if}
 				{/each}
 			</div>

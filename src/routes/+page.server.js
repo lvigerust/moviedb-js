@@ -16,3 +16,13 @@ export const actions = {
 		throw redirect(303, redirectTo ?? '/');
 	}
 };
+
+export const load = async ({}) => {
+	return {
+		head: {
+			title: 'Home | Stinkmeaner',
+			breadcrumb: 'Home',
+			path: '/'
+		}
+	};
+};

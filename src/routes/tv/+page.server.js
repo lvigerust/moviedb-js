@@ -75,7 +75,8 @@ export const load = async ({ fetch }) => {
 		head: {
 			title: 'TV Shows',
 			description:
-				'Oversikt over TV-serier. Sortert etter serier som trender akkurat nå, er populære på The Movie Database eller høyt vurdert på IMDB.com'
+				'Oversikt over TV-serier. Sortert etter serier som trender akkurat nå, er populære på The Movie Database eller høyt vurdert på IMDB.com',
+			type: 'tv'
 		}
 	};
 };

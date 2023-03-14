@@ -21,7 +21,10 @@ export const load = ({ fetch, params }) => {
 		const data = await fetchTvDetails(params.tvId);
 		const title = data.name;
 		const description = data.overview;
-		return { title, description };
+
+		const type = 'tv';
+
+		return { title, description, type };
 	};
 
 	return {

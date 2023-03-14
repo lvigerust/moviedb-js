@@ -11,7 +11,7 @@
 	}
 
 	.full-hero {
-		@apply min-h-[calc(100vh-64px-7.25rem)] overflow-x-hidden lg:min-h-[calc(100vh-80px-8.25rem)];
+		@apply min-h-[calc(100vh-64px-7.25rem)] overflow-hidden lg:min-h-[calc(100vh-80px-8.25rem)];
 	}
 
 	.grid-layout {

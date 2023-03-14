@@ -25,7 +25,7 @@
 	};
 </script>
 
-<div class="full-hero hero">
+<div class="full-hero">
 	<div class="container px-4 sm:px-0">
 		<div class="tv xl:mx-[10vw]">
 			<div class="hero-image relative mt-1">

@@ -5,7 +5,7 @@
 	const { tvDetails, seasonDetails } = data;
 </script>
 
-<div class="full-hero hero">
+<div class="full-hero">
 	<div class="container px-4 sm:px-0">
 		<div class="season mx-auto flex max-w-4xl rounded-lg bg-base-300 shadow-md">
 			<div class="image-wrapper h-full w-20 shrink-0">

@@ -79,7 +79,8 @@ export const load = async ({ fetch }) => {
 		head: {
 			title: 'Movies',
 			description:
-				'Oversikt over filmer. Sortert etter filmer som trender akkurat nå, er populære på The Movie Database eller høyt vurdert på IMDB.com'
+				'Oversikt over filmer. Sortert etter filmer som trender akkurat nå, er populære på The Movie Database eller høyt vurdert på IMDB.com',
+			type: 'movie'
 		}
 	};
 };

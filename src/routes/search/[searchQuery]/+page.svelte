@@ -53,7 +53,7 @@
 	dividerDelay = Math.max(moviesDelay, showsDelay) + 250 + 400;
 </script>
 
-<div out:fly={{ y: -500 }} class="full-hero flex flex-col justify-between">
+<div out:fly={{ y: -500 }} class="full-hero">
 	<div class="container flex flex-col px-4 sm:px-0" class:flex-col-reverse={reverse}>
 		<div class="movies">
 			{#if movies.length}

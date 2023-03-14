@@ -1,6 +1,6 @@
 <script>
 	import { fly } from 'svelte/transition';
-	import { dateToSentence, getRuntime, calculateLogoSize } from '$functions';
+	import { dateToSentence, getRuntime, calculateLogoSize, slugify } from '$functions';
 	import { WatchProviders } from '$components';
 
 	export let data;
@@ -10,7 +10,7 @@
 	const logoSize = calculateLogoSize(movieDetails);
 </script>
 
-<div class="full-hero hero">
+<div class="full-hero">
 	<div class="container  px-4 sm:px-2">
 		<div class="movie xl:mx-[10vw]">
 			<div class="hero-image relative mt-1">
@@ -87,11 +87,17 @@
 					<div class="mx-auto mt-6 max-w-4xl">
 						<h1 class="text-center text-lg">
 							Part of the <a
-								href={'/collection/' + movieDetails.belongs_to_collection.id}
+								href={`/collection/${movieDetails.belongs_to_collection.id}-${slugify(
+									movieDetails.belongs_to_collection.name
+								)}`}
 								class="font-bold">{movieDetails.belongs_to_collection.name}</a
 							>
 						</h1>
-						<a href={'/collection/' + movieDetails.belongs_to_collection.id}>
+						<a
+							href={`/collection/${movieDetails.belongs_to_collection.id}-${slugify(
+								movieDetails.belongs_to_collection.name
+							)}`}
+						>
 							<img
 								class="mt-4 mb-4 h-[15vh] w-full rounded-lg  object-cover shadow-lg transition-transform duration-200 sm:mb-8 sm:hover:scale-[102.5%]"
 								src={'https://image.tmdb.org/t/p/w1280/' +
