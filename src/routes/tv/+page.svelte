@@ -10,8 +10,8 @@
 </script>
 
 <div in:fly={{ y: 500, delay: 400 }} out:fly={{ y: -500 }} class="full-hero">
-	<div class="flex flex-col sm:gap-2">
-		<div class="sm:mb-4">
+	<div class="flex flex-col sm:gap-1">
+		<div class="sm:mb-2">
 			<HeroCarousel data={trendingTvDetails} />
 		</div>
 		<PosterCarousel data={trendingTv} name="Topp serier i dag" />

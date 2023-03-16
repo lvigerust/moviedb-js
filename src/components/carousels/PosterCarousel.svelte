@@ -20,17 +20,17 @@
 		rewind: true,
 		breakpoints: {
 			390: {
-				gap: '.6rem',
 				perPage: 2
 			},
 			640: {
 				padding: '1rem',
+				gap: '.6rem',
 				perPage: 3
 			},
 
 			768: {
 				padding: '2rem',
-				gap: '.75rem',
+				gap: '.6rem',
 				perPage: 4
 			},
 
@@ -44,7 +44,7 @@
 			},
 			1440: {
 				perPage: 6,
-				gap: '1rem'
+				gap: '.8rem'
 			},
 			1900: {
 				perPage: 7
@@ -55,8 +55,8 @@
 		rewindSpeed: 1200,
 		flickPower: 500,
 		drag: 'free',
-		gap: '1.1rem',
-		padding: '6rem',
+		gap: '1rem',
+		padding: '5rem',
 		easing: 'cubic-bezier(0.65, 0, 0.35, 1)'
 	};
 
@@ -66,7 +66,7 @@
 
 <h2
 	id="carousel-heading"
-	class="inline pl-6 text-xl font-medium max-[428px]:pl-4 sm:pl-8 sm:text-2xl sm:font-semibold md:pl-12 lg:pl-20 xl:pl-24"
+	class="inline pl-6 text-xl font-medium max-[428px]:pl-4 sm:pl-8 sm:text-2xl sm:font-semibold md:pl-12 lg:pl-20 xl:pl-20"
 >
 	{name}
 </h2>

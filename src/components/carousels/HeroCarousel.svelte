@@ -55,10 +55,10 @@
 				<a
 					href={`/${type}/${item.id}-${slugify(item.title || item.name)}`}
 					title={item.title || item.name}
-					class="relative mb-7 mt-2 max-h-[200px] w-full rounded-xl outline outline-transparent transition-all duration-200 sm:max-h-[250px] sm:hover:scale-[101%] sm:hover:outline-slate-500/25 md:max-h-[300px] lg:max-h-[350px] xl:max-h-[400px] 2xl:max-h-[480px]"
+					class="relative mb-7 mt-2 max-h-[200px] w-full rounded-lg outline outline-transparent transition-all duration-200 sm:max-h-[250px] sm:hover:scale-[101%] sm:hover:outline-slate-500/25 md:max-h-[300px] lg:max-h-[350px] xl:max-h-[400px] xl:rounded-xl 2xl:max-h-[480px]"
 				>
 					<img
-						class="h-full w-full rounded-xl object-cover shadow-lg shadow-black/40"
+						class="h-full w-full rounded-lg object-cover shadow-lg shadow-black/40 xl:rounded-xl"
 						src={`https://image.tmdb.org/t/p/original/${item.backdrop_path}`}
 						alt={item.title || item.name}
 					/>
@@ -74,7 +74,7 @@
 					{/if} -->
 
 					<div
-						class="absolute bottom-0 flex h-1/2 w-full items-end rounded-b-xl bg-gradient-to-t from-black/50 "
+						class="absolute bottom-0 flex h-1/2 w-full items-end rounded-lg bg-gradient-to-t from-black/50 xl:rounded-b-xl "
 					>
 						<div
 							class="m-3 flex w-full items-end justify-between gap-0 lg:m-5 lg:mx-8 2xl:m-10 2xl:mx-16"

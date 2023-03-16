@@ -2,12 +2,22 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+	--header-height: 4rem;
+	--header-top-margin: 1rem;
+
+	--header-with-margin: calc(var(--header-height) + var(--header-top-margin));
+
+	--header-mb: calc(var(--header-top-margin) * 2 - 0.5rem);
+}
+
 @layer components {
 	.sticky-glass-navbar {
-		@apply sticky top-[var(--header-top-margin)] z-50 
-		mx-4 mt-4 max-w-5xl rounded-full bg-base-300/75 
-		backdrop-blur-md transition-transform ease-in lg:top-[var(--header-top-margin-lg)] 
-		lg:mx-auto lg:mt-8;
+		@apply sticky-navbar mx-4 rounded-full px-2 lg:container lg:max-w-5xl lg:px-3;
+	}
+
+	.sticky-navbar {
+		@apply sticky top-[var(--header-top-margin)] z-50 mb-[var(--header-mb)] bg-base-300/75 backdrop-blur-md transition-transform ease-in;
 	}
 
 	.full-hero {
@@ -22,9 +32,5 @@
 		gap-x-3 max-[428px]:grid-cols-3 max-[428px]:gap-x-[.6rem]
 		
 		sm:grid-cols-4 sm:gap-y-8 md:grid-cols-5 lg:grid-cols-6 xl:gap-x-4;
-	}
-
-	.layout-padding {
-		@apply mt-4 sm:mt-6 lg:mt-8;
 	}
 }
