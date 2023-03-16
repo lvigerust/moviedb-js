@@ -52,5 +52,14 @@
 
 			<li><a href={$page.url.pathname}>{$page.data.collectionDetails.name}</a></li>
 		{/if}
+
+		{#if $page.route.id.includes('search')}
+			<li><a href={`/search/${$page.params.searchQuery}`}>Search</a></li>
+			<li>
+				<a href={`/search/${$page.params.searchQuery}`} class="capitalize"
+					>{$page.params.searchQuery}</a
+				>
+			</li>
+		{/if}
 	</ul>
 </div>

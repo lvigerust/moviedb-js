@@ -1,5 +1,5 @@
 <script>
-	import { dateToSentence, getRuntime } from '$functions';
+	import { dateToSentence, getRuntime, slugify } from '$functions';
 
 	export let data;
 	const { tvDetails, seasonDetails } = data;
@@ -7,7 +7,7 @@
 
 <div class="full-hero">
 	<div class="container px-4 sm:px-0">
-		<div class="season mx-auto flex max-w-4xl rounded-lg bg-base-300 shadow-md">
+		<div class="season mx-auto mt-6 flex max-w-4xl rounded-lg bg-base-300 shadow-md">
 			<div class="image-wrapper h-full w-20 shrink-0">
 				<img
 					class="rounded-l-lg"
@@ -20,7 +20,7 @@
 					{seasonDetails.name}
 					<span class="font-normal">({new Date(seasonDetails.air_date).getFullYear()})</span>
 				</h2>
-				<a href={`/tv/` + tvDetails.id}>
+				<a href={`/tv/${tvDetails.id}-${slugify(tvDetails.name)}`}>
 					<p>Back to overview</p>
 				</a>
 			</div>

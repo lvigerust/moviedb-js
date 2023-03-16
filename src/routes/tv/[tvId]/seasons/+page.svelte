@@ -13,9 +13,9 @@
 	}
 </script>
 
-<div class="prose flex max-w-none justify-center">
+<div class="flex max-w-none justify-center">
 	<a class="no-underline" href={`/tv/${tvDetails.id}-${slugify(tvDetails.name)}`}>
-		<h3 class="m-0 text-base md:text-lg xl:text-xl">Back to overview</h3>
+		<h3 class="mt-4 text-base font-medium sm:mt-6 md:text-lg xl:text-xl">Back to overview</h3>
 	</a>
 </div>
 
@@ -24,16 +24,18 @@
 <div class="container px-4 sm:px-0">
 	<div class="mx-auto flex max-w-7xl flex-col gap-5">
 		{#each seasons as season}
-			<Season
-				id={tvDetails.id}
-				show={tvDetails.name}
-				number={season.season_number}
-				poster={season.poster_path}
-				episode_count={season.episode_count}
-				premiere_date={season.air_date}
-				release_year={season.air_date}
-				name={season.name}
-			/>
+			{#if season.episode_count}
+				<Season
+					id={tvDetails.id}
+					show={tvDetails.name}
+					number={season.season_number}
+					poster={season.poster_path}
+					episode_count={season.episode_count}
+					premiere_date={season.air_date}
+					release_year={season.air_date}
+					name={season.name}
+				/>
+			{/if}
 		{/each}
 	</div>
 </div>

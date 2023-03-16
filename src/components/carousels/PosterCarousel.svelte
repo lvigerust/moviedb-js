@@ -73,9 +73,11 @@
 <Splide class="-mt-4" aria-labelledby="carousel-heading" hasTrack={false} {options}>
 	<SplideTrack>
 		{#each data as item}
-			<SplideSlide>
-				<Card data={item} />
-			</SplideSlide>
+			{#if item.poster_path}
+				<SplideSlide>
+					<Card data={item} />
+				</SplideSlide>
+			{/if}
 		{/each}
 	</SplideTrack>
 

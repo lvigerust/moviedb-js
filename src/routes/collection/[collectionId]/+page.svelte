@@ -19,12 +19,13 @@
 			</div>
 
 			<div
-				class="collection-items mt-4 grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] flex-wrap justify-center
-			gap-x-5 sm:flex sm:gap-x-8"
+				class="collection-items mt-4 grid grid-cols-[repeat(auto-fit,_minmax(120px,_1fr))] flex-wrap justify-center gap-x-5 sm:flex sm:gap-x-8"
 			>
 				{#each sortedCollection as movie}
 					{#if movie.poster_path}
-						<Card data={movie} />
+						<div class="max-w-[250px]">
+							<Card data={movie} info={true} />
+						</div>
 					{/if}
 				{/each}
 			</div>

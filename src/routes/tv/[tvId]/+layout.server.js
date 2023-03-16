@@ -6,6 +6,7 @@ export const load = ({ fetch, params }) => {
 			`https://api.themoviedb.org/3/tv/${id}?api_key=${TMDB_API_KEY}&language=en-US&append_to_response=images,credits&include_image_language=en`
 		);
 		const tvDetailsData = await tvDetailsRes.json();
+		tvDetailsData.media_type = 'tv';
 		return tvDetailsData;
 	};
 
@@ -14,7 +15,7 @@ export const load = ({ fetch, params }) => {
 			`https://api.themoviedb.org/3/tv/${id}/watch/providers?api_key=${TMDB_API_KEY}`
 		);
 		const TvProviderData = await TvProviderRes.json();
-		return TvProviderData;
+		return TvProviderData.results.NO;
 	};
 
 	const getHead = async () => {
@@ -29,7 +30,7 @@ export const load = ({ fetch, params }) => {
 
 	return {
 		tvDetails: fetchTvDetails(params.tvId),
-		tvProviders: fetchTvProviders(params.tvId),
+		providers: fetchTvProviders(params.tvId),
 		head: getHead()
 	};
 };

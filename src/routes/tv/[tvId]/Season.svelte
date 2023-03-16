@@ -29,11 +29,11 @@
 				<img
 					class="m-0 rounded-l-lg"
 					src={'https://image.tmdb.org/t/p/w780/' + poster}
-					alt={`${show}-${name}`}
+					alt={`${name} - ${show}`}
 				/>
 			</div>
 		</div>
-		<div class="content-wrapper prose flex flex-col justify-center px-4 sm:px-8">
+		<div class="content-wrapper prose flex flex-col justify-center p-4 sm:p-8">
 			<h2 class="text-lg font-medium sm:text-2xl">
 				{#if number === 0}
 					Specials

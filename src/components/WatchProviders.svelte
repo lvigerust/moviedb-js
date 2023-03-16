@@ -1,24 +1,20 @@
 <script>
 	export let providers;
 
-	function getProviders(providers) {
-		let norwegianProviders = providers.results.NO;
-		let provider;
+	const link = providers.link;
+	let provider;
+	let message;
 
-		if (norwegianProviders) {
-			if (norwegianProviders.flatrate) {
-				provider = norwegianProviders.flatrate;
-			} else if (norwegianProviders.rent) {
-				provider = norwegianProviders.rent;
-			} else {
-				provider = norwegianProviders.buy;
-			}
-		}
-		return provider[0];
+	if (providers.flatrate) {
+		provider = providers.flatrate[0];
+		message = 'Stream on';
+	} else if (providers.rent) {
+		provider = providers.rent[0];
+		message = 'Rent on';
+	} else {
+		provider = providers.buy[0];
+		message = 'Buy on';
 	}
-
-	const link = providers.results.NO.link;
-	const provider = getProviders(providers);
 </script>
 
 <div class="w-fit">
@@ -38,7 +34,7 @@
 							/>
 						</div>
 						<div class="text text-start text-sm leading-5">
-							<p class="font-light">Watch on</p>
+							<p class="font-light">{message}</p>
 							<p class="font-bold">{provider.provider_name}</p>
 						</div>
 					</div>
