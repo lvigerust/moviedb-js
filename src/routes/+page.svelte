@@ -8,7 +8,7 @@
 		<div class="mx-auto max-w-4xl py-40 text-start">
 			<h1 class="inline text-4xl font-semibold sm:text-5xl ">Velkommen</h1>
 			<h4 class="py-6 text-2xl font-medium sm:text-3xl">
-				Millioner av filmer, TV-serier og personer å oppdage. Utforsk nå.
+				Millioner av filmer, TV-serier og personer å oppdage. Utforsk nå. testcommit
 			</h4>
 			<Search />
 		</div>
