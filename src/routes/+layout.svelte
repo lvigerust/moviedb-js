@@ -5,7 +5,11 @@
 </script>
 
 <svelte:head>
-	<title>{$page.data.head ? `${$page.data.head.title}` : 'Home | Stinkmeaner'}</title>
+	<title
+		>{$page.data.head
+			? `${$page.data.head.title} — Stinkmeaner Database`
+			: 'Home — Stinkmeaner'}</title
+	>
 	<meta name="description" content={$page.data.head ? `${$page.data.head.description}` : ''} />
 </svelte:head>
 

@@ -20,7 +20,7 @@ export const actions = {
 export const load = async ({}) => {
 	return {
 		head: {
-			title: 'Home | Stinkmeaner',
+			title: 'Home',
 			breadcrumb: 'Home',
 			path: '/'
 		}

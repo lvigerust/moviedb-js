@@ -20,7 +20,7 @@ export const load = ({ fetch, params }) => {
 
 	const getHead = async () => {
 		const data = await fetchMovieDetails(params.movieId);
-		const title = data.title;
+		const title = `${data.title} (${new Date(data.release_date).getFullYear()})`;
 		const description = data.overview;
 		const type = 'movie';
 		return { title, description, type };
