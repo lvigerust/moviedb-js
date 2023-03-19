@@ -1,6 +1,6 @@
 <script>
 	import { dynamicSort } from '$functions';
-	import { Card } from '$components';
+	import { PosterCard } from '$components';
 	import { fade, fly } from 'svelte/transition';
 	import Avatar from './Avatar.svelte';
 
@@ -63,7 +63,7 @@
 				<div class="grid-layout">
 					{#each movies as movie, index}
 						<div in:fly={{ y: 150, delay: moviesDelay + index * staggerSpeed }}>
-							<Card data={movie} info={true} margin={false} />
+							<PosterCard data={movie} info={true} margin={false} />
 						</div>
 					{/each}
 				</div>
@@ -83,7 +83,7 @@
 				<div class="grid-layout">
 					{#each shows as show, index}
 						<div in:fly={{ y: 150, delay: showsDelay + index * staggerSpeed }}>
-							<Card data={show} info={true} margin={false} />
+							<PosterCard data={show} info={true} margin={false} />
 						</div>
 					{/each}
 				</div>

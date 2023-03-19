@@ -14,7 +14,7 @@
 </svelte:head>
 
 <Navbar />
-<main class="layout-padding">
+<main>
 	<slot />
 	<Breadcrumbs />
 </main>

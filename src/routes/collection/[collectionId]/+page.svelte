@@ -1,6 +1,6 @@
 <script>
 	import { dynamicSort } from '$functions';
-	import { Card } from '$components';
+	import { PosterCard } from '$components';
 
 	export let data;
 	const { collectionDetails } = data;
@@ -24,7 +24,7 @@
 				{#each sortedCollection as movie}
 					{#if movie.poster_path}
 						<div class="max-w-[250px]">
-							<Card data={movie} info={true} />
+							<PosterCard data={movie} info={true} />
 						</div>
 					{/if}
 				{/each}

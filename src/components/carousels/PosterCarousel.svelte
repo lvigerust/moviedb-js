@@ -1,7 +1,7 @@
 <script>
 	import { Splide, SplideSlide, SplideTrack } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
-	import { Card } from '$components';
+	import { PosterCard } from '$components';
 	import { onMount } from 'svelte';
 
 	let desktop = true;
@@ -75,7 +75,7 @@
 		{#each data as item}
 			{#if item.poster_path}
 				<SplideSlide>
-					<Card data={item} />
+					<PosterCard data={item} />
 				</SplideSlide>
 			{/if}
 		{/each}
