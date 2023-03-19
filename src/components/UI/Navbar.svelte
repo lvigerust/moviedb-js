@@ -81,24 +81,29 @@
 				</ul>
 			</div>
 			<a
+				title="Home"
 				href="/"
 				class="btn-ghost btn hidden flex-col gap-4 rounded-full normal-case opacity-80 md:flex lg:text-lg "
 			>
-				<p>VIGERUST</p>
+				<p>STINKMEANER</p>
 			</a>
 		</div>
 		<div class="navbar-center flex w-1/3 justify-center opacity-80 md:hidden">
 			<a href="/" class="btn-ghost btn flex flex-col  gap-3 rounded-full normal-case">
-				<p>VIGERUST</p>
+				<p>STINKMEANER</p>
 			</a>
 		</div>
 		<div class="navbar-end opacity-80">
 			<ul class="menu menu-horizontal hidden p-0 font-[Poppins] normal-case md:flex">
 				<li>
-					<a class="btn-ghost btn rounded-md  font-normal normal-case" href="/movie">Movies</a>
+					<a class="btn-ghost btn rounded-md  font-normal normal-case" title="Movies" href="/movie"
+						>Movies</a
+					>
 				</li>
 				<li>
-					<a class="btn-ghost btn rounded-md font-normal normal-case" href="/tv">TV Shows</a>
+					<a class="btn-ghost btn rounded-md font-normal normal-case" title="TV Shows" href="/tv"
+						>TV Shows</a
+					>
 				</li>
 				<!-- <li>
 					<a class="btn btn-ghost rounded-md font-normal normal-case" href="/login">Login</a>
@@ -109,7 +114,7 @@
 				<form method="post" use:enhance={submitUpdateTheme}>
 					{#if currentTheme == lightTheme}
 						<button
-							data-sveltekit-noscroll
+							title="Darkmode"
 							aria-label="Toggle dark theme"
 							class="btn-ghost btn-circle btn"
 							formaction="/?/setTheme&theme={darkTheme}&redirectTo={$page.url.pathname}"
@@ -118,7 +123,7 @@
 						</button>
 					{:else if currentTheme == darkTheme}
 						<button
-							data-sveltekit-noscroll
+							title="Lightmode"
 							aria-label="Toggle light theme"
 							class="btn-ghost btn-circle btn"
 							formaction="/?/setTheme&theme={lightTheme}&redirectTo={$page.url.pathname}"

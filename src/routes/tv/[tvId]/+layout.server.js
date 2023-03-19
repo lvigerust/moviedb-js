@@ -21,12 +21,12 @@ export const load = ({ fetch, params }) => {
 	const getHead = async () => {
 		const data = await fetchTvDetails(params.tvId);
 
-		let title = `${data.name} (${new Date(data.first_air_date).getFullYear()}-${new Date(
+		let title = `${data.name} (TV Series ${new Date(data.first_air_date).getFullYear()}-${new Date(
 			data.last_air_date
 		).getFullYear()})`;
 
 		if (data.status === 'Returning Series') {
-			title = `${data.name} (${new Date(data.first_air_date).getFullYear()}-)`;
+			title = `${data.name} (TV Series ${new Date(data.first_air_date).getFullYear()}-)`;
 		}
 
 		const description = data.overview;
