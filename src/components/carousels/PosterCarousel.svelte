@@ -66,7 +66,7 @@
 
 <h2
 	id="carousel-heading"
-	class="inline pl-6 text-xl font-medium max-[428px]:pl-4 sm:pl-8 sm:text-2xl sm:font-semibold md:pl-12 lg:pl-20 xl:pl-20"
+	class="inline pl-6 text-lg font-medium max-[428px]:pl-4 sm:pl-8 sm:text-xl sm:font-semibold md:pl-12 lg:pl-20 xl:pl-20 xl:text-2xl"
 >
 	{name}
 </h2>

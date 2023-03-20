@@ -3,7 +3,7 @@
 	import { slugify } from '$functions';
 </script>
 
-<div class="breadcrumbs flex justify-center py-8 text-sm">
+<div class="sm-px-2 breadcrumbs flex justify-center py-8 px-4 text-sm">
 	<ul class="flex flex-wrap justify-center">
 		<li><a href="/">Home</a></li>
 
