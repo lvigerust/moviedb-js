@@ -179,9 +179,12 @@
 			</div>
 
 			<div class="content-group">
+				{#if data.media_type === 'tv' || (data.belongs_to_collection && data.belongs_to_collection.backdrop_path)}
+					<div class="divider" />
+				{/if}
+
 				{#if data.media_type === 'movie'}
 					{#if data.belongs_to_collection && data.belongs_to_collection.backdrop_path}
-						<div class="divider" />
 						<div class="mx-auto mt-6 max-w-4xl">
 							<h1 class="text-center text-lg">
 								Part of the <a

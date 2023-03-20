@@ -14,8 +14,6 @@
 </svelte:head>
 
 <Navbar />
-<main>
-	<slot />
-	<Breadcrumbs />
-</main>
+<slot />
+<Breadcrumbs />
 <Footer />

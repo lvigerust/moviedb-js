@@ -54,7 +54,7 @@
 </script>
 
 <div out:fly={{ y: -500 }} class="full-hero">
-	<div class="container flex flex-col px-4 sm:px-0" class:flex-col-reverse={reverse}>
+	<div class="container flex flex-col px-4 pt-2 sm:px-0" class:flex-col-reverse={reverse}>
 		<div class="movies">
 			{#if movies.length}
 				<h4 class="mb-2 text-2xl font-semibold sm:mb-3" in:fly={{ y: 150, delay: moviesDelay }}>

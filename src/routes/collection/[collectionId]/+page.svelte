@@ -9,7 +9,7 @@
 </script>
 
 <div class="full-hero">
-	<div class="container px-4 sm:px-2">
+	<div class="container px-4 pt-8 sm:px-2">
 		<div class="collection">
 			<div class="collection-info prose mx-auto max-w-3xl text-center">
 				<h2>{collectionDetails.name}</h2>
