@@ -2,7 +2,11 @@
 module.exports = {
 	content: ['./src/**/*.{html,js,svelte,ts}'],
 	theme: {
-		extend: {},
+		extend: {
+			gridTemplateColumns: {
+				fluid: 'repeat(auto-fit, minmax(15rem, 1fr))'
+			}
+		},
 		container: {
 			center: true
 		}

@@ -62,6 +62,7 @@
 
 	export let data;
 	export let name = ' "name" ';
+	export let info = false;
 </script>
 
 <h2
@@ -75,7 +76,7 @@
 		{#each data as item}
 			{#if item.poster_path}
 				<SplideSlide>
-					<PosterCard data={item} />
+					<PosterCard data={item} {info} />
 				</SplideSlide>
 			{/if}
 		{/each}

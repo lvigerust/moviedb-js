@@ -18,6 +18,14 @@ export const load = ({ fetch, params }) => {
 		return movieProviderData.results.NO;
 	};
 
+	const fetchRecommendations = async (id) => {
+		const recommendationsRes = await fetch(
+			`https://api.themoviedb.org/3/movie/${id}/recommendations?api_key=${TMDB_API_KEY}&language=en-US&page=1`
+		);
+		const recommendationsData = await recommendationsRes.json();
+		return recommendationsData.results;
+	};
+
 	const getHead = async () => {
 		const data = await fetchMovieDetails(params.movieId);
 		const title = `${data.title} (${new Date(data.release_date).getFullYear()})`;
@@ -29,6 +37,9 @@ export const load = ({ fetch, params }) => {
 	return {
 		movieDetails: fetchMovieDetails(params.movieId),
 		providers: fetchMovieProviders(params.movieId),
+		streamed: {
+			recommendations: fetchRecommendations(params.movieId)
+		},
 		head: getHead()
 	};
 };
