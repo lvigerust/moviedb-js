@@ -3,7 +3,7 @@
 
 	export let data;
 
-	const { movieDetails, providers, streamed } = data;
+	const { movieDetails, providers } = data;
 </script>
 
 <svelte:head>
@@ -11,10 +11,12 @@
 	<meta property="og:title" content={movieDetails.title} />
 	<meta
 		property="og:image"
-		content={'https://image.tmdb.org/t/p/original/' + movieDetails.poster_path}
+		content={'https://image.tmdb.org/t/p/500/' + movieDetails.poster_path}
 	/>
-	<meta property="og:image:width" content="500" />
-	<meta property="og:image:height" content="750" />
+	<meta
+		property="og:image"
+		content={'https://image.tmdb.org/t/p/780/' + movieDetails.backdrop_path}
+	/>
 	<meta property="og:description" content={movieDetails.overview} />
 </svelte:head>
 
