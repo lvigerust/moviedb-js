@@ -7,17 +7,18 @@
 </script>
 
 <svelte:head>
-	<meta property="og:site_name" content="Stinkmeaner" />
 	<meta property="og:title" content={movieDetails.title} />
-	<meta
-		property="og:image"
-		content={'https://image.tmdb.org/t/p/500/' + movieDetails.poster_path}
-	/>
-	<meta
-		property="og:image"
-		content={'https://image.tmdb.org/t/p/780/' + movieDetails.backdrop_path}
-	/>
 	<meta property="og:description" content={movieDetails.overview} />
+	<meta
+		property="og:image"
+		content={'https://image.tmdb.org/t/p/w500/' + movieDetails.poster_path}
+	/>
+	<meta
+		property="og:image"
+		content={'https://image.tmdb.org/t/p/w780/' + movieDetails.backdrop_path}
+	/>
+	<meta property="og:type" content="video.movie" />
+	<meta property="og:site_name" content="Stinkmeaner" />
 </svelte:head>
 
 <Details data={movieDetails} {providers} />
