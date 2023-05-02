@@ -11,10 +11,10 @@
 	<meta property="og:title" content={movieDetails.title} />
 	<meta
 		property="og:image"
-		content={'https://image.tmdb.org/t/p/original/' + movieDetails.backdrop_path}
+		content={'https://image.tmdb.org/t/p/original/' + movieDetails.poster_path}
 	/>
-	<meta property="og:image:width" content="1280" />
-	<meta property="og:image:height" content="720" />
+	<meta property="og:image:width" content="500" />
+	<meta property="og:image:height" content="750" />
 	<meta property="og:description" content={movieDetails.overview} />
 </svelte:head>
 
