@@ -6,6 +6,7 @@
 	const { movieDetails, providers } = data;
 </script>
 
+<!-- Clean this code | add to layout component -->
 <svelte:head>
 	<meta property="og:title" content={movieDetails.title} />
 	<meta property="og:description" content={movieDetails.overview} />
