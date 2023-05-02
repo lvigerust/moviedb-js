@@ -10,6 +10,12 @@
 	const logoSize = calculateLogoSize(movieDetails);
 </script>
 
+<svelte:head>
+	<meta property="og:site_name" content="Stinkmeaner" />
+	<meta property="og:title" content={movieDetails.title} />
+	<meta property="og:image" content={movieDetails.poster_path} />
+</svelte:head>
+
 <div class="full-hero">
 	<div class="container  px-4 sm:px-2">
 		<div class="movie xl:mx-[10vw]">
